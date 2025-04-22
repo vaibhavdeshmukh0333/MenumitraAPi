@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>4/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Apr 21 15:44:13 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>3 seconds (3732 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.getOwnerUrl()'><b>getOwnerUrl</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyotp, post, https://menusmitra.xyz/owner_api/verify_otp, {
+    "mobile":"9999999991",
+    "otp":"1234",
+    "fcm_token":"8998998998",
+    "device_id":"h0ol74eq6rom9i826wa",
+    "device_model":"samsung"
+}, {
+    "st": 1,
+    "msg": "Success",
+    "owner_data": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgxNzM3MiwiaWF0IjoxNzQ1MjEyNTcyLCJqdGkiOiJmZTYwZGMyZDM0YzY0NDg0YTk0NGNhMzFkNDhiYjcxYiIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoicktDcXFDc25SVnFZRGJBSUNzSmFQZG5rWllpOGFlYU4xajUuSkwwTGduVXhFMjh2aGZkdVE0R1cyYjlTejB4WmY3OUpoTko5aWxEQ0ZWNG0ubEJ1SFhZZHlKZm80Mkk0by5ZayJ9.iQ_cxaj_X12Pi0hiR6ObnUl0dNhrd5mwr2Qq-Ohjj-4",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODE3MzcyLCJpYXQiOjE3NDUyMTI1NzIsImp0aSI6IjZmOThkZmQzZmIzYTRhZThiYWE3NmNlNDc1MzIzMDRiIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJyS0NxcUNzblJWcVlEYkFJQ3NKYVBkbmtaWWk4YWVhTjFqNS5KTDBMZ25VeEUyOHZoZmR1UTRHVzJiOVN6MHhaZjc5SmhOSjlpbERDRlY0bS5sQnVIWFlkeUpmbzQySTRvLllrIn0.ZRhDl68saGfg-xdHtpNI_a6zkX9ZJ4OhoPXhe496NOA",
+        "device_token": "rKCqqCsnRVqYDbAICsJaPdnkZYi8aeaN1j5.JL0LgnUxE28vhfduQ4GW2b9Sz0xZf79JhNJ9ilDCFV4m.lBuHXYdyJfo42I4o.Yk",
+        "owner_name": "Santosh",
+        "user_id": 518,
+        "role": "owner",
+        "outlet_name": "Deshmukh Wada",
+        "outlet_id": 84,
+        "mobile": "9677777777",
+        "address": "Pune Satara Road Pune",
+        "outlet_status": true,
+        "order_number_sequence": "since_opening",
+        "is_open": true,
+        "gst": "4",
+        "service_charges": "2",
+        "upi_id": "9527279639@ybl",
+        "completed_orders": 0,
+        "active_orders": 0,
+        "today_total_revenue": null
+    },
+    "settings": {
+        "theme": "system",
+        "style": "blue",
+        "has_dine_in": true,
+        "has_parcel": false,
+        "has_counter": false,
+        "has_delivery": false,
+        "has_drive_through": true,
+        "print_and_save": true,
+        "KOT_and_save": true,
+        "settle": true,
+        "reserve_table": true,
+        "cancel": true,
+        "POS_show_menu_image": true
+    }
+}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@735b478</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.getUrl()'><b>getUrl</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, post, https://menusmitra.xyz/common_api/user_login, {   
+ "mobile":"9999999991"
+}, {
+    "st": 1,
+    "msg": "Your OTP is sent successfully.",
+    "role": "owner"
+}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@52af6cff</td></tr>
+<tr>
+<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.verifyOTPAPiUsingValidInputData()'><b>verifyOTPAPiUsingValidInputData</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyOTP, OwnerVerifyOTP_001, positive, valild verify OTP, post, {
+    "mobile":"9999999991",
+    "otp":"1234",
+    "fcm_token":"8998998998",
+    "device_id":"h0ol74eq6rom9i826wa",
+    "device_model":"samsung"
+}, {
+    "st": 1,
+    "msg": "Success",
+    "owner_data": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgyMjEyNiwiaWF0IjoxNzQ1MjE3MzI2LCJqdGkiOiJhZjY2OTNiYzI1ZDY0ZjIyOGY4MDMwYjdhN2RmZmE0OCIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoiTW1tS20zdEszZ2xhWTRhNXZMSThsM1czWTUzLjBiazJ2TVl6WlRDU25xN0dHUml1dmM2SVF4cWhVVGVWODRXMkhuMUdqM3pra0VMZHhBeDFQMHBlVlRPdVhiV3JkUGxibTlRNyJ9.wofSFAthCt_AVCaxeTaufm0jkir3KIvJecXVh0lmazE",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODIyMTI2LCJpYXQiOjE3NDUyMTczMjYsImp0aSI6ImZlN2YyMWY4NWNlZDQxNDg4MGM5NzJlNmVjODAwZDVhIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJNbW1LbTN0SzNnbGFZNGE1dkxJOGwzVzNZNTMuMGJrMnZNWXpaVENTbnE3R0dSaXV2YzZJUXhxaFVUZVY4NFcySG4xR2ozemtrRUxkeEF4MVAwcGVWVE91WGJXcmRQbGJtOVE3In0.mS5cBmhZRYqeICdIAQM3Yo46zWSgFm1ybMwGAwDaCkk",
+        "device_token": "MmmKm3tK3glaY4a5vLI8l3W3Y53.0bk2vMYzZTCSnq7GGRiuvc6IQxqhUTeV84W2Hn1Gj3zkkELdxAx1P0peVTOuXbWrdPlbm9Q7",
+        "owner_name": "Santosh",
+        "user_id": 518,
+        "role": "owner",
+        "outlet_name": "Deshmukh Wada",
+        "outlet_id": 84,
+        "mobile": "9677777777",
+        "address": "Pune Satara Road Pune",
+        "outlet_status": true,
+        "order_number_sequence": "since_opening",
+        "is_open": true,
+        "gst": "4",
+        "service_charges": "2",
+        "upi_id": "9527279639@ybl",
+        "completed_orders": 0,
+        "active_orders": 0,
+        "today_total_revenue": null
+    },
+    "settings": {
+        "theme": "system",
+        "style": "blue",
+        "has_dine_in": true,
+        "has_parcel": false,
+        "has_counter": false,
+        "has_delivery": false,
+        "has_drive_through": true,
+        "print_and_save": true,
+        "KOT_and_save": true,
+        "settle": true,
+        "reserve_table": true,
+        "cancel": true,
+        "POS_show_menu_image": true
+    }
+}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@735b478</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyloginUsingValidInputData()'><b>verifyloginUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_001, positive, Valid login, post, {   
+ "mobile":"8965432111"
+}, 200, {
+    "st": 2,
+    "msg": "This Mobile Number is not registered in this App."
+}</td>
+<td></td>
+<td>2</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@52af6cff</td></tr>
+</table><p>
+</body>
+</html>

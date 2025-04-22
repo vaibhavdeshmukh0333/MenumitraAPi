@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4926" started-at="2025-04-22T07:27:27Z" finished-at="2025-04-22T07:27:32Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4926" started-at="2025-04-22T07:27:27Z" finished-at="2025-04-22T07:27:32Z">
+      <class name="com.menumitratCommonAPITestScript.ResendOTPTestScript">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@5a61f5df]" name="setUp" is-config="true" duration-ms="209" started-at="2025-04-22T12:57:27Z" finished-at="2025-04-22T12:57:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="getResendOTPURL(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@5a61f5df]" name="getResendOTPURL" duration-ms="8" started-at="2025-04-22T12:57:29Z" data-provider="getResendURl" finished-at="2025-04-22T12:57:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[resendOTP]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[post]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[https://men4u.xyz/common_api/resend_otp]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[{
+    "mobile":"9999999991",
+    "role":"owner"
+    
+}]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[{
+    "st": 1,
+    "msg": "OTP resent successfully",
+    "role": "owner"
+}]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[200]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResendOTPURL -->
+        <test-method status="PASS" signature="verifyRessendOTPUSingPositiveInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@5a61f5df]" name="verifyRessendOTPUSingPositiveInputData" duration-ms="3474" started-at="2025-04-22T12:57:29Z" data-provider="getPositiveinputData" finished-at="2025-04-22T12:57:32Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[resendotp]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[resendotp_001]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[positive]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Valid login]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[post]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[{
+    "mobile":"9999999991",
+    "role":"owner"
+    
+}]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[{
+    "st": 1,
+    "msg": "OTP resent successfully",
+    "role": "owner"
+}]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[200]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRessendOTPUSingPositiveInputData -->
+      </class> <!-- com.menumitratCommonAPITestScript.ResendOTPTestScript -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
