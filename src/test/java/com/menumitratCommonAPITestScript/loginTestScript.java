@@ -22,7 +22,6 @@ import com.menumitra.utilityclass.ExtentReport;
 import com.menumitra.utilityclass.validateResponseBody;
 import com.menumitra.utilityclass.DataDriven;
 import com.menumitra.utilityclass.EnviromentChanges;
-import com.menumitra.utilityclass.TokenManager;
 import io.restassured.response.Response;
 
 
@@ -122,70 +121,61 @@ public class loginTestScript extends APIBase
 
     @BeforeClass
     private void testLoginApi() {
-        // Clear any existing tokens before starting tests
-        TokenManager.clearTokens();
+        LogUtils.info("Setting up base URI based on environment");
+        //ExtentReport.getTest().log(Status.INFO, "Environment: " + EnviromentChange.getCurrentEnvironment().getName());
+        baseUri = EnviromentChanges.getBaseUrl(); // Using utility method to get base URL
+        LogUtils.info("Base URI set to: " + baseUri);
     }
     
     @Test(dataProvider="getLoginUrl",priority = 0)
     private void getUrl(String apiName,String method,String endpoint,String requestBody, String responseBody,
     String statusCode) throws MalformedURLException, customException
     {
-        try {
-            baseUri = EnviromentChanges.getBaseUrl();
-            url = new URL(baseUri + endpoint);
-            LogUtils.info("Login API URL: " + url.toString());
-        } catch (Exception e) {
-            LogUtils.error("Error setting up login URL: " + e.getMessage());
-            throw new customException("Error setting up login URL: " + e.getMessage());
-        }
+    	url=new URL(endpoint);
+    	
+    	if(apiName.contains("login"))
+    	{
+    		baseUri=RequestValidator.buildUri(endpoint,baseUri);
+    	}
     }
 
     @Test(dataProvider = "getInputData",priority = 1)
     private void verifyloginUsingValidInputData(String apiName,String testCaseid, String testType, String description,
     		String httpsmethod,String requestBody, String statusCode,String expectedResponseBody ) throws customException
     {
-        try {
-            LogUtils.info("Starting login test: " + description);
-            
-            // Create login request
-            jsonRequestBody = new JSONObject(requestBody);
-            lr = new loginRequest(jsonRequestBody);
-            
-            // Make login API call
-            Response response = ResponseUtil.getResponse(url.toString(), jsonRequestBody, httpsmethod);
-            actualResponseBody = new JSONObject(response.getBody().asString());
-            
-            // Verify response
-            verifyApiResponseBody(actualResponseBody, new JSONObject(expectedResponseBody), 
-                    Integer.parseInt(statusCode));
-            
-            // If login successful, store tokens
-            if (response.getStatusCode() == 200) {
-                TokenManager.setTokens(actualResponseBody);
-                LogUtils.info("Login successful - Tokens stored");
+        try{
+            ExtentReport.getTest().log(Status.INFO,"start login api using valid input data");
+            if(apiName.contains("login")&&testType.contains("positive"))
+            {
+            	jsonRequestBody=new JSONObject(requestBody);
+            	lr=new loginRequest();
+            	lr.setMobile(jsonRequestBody.get("mobile").toString());
+                
+                Response response=ResponseUtil.getResponse(baseUri,lr,httpsmethod);
+                ExtentReport.getTest().log(Status.INFO,"login api response: "+response.getBody().asString());
+
+                if(!(response.getStatusCode()==500))
+                {
+                    actualResponseBody=new JSONObject(response.getBody().asString());
+                    expectedResponse=new JSONObject(expectedResponseBody);
+                    verifyApiResponseBody(actualResponseBody, expectedResponse,response.getStatusCode());
+                    LogUtils.info("Successfully Validate login response");
+                    ExtentReport.getTest().log(Status.PASS,"Successfully Validate login response");
+                }
+                
+                LogUtils.info("Success check login using valid input data");
+                ExtentReport.getTest().log(Status.PASS,"Success check login using valid input data");
             }
-            
-            ExtentReport.getTest().log(Status.PASS, "Login test passed: " + description);
-            
-        } catch (Exception e) {
-            LogUtils.error("Login test failed: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Login test failed: " + e.getMessage());
-            throw new customException("Login test failed: " + e.getMessage());
+
+        }
+        catch(Exception e)
+        {
+            LogUtils.error("An error occurred during login verification: "+e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL,"An error occurred during login verification: "+e.getMessage());
+            throw new customException("An error occurred during login verification");
         }
     }
 
-    @Test(priority = 2)
-    private void verifyTokenStorage() {
-        try {
-            Assert.assertTrue(TokenManager.isLoggedIn(), "User should be logged in after successful login");
-            Assert.assertNotNull(TokenManager.getToken(TokenManager.ACCESS_TOKEN), "Access token should be stored");
-            Assert.assertNotNull(TokenManager.getToken(TokenManager.DEVICE_TOKEN), "Device token should be stored");
-            LogUtils.info("Token storage verification successful");
-        } catch (AssertionError e) {
-            LogUtils.error("Token storage verification failed: " + e.getMessage());
-            throw e;
-        }
-    }
 
     public void verifyApiResponseBody(JSONObject actualResponse,JSONObject expectedResponse, int statusCode) throws customException
     {

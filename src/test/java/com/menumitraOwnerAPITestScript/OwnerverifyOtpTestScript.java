@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import org.json.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.google.gson.JsonObject;
+
 import com.menumitra.apiRequest.verifyOTPRequest;
 import com.menumitra.superclass.APIBase;
 
@@ -145,7 +145,6 @@ public class OwnerverifyOtpTestScript extends APIBase {
                 if(response.getStatusCode() == 200) {
                     expectedResponse = new JSONObject(expectedResponseBody);
                     actualResponseBody = new JSONObject(response.body().asString());
-                    TokenManagers.setTokens(actualResponseBody);
                     verifyOwnerVerifyResponseBody(actualResponseBody, expectedResponse, Integer.parseInt(statusCode));
                 }
             }

@@ -38,7 +38,6 @@ public class ResponseUtil
                             .when()
                             .post(url);
                     LogUtils.info("POST request completed successfully");
-                    System.out.println();
                     return response;
                     
                 case "put":
@@ -78,6 +77,88 @@ public class ResponseUtil
                                     .contentType(ContentType.JSON)
                                     .body(requestBody)
                                     .delete();
+                                    LogUtils.info("Delete Data Successfully");
+                                    return response;
+                                    
+                                } catch (Exception e) {
+                                  
+                                	LogUtils.error("Error:Unable to delete data check request body");
+                                	throw new customException("Error:Unble to delete data check request body");
+                                }
+                default:
+                    LogUtils.warn("Unsupported HTTP method: " + method);
+                    return null;
+            }
+        } catch (Exception e) {
+            LogUtils.error("Error during " + method.toUpperCase() + " request: " + e.getMessage());
+            throw new customException("Error during API request: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Makes an HTTP request based on the specified method and returns the response
+     * 
+     * @param url The endpoint URL to send the request to
+     * @param requestBody The request body object
+     * @param method The HTTP method to use (post, put, etc.)
+     * @return Response object containing the API response
+     * @throws customException If there is an error during the API request
+     */
+    public static Response getResponseWithAuth(String url, Object requestBody, String method,String jwttoken) throws customException 
+    {
+        try {
+            LogUtils.info("Making " + method.toUpperCase() + " request to: " + url);
+            
+           
+            switch (method.toLowerCase()) {
+                case "post":
+                    LogUtils.info("Executing POST request");
+                    response =RestAssured.given()
+                            .header("Authorization","Bearer ",jwttoken)
+                            .body(requestBody)
+                            .when()
+                            .post(url);
+
+                    LogUtils.info("POST request completed successfully");
+                    System.out.println();
+                    return response;
+                    
+                case "put":
+                    LogUtils.info("Executing PUT request");
+                   response =RestAssured.given()
+                            .header("Authorization","Bearer ",jwttoken)
+                            .body(requestBody)
+                            .when()
+                            .put(url);
+                    LogUtils.info("PUT request completed successfully");
+                    return response;
+
+                case "get":
+                            try{
+                                response =RestAssured.given()
+                            .header("Authorization","Bearer ",jwttoken)
+                            .when()
+                            .get(url);
+                                
+                                LogUtils.info("successfully get response..");
+                                return response;
+                            }
+                            catch(Exception e)
+                            {
+                                LogUtils.error("Error: Get response..");
+                                throw new customException("Error: Get response");
+                              
+                            }
+                    
+                case "delete":
+                                try {
+                                    
+                                    LogUtils.info("start delete data..");
+                                    response =RestAssured.given()
+                                    .header("Authorization","Bearer ",jwttoken)
+                                    .body(requestBody)
+                                    .when()
+                                    .delete(url);
                                     LogUtils.info("Delete Data Successfully");
                                     return response;
                                     

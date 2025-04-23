@@ -45,22 +45,22 @@ public class DataDriven
             fis = new FileInputStream(excelPath); // Open the file
             workbook = new XSSFWorkbook(fis); // Load the workbook
             sheet = workbook.getSheet(sheetName); // Get the specified sheet
-            LogUtil.info("Excel sheet read successfully.");
+            LogUtils.info("Excel sheet read successfully.");
             return sheet;
         } catch (IOException e) {
-            LogUtil.error("Error reading the Excel file: " + e.getMessage());
+            LogUtils.error("Error reading the Excel file: " + e.getMessage());
             throw new customException("Error reading the Excel file: " + e.getMessage());
         } catch (Exception e) {
-            LogUtil.error("Unexpected error occured while reading excel sheet " + e.getMessage());
+            LogUtils.error("Unexpected error occured while reading excel sheet " + e.getMessage());
             throw new customException("Unexpected error occured while reading excel sheet " + e.getMessage());
         } finally {
             try {
                 if (fis != null) {
                     fis.close();
-                    LogUtil.info("Excel file closed successfully.");
+                    LogUtils.info("Excel file closed successfully.");
                 }
             } catch (IOException e) {
-                LogUtil.error("Error closing excel file. ");
+                LogUtils.error("Error closing excel file. ");
                 throw new customException("Error closing excel file: " + e.getMessage());
             }
         }
@@ -127,18 +127,18 @@ public class DataDriven
                     }
                 }
             }
-            LogUtil.info("Excel data read successfully.");
+            LogUtils.info("Excel data read successfully.");
         } catch (Exception e) {
-            LogUtil.error("Unexpected error occured while reading excel sheet " + e.getMessage());
+            LogUtils.error("Unexpected error occured while reading excel sheet " + e.getMessage());
             throw new customException("Unexpected error occured while reading excel sheet " + e.getMessage());
         } finally {
             try {
                 if (workbook != null) {
                     workbook.close();
-                    LogUtil.info("Excel workbook closed successfully.");
+                    LogUtils.info("Excel workbook closed successfully.");
                 }
             } catch (IOException e) {
-                LogUtil.error("Error closing excel workbook. " + e.getMessage());
+                LogUtils.error("Error closing excel workbook. " + e.getMessage());
                 throw new customException("Error closing excel workbook. " + e.getMessage());
             }
         }
@@ -181,7 +181,7 @@ public class DataDriven
                         rowData.put(columnIndex, cell.getStringCellValue());
                     } catch (IllegalStateException e) {
                         // Handle non-string cell values
-                        LogUtil.warn("Non-string value found at row " + rowIndex + ", column " + columnIndex);
+                        LogUtils.warn("Non-string value found at row " + rowIndex + ", column " + columnIndex);
                         rowData.put(columnIndex, String.valueOf(cell.getNumericCellValue()));
                     }
                 }

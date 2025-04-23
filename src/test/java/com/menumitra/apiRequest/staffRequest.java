@@ -10,8 +10,14 @@ public class staffRequest
     private String role;
     private String aadhar_number;
     private String outlet_id;
+    private String device_token;
     
-    
+	public String getDevice_token() {
+		return device_token;
+	}
+	public void setDevice_token(String device_token) {
+		this.device_token = device_token;
+	}
 	public String getUser_id() 
 	{
 		return user_id;

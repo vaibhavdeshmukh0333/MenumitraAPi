@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Apr 22 12:57:27 IST 2025</td>
+<td>Started on:</td><td>Wed Apr 23 10:27:25 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>4 seconds (4926 ms)</td>
+<tr><td>Total time:</td><td>2 seconds (2571 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,31 +75,105 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.getResendOTPURL()'><b>getResendOTPURL</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendOTP, post, https://men4u.xyz/common_api/resend_otp, {
+<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.getOwnerUrl()'><b>getOwnerUrl</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyotp, post, https://menusmitra.xyz/owner_api/verify_otp, {
     "mobile":"9999999991",
-    "role":"owner"
-    
+    "otp":"1234",
+    "fcm_token":"8998998998",
+    "device_id":"h0ol74eq6rom9i826wa",
+    "device_model":"samsung"
 }, {
     "st": 1,
-    "msg": "OTP resent successfully",
-    "role": "owner"
+    "msg": "Success",
+    "owner_data": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgxNzM3MiwiaWF0IjoxNzQ1MjEyNTcyLCJqdGkiOiJmZTYwZGMyZDM0YzY0NDg0YTk0NGNhMzFkNDhiYjcxYiIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoicktDcXFDc25SVnFZRGJBSUNzSmFQZG5rWllpOGFlYU4xajUuSkwwTGduVXhFMjh2aGZkdVE0R1cyYjlTejB4WmY3OUpoTko5aWxEQ0ZWNG0ubEJ1SFhZZHlKZm80Mkk0by5ZayJ9.iQ_cxaj_X12Pi0hiR6ObnUl0dNhrd5mwr2Qq-Ohjj-4",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODE3MzcyLCJpYXQiOjE3NDUyMTI1NzIsImp0aSI6IjZmOThkZmQzZmIzYTRhZThiYWE3NmNlNDc1MzIzMDRiIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJyS0NxcUNzblJWcVlEYkFJQ3NKYVBkbmtaWWk4YWVhTjFqNS5KTDBMZ25VeEUyOHZoZmR1UTRHVzJiOVN6MHhaZjc5SmhOSjlpbERDRlY0bS5sQnVIWFlkeUpmbzQySTRvLllrIn0.ZRhDl68saGfg-xdHtpNI_a6zkX9ZJ4OhoPXhe496NOA",
+        "device_token": "rKCqqCsnRVqYDbAICsJaPdnkZYi8aeaN1j5.JL0LgnUxE28vhfduQ4GW2b9Sz0xZf79JhNJ9ilDCFV4m.lBuHXYdyJfo42I4o.Yk",
+        "owner_name": "Santosh",
+        "user_id": 518,
+        "role": "owner",
+        "outlet_name": "Deshmukh Wada",
+        "outlet_id": 84,
+        "mobile": "9677777777",
+        "address": "Pune Satara Road Pune",
+        "outlet_status": true,
+        "order_number_sequence": "since_opening",
+        "is_open": true,
+        "gst": "4",
+        "service_charges": "2",
+        "upi_id": "9527279639@ybl",
+        "completed_orders": 0,
+        "active_orders": 0,
+        "today_total_revenue": null
+    },
+    "settings": {
+        "theme": "system",
+        "style": "blue",
+        "has_dine_in": true,
+        "has_parcel": false,
+        "has_counter": false,
+        "has_delivery": false,
+        "has_drive_through": true,
+        "print_and_save": true,
+        "KOT_and_save": true,
+        "settle": true,
+        "reserve_table": true,
+        "cancel": true,
+        "POS_show_menu_image": true
+    }
 }, 200</td>
 <td></td>
 <td>0</td>
-<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@5a61f5df</td></tr>
+<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@531be3c5</td></tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.verifyRessendOTPUSingPositiveInputData()'><b>verifyRessendOTPUSingPositiveInputData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_001, positive, Valid login, post, {
+<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.verifyOTPAPiUsingValidInputData()'><b>verifyOTPAPiUsingValidInputData</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyOTP, OwnerVerifyOTP_001, positive, valild verify OTP, post, {
     "mobile":"9999999991",
-    "role":"owner"
-    
+    "otp":"1234",
+    "fcm_token":"8998998998",
+    "device_id":"h0ol74eq6rom9i826wa",
+    "device_model":"samsung"
 }, {
     "st": 1,
-    "msg": "OTP resent successfully",
-    "role": "owner"
+    "msg": "Success",
+    "owner_data": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgyMjEyNiwiaWF0IjoxNzQ1MjE3MzI2LCJqdGkiOiJhZjY2OTNiYzI1ZDY0ZjIyOGY4MDMwYjdhN2RmZmE0OCIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoiTW1tS20zdEszZ2xhWTRhNXZMSThsM1czWTUzLjBiazJ2TVl6WlRDU25xN0dHUml1dmM2SVF4cWhVVGVWODRXMkhuMUdqM3pra0VMZHhBeDFQMHBlVlRPdVhiV3JkUGxibTlRNyJ9.wofSFAthCt_AVCaxeTaufm0jkir3KIvJecXVh0lmazE",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODIyMTI2LCJpYXQiOjE3NDUyMTczMjYsImp0aSI6ImZlN2YyMWY4NWNlZDQxNDg4MGM5NzJlNmVjODAwZDVhIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJNbW1LbTN0SzNnbGFZNGE1dkxJOGwzVzNZNTMuMGJrMnZNWXpaVENTbnE3R0dSaXV2YzZJUXhxaFVUZVY4NFcySG4xR2ozemtrRUxkeEF4MVAwcGVWVE91WGJXcmRQbGJtOVE3In0.mS5cBmhZRYqeICdIAQM3Yo46zWSgFm1ybMwGAwDaCkk",
+        "device_token": "MmmKm3tK3glaY4a5vLI8l3W3Y53.0bk2vMYzZTCSnq7GGRiuvc6IQxqhUTeV84W2Hn1Gj3zkkELdxAx1P0peVTOuXbWrdPlbm9Q7",
+        "owner_name": "Santosh",
+        "user_id": 518,
+        "role": "owner",
+        "outlet_name": "Deshmukh Wada",
+        "outlet_id": 84,
+        "mobile": "9677777777",
+        "address": "Pune Satara Road Pune",
+        "outlet_status": true,
+        "order_number_sequence": "since_opening",
+        "is_open": true,
+        "gst": "4",
+        "service_charges": "2",
+        "upi_id": "9527279639@ybl",
+        "completed_orders": 0,
+        "active_orders": 0,
+        "today_total_revenue": null
+    },
+    "settings": {
+        "theme": "system",
+        "style": "blue",
+        "has_dine_in": true,
+        "has_parcel": false,
+        "has_counter": false,
+        "has_delivery": false,
+        "has_drive_through": true,
+        "print_and_save": true,
+        "KOT_and_save": true,
+        "settle": true,
+        "reserve_table": true,
+        "cancel": true,
+        "POS_show_menu_image": true
+    }
 }, 200</td>
 <td></td>
-<td>3</td>
-<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@5a61f5df</td></tr>
+<td>1</td>
+<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@531be3c5</td></tr>
 </table><p>
 </body>
 </html>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="false">
+  <listeners>
+    <listener class-name="com.menumitra.utilityclass.Listener"/>
+  </listeners>
   <test name="Test">
     <classes>
-      <class name="com.menumitra.superclass.APIBase"/>
-       <class name="com.menumitratCommonAPITestScript.loginTestScript"/>
-      <class name="com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript"/>
+      <class name="com.menumitra.superclass.superclass"/>
+      <class name="com.menumitratTestScript.loginTestScript"/>
+      <class name="com.menumitratTestScript.verifyOtpTestScript"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
