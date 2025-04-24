@@ -25,6 +25,7 @@ import com.menumitra.utilityclass.RequestValidator;
 import com.menumitra.utilityclass.ResponseUtil;
 import com.menumitra.utilityclass.TokenManagers;
 import com.menumitra.utilityclass.customException;
+import com.menumitra.utilityclass.validateResponseBody;
 import com.menumitra.utilityclass.DataDriven;
 import com.menumitra.utilityclass.EnviromentChanges;
 import com.menumitra.utilityclass.ExtentReport;
@@ -111,6 +112,43 @@ public class StaffCreateTestScript extends APIBase {
         }
     }
     
+    @DataProvider(name="getStaffNegativeData")
+    public Object[][] getStaffNegativeData() throws customException 
+    {
+        try {
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if(readExcelData==null || readExcelData.length==0)
+            {
+                LogUtils.error("No staff create test scenario data found in Excel sheet");
+                ExtentReport.getTest().log(Status.ERROR, "No staff create test scenario data found in Excel sheet");
+                throw new customException("No staff create test scenario data found in Excel sheet");
+            }
+            List<Object[]> filterData=new ArrayList<>();
+            for(int i=0;i<readExcelData.length;i++)
+            {
+                Object[] row=readExcelData[i];
+                if(row!=null && "staffcreate".equalsIgnoreCase(Objects.toString(row[0],"")) && "negative".equalsIgnoreCase(Objects.toString(row[2],"")))
+                {
+                    filterData.add(row);
+                }
+            }
+            Object[][] obj=new Object[filterData.size()][];
+            for(int i=0;i<filterData.size();i++)
+            {
+                obj[i]=filterData.get(i);
+            }
+            LogUtils.info("Successfully retrieved "+obj.length+" test scenarios");
+            ExtentReport.getTest().log(Status.INFO, "Successfully retrieved "+obj.length+" test scenarios");
+            return obj;
+        }
+        catch(Exception e)
+        {   
+            LogUtils.error("Error while reading staff create test scenario data from Excel sheet: "+e.getMessage());
+            ExtentReport.getTest().log(Status.ERROR, "Error while reading staff create test scenario data: "+e.getMessage());
+            throw new customException("Error while reading staff create test scenario data from Excel sheet: "+e.getMessage());
+        }
+    }
+    
     /**
      * Setup method to initialize test environment
      */
@@ -150,7 +188,7 @@ public class StaffCreateTestScript extends APIBase {
                 LogUtils.error("Error: Required tokens not found. Please ensure login and OTP verification is completed");
                 throw new customException("Required tokens not found. Please ensure login and OTP verification is completed");
             }
-            
+            staffCreateRequest=new staffRequest();
             LogUtils.info("Staff Setup completed successfully");
           
         } catch (Exception e) {
@@ -172,17 +210,17 @@ public class StaffCreateTestScript extends APIBase {
             
             if (apiName.contains("staffCreate")) 
             {
-                expectedResponse=new JSONObject(expectedResponseBody);
-                staffCreateRequest=new staffRequest();
+                requestBodyJson=new JSONObject(requestBody);
+                
                 staffCreateRequest.setUser_id(userId);
-                staffCreateRequest.setMobile(expectedResponse.getString("mobile"));
-                staffCreateRequest.setName(expectedResponse.getString("name"));
-                staffCreateRequest.setDob(expectedResponse.getString("dob"));
-                staffCreateRequest.setAadhar_number(expectedResponse.getString("aadhar_number"));
-                staffCreateRequest.setAddress(expectedResponse.getString("address"));
-                staffCreateRequest.setRole(expectedResponse.getString("role"));
+                staffCreateRequest.setMobile(requestBodyJson.getString("mobile"));
+                staffCreateRequest.setName(requestBodyJson.getString("name"));
+                staffCreateRequest.setDob(requestBodyJson.getString("dob"));
+                staffCreateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
+                staffCreateRequest.setAddress(requestBodyJson.getString("address"));
+                staffCreateRequest.setRole(requestBodyJson.getString("role"));
                 staffCreateRequest.setDevice_token(deviceToken);
-                staffCreateRequest.setOutlet_id(expectedResponse.getString("outlet_id"));
+                staffCreateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
 
                 response=ResponseUtil.getResponseWithAuth(baseUri, staffCreateRequest, httpsmethod, accessToken);
                 
@@ -201,6 +239,79 @@ public class StaffCreateTestScript extends APIBase {
         }
     } 
     
+    public void verifystaffcreationUsingNegativeData(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException
+    {
+       try
+       {
+        LogUtils.info("Starting staff creation using negative data test: "+description);
+        ExtentReport.getTest().log(Status.INFO, "Starting staff creation using negative data test: "+description);
+        requestBodyJson=new JSONObject(requestBody);
+        if(apiName.equalsIgnoreCase("staffcreate") && testType.equalsIgnoreCase("negative"))
+        {
+           switch (testCaseid) {
+           case "staff_002":
+               try
+               {
+               		staffCreateRequest.setUser_id(userId);
+               		staffCreateRequest.setMobile(requestBodyJson.getString("mobile"));
+               		staffCreateRequest.setName(requestBodyJson.getString("name"));
+               		staffCreateRequest.setDob(requestBodyJson.getString("dob"));
+               		staffCreateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
+               		staffCreateRequest.setAddress(requestBodyJson.getString("address"));
+               		staffCreateRequest.setRole(requestBodyJson.getString("role"));
+               		staffCreateRequest.setDevice_token(deviceToken);
+               		staffCreateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+                   
+                   response=ResponseUtil.getResponseWithAuth(baseUri, staffCreateRequest, httpsmethod, accessToken);
+                   actualResponseBody=new JSONObject(response.body().toString());
+                   expectedResponse=new JSONObject(expectedResponseBody);
+
+                   if(response.getStatusCode()==200)
+                   {
+                        
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(), expectedResponse.get("st").toString(),200);
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),expectedResponse.get("msg").toString(),200);
+                   }
+                   else if(response.getStatusCode()==400)
+                   {
+                      
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(), expectedResponse.get("status").toString(),400);
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),expectedResponse.get("msg").toString(),400);
+                   }
+                   else if(response.getStatusCode()==401)
+                   {
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(), expectedResponse.get("status").toString(),401);
+                       validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),expectedResponse.get("msg").toString(),401);
+                   }
+                   else 
+                   {
+                       LogUtils.error("Error: Getting 500 message code.");
+                   }
+               }
+               catch(Exception e)
+               {
+                   LogUtils.error("Error occurred during staff creation using invalid input data: " + e.getMessage());
+                   throw new customException("Error occurred during staff creation using invalid input data: " + e.getMessage());
+               }
+               break;
+
+		default:
+			break;
+		}
+        }
+       }
+       catch(Exception e)
+       {
+        LogUtils.error("Error during staff creation using negative data: "+e.getMessage());
+        ExtentReport.getTest().log(Status.FAIL, "Error during staff creation using negative data: "+e.getMessage());
+        throw new customException("Error during staff creation using negative data: "+e.getMessage());
+       }
+    }
+
+    
+   
+
     /**
      * Cleanup method to perform post-test cleanup
      */

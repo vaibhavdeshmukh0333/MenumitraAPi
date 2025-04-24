@@ -184,8 +184,8 @@ public class loginTestScript extends APIBase
             ExtentReport.getTest().log(Status.INFO,"Verifying API response body");
             if(statusCode==200)
             {
-                validateResponseBody.handleResponseCode(actualResponse.get("st").toString(), expectedResponse.get("st").toString(), statusCode);
-                validateResponseBody.handleResponseCode(actualResponse.get("msg").toString(),expectedResponse.get("msg").toString(),statusCode);
+                validateResponseBody.handleResponseBody(actualResponse.get("st").toString(), expectedResponse.get("st").toString(), statusCode);
+                validateResponseBody.handleResponseBody(actualResponse.get("msg").toString(),expectedResponse.get("msg").toString(),statusCode);
                 LogUtils.info("Successfully Validate login response");
                 ExtentReport.getTest().log(Status.PASS,"Successfully Validate login response");
             }

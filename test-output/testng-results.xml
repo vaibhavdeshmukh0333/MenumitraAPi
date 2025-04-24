@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="1" total="7" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="3067" started-at="2025-04-23T04:59:12Z" finished-at="2025-04-23T04:59:15Z">
+  <suite name="Suite" duration-ms="6175" started-at="2025-04-23T11:25:16Z" finished-at="2025-04-23T11:25:22Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="3067" started-at="2025-04-23T04:59:12Z" finished-at="2025-04-23T04:59:15Z">
+    <test name="Test" duration-ms="6175" started-at="2025-04-23T11:25:16Z" finished-at="2025-04-23T11:25:22Z">
       <class name="com.menumitratCommonAPITestScript.StaffCreateTestScript">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="setup" is-config="true" duration-ms="426" started-at="2025-04-23T10:29:14Z" finished-at="2025-04-23T10:29:15Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="setup" is-config="true" duration-ms="376" started-at="2025-04-23T16:55:22Z" finished-at="2025-04-23T16:55:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="createStaff(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="createStaff" duration-ms="1" started-at="2025-04-23T10:29:15Z" data-provider="getStaffCreateData" finished-at="2025-04-23T10:29:15Z">
+        <test-method status="PASS" signature="createStaff(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="createStaff" duration-ms="1" started-at="2025-04-23T16:55:22Z" data-provider="getStaffCreateData" finished-at="2025-04-23T16:55:22Z">
           <params>
             <param index="0">
               <value>
@@ -57,17 +57,17 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createStaff -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="tearDown" is-config="true" duration-ms="160" started-at="2025-04-23T10:29:15Z" finished-at="2025-04-23T10:29:15Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce]" name="tearDown" is-config="true" duration-ms="158" started-at="2025-04-23T16:55:22Z" finished-at="2025-04-23T16:55:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.menumitratCommonAPITestScript.StaffCreateTestScript -->
       <class name="com.menumitratCommonAPITestScript.loginTestScript">
-        <test-method status="PASS" signature="testLoginApi()[pri:0, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="testLoginApi" is-config="true" duration-ms="0" started-at="2025-04-23T10:29:12Z" finished-at="2025-04-23T10:29:12Z">
+        <test-method status="PASS" signature="testLoginApi()[pri:0, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="testLoginApi" is-config="true" duration-ms="0" started-at="2025-04-23T16:55:16Z" finished-at="2025-04-23T16:55:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLoginApi -->
-        <test-method status="PASS" signature="getUrl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="getUrl" duration-ms="7" started-at="2025-04-23T10:29:12Z" data-provider="getLoginUrl" finished-at="2025-04-23T10:29:12Z">
+        <test-method status="PASS" signature="getUrl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="getUrl" duration-ms="14" started-at="2025-04-23T16:55:17Z" data-provider="getLoginUrl" finished-at="2025-04-23T16:55:17Z">
           <params>
             <param index="0">
               <value>
@@ -109,7 +109,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getUrl -->
-        <test-method status="FAIL" signature="verifyloginUsingValidInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="verifyloginUsingValidInputData" duration-ms="1406" started-at="2025-04-23T10:29:12Z" data-provider="getInputData" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="FAIL" signature="verifyloginUsingValidInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.menumitratCommonAPITestScript.loginTestScript@50f8360d]" name="verifyloginUsingValidInputData" duration-ms="3648" started-at="2025-04-23T16:55:17Z" data-provider="getInputData" finished-at="2025-04-23T16:55:21Z">
           <params>
             <param index="0">
               <value>
@@ -196,17 +196,17 @@
         </test-method> <!-- verifyloginUsingValidInputData -->
       </class> <!-- com.menumitratCommonAPITestScript.loginTestScript -->
       <class name="com.menumitra.superclass.APIBase">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitra.superclass.APIBase@61dc03ce]" name="setUp" is-config="true" duration-ms="83" started-at="2025-04-23T10:29:12Z" finished-at="2025-04-23T10:29:12Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitra.superclass.APIBase@61dc03ce]" name="setUp" is-config="true" duration-ms="175" started-at="2025-04-23T16:55:16Z" finished-at="2025-04-23T16:55:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.menumitra.superclass.APIBase@61dc03ce]" name="tearDown" is-config="true" duration-ms="155" started-at="2025-04-23T10:29:15Z" finished-at="2025-04-23T10:29:15Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.menumitra.superclass.APIBase@61dc03ce]" name="tearDown" is-config="true" duration-ms="1186" started-at="2025-04-23T16:55:23Z" finished-at="2025-04-23T16:55:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.menumitra.superclass.APIBase -->
       <class name="com.menumitratCommonAPITestScript.ResendOTPTestScript">
-        <test-method status="PASS" signature="getResendOTPURL(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b]" name="getResendOTPURL" duration-ms="1" started-at="2025-04-23T10:29:14Z" data-provider="getResendURl" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="PASS" signature="getResendOTPURL(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b]" name="getResendOTPURL" duration-ms="1" started-at="2025-04-23T16:55:22Z" data-provider="getResendURl" finished-at="2025-04-23T16:55:22Z">
           <params>
             <param index="0">
               <value>
@@ -250,7 +250,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResendOTPURL -->
-        <test-method status="PASS" signature="verifyRessendOTPUSingPositiveInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b]" name="verifyRessendOTPUSingPositiveInputData" duration-ms="143" started-at="2025-04-23T10:29:14Z" data-provider="getPositiveinputData" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="PASS" signature="verifyRessendOTPUSingPositiveInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b]" name="verifyRessendOTPUSingPositiveInputData" duration-ms="186" started-at="2025-04-23T16:55:22Z" data-provider="getPositiveinputData" finished-at="2025-04-23T16:55:22Z">
           <params>
             <param index="0">
               <value>
@@ -306,11 +306,11 @@
         </test-method> <!-- verifyRessendOTPUSingPositiveInputData -->
       </class> <!-- com.menumitratCommonAPITestScript.ResendOTPTestScript -->
       <class name="com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="setup" is-config="true" duration-ms="0" started-at="2025-04-23T10:29:14Z" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="setup" is-config="true" duration-ms="0" started-at="2025-04-23T16:55:21Z" finished-at="2025-04-23T16:55:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="getOwnerUrl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="getOwnerUrl" duration-ms="1" started-at="2025-04-23T10:29:14Z" data-provider="getVerifyotpUrl" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="PASS" signature="getOwnerUrl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="getOwnerUrl" duration-ms="2" started-at="2025-04-23T16:55:21Z" data-provider="getVerifyotpUrl" finished-at="2025-04-23T16:55:21Z">
           <params>
             <param index="0">
               <value>
@@ -391,7 +391,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getOwnerUrl -->
-        <test-method status="PASS" signature="verifyOTPAPiUsingValidInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="verifyOTPAPiUsingValidInputData" duration-ms="273" started-at="2025-04-23T10:29:14Z" data-provider="getPositiveInputData" finished-at="2025-04-23T10:29:14Z">
+        <test-method status="PASS" signature="verifyOTPAPiUsingValidInputData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab]" name="verifyOTPAPiUsingValidInputData" duration-ms="325" started-at="2025-04-23T16:55:21Z" data-provider="getPositiveInputData" finished-at="2025-04-23T16:55:22Z">
           <params>
             <param index="0">
               <value>

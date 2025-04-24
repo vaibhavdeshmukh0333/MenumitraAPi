@@ -18,7 +18,7 @@ public class validateResponseBody {
 	 * @param statusCode
 	 * @throws customException
 	 */
-	public static void handleResponseCode(String actualresponse, String expectedResponse, int statusCode)
+	public static void handleResponseBody(String actualresponse, String expectedResponse, int statusCode)
 			throws customException {
 
 		try {

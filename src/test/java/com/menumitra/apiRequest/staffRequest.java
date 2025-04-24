@@ -11,9 +11,16 @@ public class staffRequest
     private String aadhar_number;
     private String outlet_id;
     private String device_token;
+	private String staff_id;
     
 	public String getDevice_token() {
 		return device_token;
+	}
+	public String getStaff_id() {
+		return staff_id;
+	}
+	public void setStaff_id(String staff_id) {
+		this.staff_id = staff_id;
 	}
 	public void setDevice_token(String device_token) {
 		this.device_token = device_token;
