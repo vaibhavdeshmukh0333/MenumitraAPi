@@ -221,8 +221,10 @@ public class TokenManagers
 
 
             Response response = ResponseUtil.getResponse(baseURI, verifyOTPRequest, "post");
-            
-            if (response.getStatusCode() == 200) {
+            LogUtils.info(response.body().toString());
+            LogUtils.info(String.valueOf(response.getStatusCode()));
+            if (response.getStatusCode() == 200) 
+            {
                 JSONObject actualResponse = new JSONObject(response.getBody().asString()); // FIXED
                 if(actualResponse.has("owner_data"))
                 {
@@ -232,40 +234,45 @@ public class TokenManagers
                 	setJwtToken(data.getString("access"));
                 	setDeviceToken(data.getString("device_token")); 
                     setRole(data.getString("role"));
-                    setApp(data.getString("role"));
+                    setApp(data.get("role").toString());
                     setUserId(String.valueOf(data.getInt("user_id")));
-                                    }
-                                    else
-                                    {
-                                        setJwtToken(actualResponse.getString("access"));
-                                        setDeviceToken(actualResponse.getString("device_token")); 
-                                        setRole(actualResponse.getString("role"));
-                                        setApp(actualResponse.getString("role"));
-                                        setUserId(actualResponse.getString("user_id"));
-                                    }
-                                } 
-                                if (response.getStatusCode()==400) 
-                                {
-                                    JSONObject js=new JSONObject(response.toString());
-                                    LogUtils.error("Error: OTP verification failed with response " + response.getBody().asString());
-                                    LogUtils.error("Error: OTP verification failed with status code " + response.getStatusCode());
-                                    LogUtils.error("Response: " + response.getBody().asString()); // helpful for debugging
-                                    throw new customException("OTP verification failed with status code " + response.getStatusCode());
-                                }
-                            } catch (Exception e) {
-                                LogUtils.error("Error: OTP verification process failed - " + e.getMessage());
-                                throw new customException("OTP verification process failed" + e.getMessage());
-                            }
-                        }
                     
-                        private static String valueOf(int int1) {
+                 }
+                 else
+                 {
+                	 setJwtToken(actualResponse.getString("access"));
+                     setDeviceToken(actualResponse.getString("device_token")); 
+                     setRole(actualResponse.getString("role"));
+                     setApp(actualResponse.getString("role"));
+                     setUserId(actualResponse.getString("user_id"));
+                 }
+           } 
+            else if (response.getStatusCode()==400) 
+           {
+        	   JSONObject js=new JSONObject(response.toString());
+        	   LogUtils.error("Error: OTP verification failed with response " + response.getBody().asString());
+               LogUtils.error("Error: OTP verification failed with status code " + response.getStatusCode());
+               LogUtils.error("Response: " + response.getBody().asString()); // helpful for debugging
+               throw new customException("OTP verification failed with status code " + response.getStatusCode());
+               }
+            } 
+        	catch (Exception e) 
+        	{
+               LogUtils.error("Error: OTP verification process failed - " + e.getMessage());
+               throw new customException("OTP verification process failed" + e.getMessage());
+             }
+       }
+                    
+      	private static String valueOf(int int1)
+        {
                             // TODO Auto-generated method stub
-                            throw new UnsupportedOperationException("Unimplemented method 'valueOf'");
-                        }
+           throw new UnsupportedOperationException("Unimplemented method 'valueOf'");
+        }
                     
-                        public static void setJwtToken(String jwtToken) {
+        public static void setJwtToken(String jwtToken)
+        {
 		TokenManagers.jwtToken = jwtToken;
-	}
+        }
 
 	
 }

@@ -120,7 +120,7 @@ public class ResponseUtil
                             .post(url);
 
                     LogUtils.info("POST request completed successfully");
-                    System.out.println();
+                  
                     return response;
                     
                 case "put":

@@ -450,3 +450,2146 @@
 2025-04-23 18:00:02 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
 2025-04-23 18:00:02 WARN  Listener:106 - Test case skipped: createStaff
 2025-04-23 18:00:02 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Thu Apr 24 18:56:19 IST 2025) =====
+2025-04-24 18:56:19 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-24 18:56:19 INFO  APIBase:94 - Starting test suite setup
+2025-04-24 18:56:19 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-24 18:56:19 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-24 18:56:19 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-24 18:56:19 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-24 18:56:19 INFO  APIBase:94 - Properties file opened successfully
+2025-04-24 18:56:19 INFO  APIBase:94 - Properties object initialized
+2025-04-24 18:56:19 INFO  APIBase:94 - Properties loaded successfully
+2025-04-24 18:56:19 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-24 18:56:19 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-24 18:56:19 INFO  APIBase:94 - Setting QA environment...
+2025-04-24 18:56:19 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-24 18:56:19 INFO  Listener:94 - Test Suite started: Default test
+2025-04-24 18:56:19 INFO  TokenManagers:94 - Starting login process
+2025-04-24 18:56:19 INFO  TokenManagers:94 - Building login request
+2025-04-24 18:56:19 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-24 18:56:19 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:56:19 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:56:19 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:56:21 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:56:21 INFO  TokenManagers:94 - Success: login in user
+2025-04-24 18:56:21 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-24 18:56:21 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-24 18:56:21 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-24 18:56:21 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-24 18:56:21 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:56:22 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:56:22 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-24 18:56:22 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-24 18:56:22 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-24 18:56:22 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Thu Apr 24 18:57:03 IST 2025) =====
+2025-04-24 18:57:03 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-24 18:57:03 INFO  APIBase:94 - Starting test suite setup
+2025-04-24 18:57:03 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-24 18:57:03 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-24 18:57:03 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-24 18:57:03 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-24 18:57:03 INFO  APIBase:94 - Properties file opened successfully
+2025-04-24 18:57:03 INFO  APIBase:94 - Properties object initialized
+2025-04-24 18:57:03 INFO  APIBase:94 - Properties loaded successfully
+2025-04-24 18:57:03 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-24 18:57:03 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-24 18:57:03 INFO  APIBase:94 - Setting QA environment...
+2025-04-24 18:57:03 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-24 18:57:03 INFO  Listener:94 - Test Suite started: Default test
+2025-04-24 18:57:03 INFO  TokenManagers:94 - Starting login process
+2025-04-24 18:57:03 INFO  TokenManagers:94 - Building login request
+2025-04-24 18:57:03 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-24 18:57:03 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:57:03 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:57:03 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:57:05 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:57:05 INFO  TokenManagers:94 - Success: login in user
+2025-04-24 18:57:05 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-24 18:57:05 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-24 18:57:05 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-24 18:57:05 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-24 18:57:05 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:57:05 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:57:08 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-24 18:57:08 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-24 18:57:08 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-24 18:57:08 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Thu Apr 24 18:57:50 IST 2025) =====
+2025-04-24 18:57:50 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-24 18:57:50 INFO  APIBase:94 - Starting test suite setup
+2025-04-24 18:57:50 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-24 18:57:50 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-24 18:57:50 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-24 18:57:50 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-24 18:57:50 INFO  APIBase:94 - Properties file opened successfully
+2025-04-24 18:57:50 INFO  APIBase:94 - Properties object initialized
+2025-04-24 18:57:50 INFO  APIBase:94 - Properties loaded successfully
+2025-04-24 18:57:50 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-24 18:57:50 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-24 18:57:50 INFO  APIBase:94 - Setting QA environment...
+2025-04-24 18:57:50 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-24 18:57:50 INFO  Listener:94 - Test Suite started: Default test
+2025-04-24 18:57:51 INFO  TokenManagers:94 - Starting login process
+2025-04-24 18:57:51 INFO  TokenManagers:94 - Building login request
+2025-04-24 18:57:51 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-24 18:57:51 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:57:51 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-24 18:57:51 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:57:52 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:57:52 INFO  TokenManagers:94 - Success: login in user
+2025-04-24 18:57:52 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-24 18:57:52 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-24 18:57:52 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-24 18:57:52 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-24 18:57:52 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 18:57:53 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 18:58:23 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-24 18:58:23 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-24 18:58:23 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-24 18:58:23 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Thu Apr 24 19:00:32 IST 2025) =====
+2025-04-24 19:00:32 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-24 19:00:32 INFO  APIBase:94 - Starting test suite setup
+2025-04-24 19:00:32 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-24 19:00:32 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-24 19:00:32 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-24 19:00:32 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-24 19:00:32 INFO  APIBase:94 - Properties file opened successfully
+2025-04-24 19:00:32 INFO  APIBase:94 - Properties object initialized
+2025-04-24 19:00:32 INFO  APIBase:94 - Properties loaded successfully
+2025-04-24 19:00:32 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-24 19:00:32 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-24 19:00:32 INFO  APIBase:94 - Setting QA environment...
+2025-04-24 19:00:32 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-24 19:00:32 INFO  Listener:94 - Test Suite started: Default test
+2025-04-24 19:00:32 INFO  TokenManagers:94 - Starting login process
+2025-04-24 19:00:32 INFO  TokenManagers:94 - Building login request
+2025-04-24 19:00:32 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-24 19:00:32 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-24 19:00:32 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-24 19:00:32 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 19:00:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 19:00:34 INFO  TokenManagers:94 - Success: login in user
+2025-04-24 19:00:34 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-24 19:00:34 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-24 19:00:34 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-24 19:00:36 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-24 19:00:36 INFO  ResponseUtil:94 - Executing POST request
+2025-04-24 19:00:36 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-24 19:00:36 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-24 19:00:37 INFO  TokenManagers:94 - 200
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 15:57:47 IST 2025) =====
+2025-04-25 15:57:47 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 15:57:47 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 15:57:47 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 15:57:47 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 15:57:47 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 15:57:47 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 15:57:47 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 15:57:47 INFO  APIBase:94 - Properties object initialized
+2025-04-25 15:57:47 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 15:57:47 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 15:57:47 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 15:57:47 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 15:57:47 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 15:57:47 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 15:57:47 INFO  TokenManagers:94 - Starting login process
+2025-04-25 15:57:47 INFO  TokenManagers:94 - Building login request
+2025-04-25 15:57:47 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 15:57:47 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 15:57:47 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 15:57:47 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 15:57:49 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 15:57:49 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 15:57:49 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 15:57:49 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 15:57:49 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 15:57:56 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 15:57:56 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 15:57:56 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 15:57:56 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 15:58:02 INFO  TokenManagers:94 - 200
+2025-04-25 15:58:17 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 15:58:17 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 15:58:17 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 15:58:17 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 15:59:46 IST 2025) =====
+2025-04-25 15:59:46 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 15:59:46 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 15:59:46 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 15:59:46 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 15:59:46 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 15:59:46 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 15:59:46 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 15:59:46 INFO  APIBase:94 - Properties object initialized
+2025-04-25 15:59:46 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 15:59:46 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 15:59:46 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 15:59:46 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 15:59:46 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 15:59:46 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 15:59:46 INFO  TokenManagers:94 - Starting login process
+2025-04-25 15:59:46 INFO  TokenManagers:94 - Building login request
+2025-04-25 15:59:46 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 15:59:46 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 15:59:46 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 15:59:46 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 15:59:48 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 15:59:48 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 15:59:48 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 15:59:48 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 15:59:48 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 15:59:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 15:59:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 15:59:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 15:59:50 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 15:59:51 INFO  TokenManagers:94 - 200
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:01:59 IST 2025) =====
+2025-04-25 16:01:59 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:01:59 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:01:59 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:01:59 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:01:59 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:01:59 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:01:59 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:01:59 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:01:59 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:01:59 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:01:59 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:01:59 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:01:59 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:01:59 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:01:59 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:01:59 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:01:59 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:01:59 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:01:59 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:01:59 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:02:01 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:02:01 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:02:01 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:02:01 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:02:01 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:02:02 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:02:02 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:02:02 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:02:02 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:02:02 INFO  TokenManagers:94 - 200
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:07:58 IST 2025) =====
+2025-04-25 16:07:58 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:07:58 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:07:58 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:07:58 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:07:58 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:07:58 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:07:58 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:07:58 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:07:58 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:07:58 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:07:58 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:07:58 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:07:58 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:07:58 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:07:58 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:07:58 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:07:58 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:07:58 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:07:58 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:07:58 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:08:00 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:08:00 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:08:00 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:08:00 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:08:00 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:08:08 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:08:08 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:08:08 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:08:08 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:08:20 INFO  TokenManagers:94 - 200
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:13:05 IST 2025) =====
+2025-04-25 16:13:05 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:13:05 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:13:05 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:13:05 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:13:05 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:13:05 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:13:05 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:13:05 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:13:05 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:13:05 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:13:05 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:13:05 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:13:05 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:13:05 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:13:05 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:13:05 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:13:05 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:13:05 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:13:05 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:13:05 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:13:07 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:13:07 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:13:07 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:13:07 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:13:07 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:20:00 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:20:00 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:20:01 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:20:01 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:20:10 INFO  TokenManagers:94 - 200
+2025-04-25 16:20:34 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:20:34 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:20:34 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:20:34 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:46:21 IST 2025) =====
+2025-04-25 16:46:21 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:46:21 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:46:21 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:46:21 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:46:21 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:46:21 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:46:21 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:46:21 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:46:21 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:46:21 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:46:21 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:46:21 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:46:21 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:46:21 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:46:21 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:46:21 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:46:21 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:46:21 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:21 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:21 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:23 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:23 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:46:23 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:46:23 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:46:23 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:46:23 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:46:23 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:23 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:23 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:46:23 INFO  TokenManagers:94 - 200
+2025-04-25 16:46:23 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:46:23 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:46:23 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:46:23 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:46:31 IST 2025) =====
+2025-04-25 16:46:31 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:46:31 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:46:31 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:46:31 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:46:31 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:46:31 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:46:31 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:46:31 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:46:31 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:46:31 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:46:31 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:46:31 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:46:31 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:46:31 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:46:31 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:46:31 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:46:31 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:46:31 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:31 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:31 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:33 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:33 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:46:33 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:46:33 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:46:33 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:46:33 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:46:33 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:33 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:33 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:46:33 INFO  TokenManagers:94 - 200
+2025-04-25 16:46:33 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:46:33 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:46:33 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:46:33 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:46:52 IST 2025) =====
+2025-04-25 16:46:52 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:46:52 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:46:52 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:46:52 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:46:52 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:46:52 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:46:52 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:46:52 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:46:52 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:46:52 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:46:52 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:46:52 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:46:52 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:46:52 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:46:52 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:46:52 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:46:52 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:46:52 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:52 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:46:52 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:54 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:54 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:46:54 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:46:54 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:46:54 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:46:54 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:46:54 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:46:54 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:46:54 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:46:54 INFO  TokenManagers:94 - 200
+2025-04-25 16:46:56 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:46:56 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:46:56 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:46:56 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:47:11 IST 2025) =====
+2025-04-25 16:47:11 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:47:11 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:47:11 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:47:11 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:47:11 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:47:11 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:47:11 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:47:11 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:47:11 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:47:11 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:47:11 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:47:11 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:47:11 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:47:11 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:47:11 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:47:11 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:47:11 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:47:11 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:47:11 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:47:11 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:47:13 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:47:13 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:47:13 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:47:13 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:47:13 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:47:13 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:47:13 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:47:13 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:47:13 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:47:13 INFO  TokenManagers:94 - 200
+2025-04-25 16:47:13 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:47:13 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:47:13 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:47:13 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:47:38 IST 2025) =====
+2025-04-25 16:47:38 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:47:38 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:47:38 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:47:38 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:47:38 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:47:38 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:47:38 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:47:38 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:47:38 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:47:38 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:47:38 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:47:38 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:47:38 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:47:38 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:47:38 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:47:38 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:47:38 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:47:38 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:47:38 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:47:38 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:47:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:47:40 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:47:40 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:47:40 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:47:40 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:47:40 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:47:40 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:47:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:47:40 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:47:40 INFO  TokenManagers:94 - 200
+2025-04-25 16:47:45 ERROR StaffCreateTestScript:118 - Error during staff setup: null
+2025-04-25 16:47:45 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:47:45 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:47:45 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:48:21 IST 2025) =====
+2025-04-25 16:48:21 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:48:21 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:48:21 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:48:21 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:48:21 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:48:21 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:48:21 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:48:21 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:48:21 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:48:21 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:48:21 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:48:21 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:48:21 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:48:21 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:48:22 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:48:22 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:48:22 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:48:22 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:48:22 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:48:22 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:48:23 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:48:23 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:48:24 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:48:24 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:48:24 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:48:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:48:24 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:48:24 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:48:24 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:48:24 INFO  TokenManagers:94 - 200
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:48:50 IST 2025) =====
+2025-04-25 16:48:50 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:48:50 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:48:50 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:48:50 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:48:50 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:48:50 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:48:50 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:48:50 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:48:50 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:48:50 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:48:50 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:48:50 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:48:50 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:48:50 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:49:24 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:49:24 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:49:24 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:49:24 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:49:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:49:24 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:49:26 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:49:26 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:49:26 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:49:26 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:49:26 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:49:26 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:49:26 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:49:27 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:49:27 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@50f097b5
+2025-04-25 16:49:27 INFO  TokenManagers:94 - 200
+2025-04-25 16:49:38 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 16:49:38 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 16:49:38 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 16:49:38 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 16:49:39 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 16:49:39 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 16:49:39 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 16:49:39 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 16:49:39 ERROR StaffCreateTestScript:118 - Error while reading staff create test scenario data from Excel sheet: null
+2025-04-25 16:49:39 WARN  Listener:106 - Test case skipped: createStaff
+2025-04-25 16:49:39 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 16:49:39 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 16:49:39 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:49:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:49:40 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 16:49:40 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 16:51:07 IST 2025) =====
+2025-04-25 16:51:07 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 16:51:07 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 16:51:07 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 16:51:07 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 16:51:07 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 16:51:07 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 16:51:07 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 16:51:07 INFO  APIBase:94 - Properties object initialized
+2025-04-25 16:51:07 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 16:51:07 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 16:51:07 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 16:51:07 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 16:51:07 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 16:51:07 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 16:51:07 INFO  TokenManagers:94 - Starting login process
+2025-04-25 16:51:07 INFO  TokenManagers:94 - Building login request
+2025-04-25 16:51:07 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 16:51:07 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:51:07 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 16:51:07 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:51:09 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:51:09 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 16:51:09 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 16:51:09 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 16:51:09 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 16:51:09 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 16:51:09 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:51:10 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:51:10 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 16:51:10 INFO  TokenManagers:94 - 200
+2025-04-25 16:51:10 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 16:51:10 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 16:51:10 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 16:51:10 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 16:51:11 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 16:51:11 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 16:51:11 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 16:51:11 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 16:51:38 INFO  Listener:94 - createStaff test case started!
+2025-04-25 16:51:39 INFO  Listener:94 - Test case passed: createStaff
+2025-04-25 16:51:39 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 16:51:39 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 16:51:39 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 16:51:39 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 16:51:39 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 16:51:39 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:00:02 IST 2025) =====
+2025-04-25 17:00:02 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:00:02 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:00:02 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:00:02 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:00:02 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:00:02 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:00:02 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:00:02 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:00:02 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:00:02 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:00:02 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:00:02 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:00:02 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:00:02 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:00:03 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:00:03 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:00:03 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:00:03 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:00:03 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:00:03 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:00:05 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:00:05 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:00:06 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:00:06 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:00:06 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:00:06 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:00:06 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:00:07 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:00:07 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:00:07 INFO  TokenManagers:94 - 200
+2025-04-25 17:00:09 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:00:09 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:00:09 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:00:09 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:00:15 ERROR StaffUpdateTestScript:118 - Error while reading staff update test scenario data: null
+2025-04-25 17:00:15 WARN  Listener:106 - Test case skipped: updateStaff
+2025-04-25 17:00:15 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:01:06 IST 2025) =====
+2025-04-25 17:01:06 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:01:06 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:01:06 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:01:06 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:01:06 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:01:06 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:01:06 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:01:06 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:01:06 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:01:06 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:01:06 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:01:06 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:01:06 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:01:06 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:01:08 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:01:08 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:01:08 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:01:08 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:01:08 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:01:08 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:01:10 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:01:10 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:01:10 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:01:10 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:01:10 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:01:10 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:01:10 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:01:10 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:01:10 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@39bbd9e0
+2025-04-25 17:01:10 INFO  TokenManagers:94 - 200
+2025-04-25 17:01:12 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:01:12 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:01:12 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:01:12 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:01:14 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:01:14 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:01:14 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:01:14 INFO  Listener:94 - verifyStaffUpdateUsingNegativeData test case started!
+2025-04-25 17:01:14 INFO  Listener:94 - Test case passed: verifyStaffUpdateUsingNegativeData
+2025-04-25 17:01:14 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:01:14 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:01:14 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:01:14 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:01:14 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:01:14 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:01:57 IST 2025) =====
+2025-04-25 17:01:57 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:01:57 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:01:57 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:01:57 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:01:57 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:01:57 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:01:57 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:01:57 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:01:57 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:01:57 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:01:57 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:01:57 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:01:57 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:01:57 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:02:00 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:02:00 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:02:00 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:02:00 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:02:00 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:02:00 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:02:01 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:02:01 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:02:02 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:02:02 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:02:02 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:02:02 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:02:02 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:02:02 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:02:02 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:02:02 INFO  TokenManagers:94 - 200
+2025-04-25 17:02:04 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:02:04 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:02:04 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:02:04 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:02:06 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:02:06 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:02:06 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:02:06 INFO  Listener:94 - verifyStaffUpdateUsingNegativeData test case started!
+2025-04-25 17:02:06 INFO  Listener:94 - Test case passed: verifyStaffUpdateUsingNegativeData
+2025-04-25 17:02:06 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:02:06 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:02:06 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:02:06 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:02:06 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:02:06 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:03:27 IST 2025) =====
+2025-04-25 17:03:27 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:03:27 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:03:27 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:03:27 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:03:27 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:03:27 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:03:27 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:03:27 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:03:27 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:03:27 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:03:27 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:03:27 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:03:27 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:03:27 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:03:27 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:03:27 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:03:27 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:03:27 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:03:27 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:03:27 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:03:29 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:03:29 INFO  TokenManagers:94 - 200
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:03:29 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:03:29 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:03:29 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:03:29 INFO  Listener:94 - verifyStaffUpdateUsingNegativeData test case started!
+2025-04-25 17:03:29 INFO  Listener:94 - Test case passed: verifyStaffUpdateUsingNegativeData
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:03:29 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:03:29 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:03:29 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:04:48 IST 2025) =====
+2025-04-25 17:04:48 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:04:48 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:04:48 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:04:48 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:04:48 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:04:48 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:04:48 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:04:48 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:04:48 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:04:48 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:04:48 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:04:48 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:04:48 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:04:48 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:04:48 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:04:48 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:04:48 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:04:48 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:04:48 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:04:48 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:04:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:04:50 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:04:50 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:04:50 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:04:50 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:04:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:04:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:04:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:04:50 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:04:50 INFO  TokenManagers:94 - 200
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:04:50 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:04:51 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:04:51 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:04:51 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:04:51 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:04:51 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:04:51 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:04:51 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:04:51 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:09:35 IST 2025) =====
+2025-04-25 17:09:35 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:09:35 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:09:35 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:09:35 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:09:35 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:09:35 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:09:35 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:09:35 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:09:35 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:09:35 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:09:35 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:09:35 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:09:35 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:09:35 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:09:36 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:09:36 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:09:36 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:09:36 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:09:36 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:09:36 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:09:39 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:09:39 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:09:39 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:09:39 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:09:39 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:09:39 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:09:39 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:09:39 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:09:39 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:09:39 INFO  TokenManagers:94 - 200
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:09:40 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:09:40 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:09:40 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:09:40 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:09:40 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:09:40 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:09:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:09:40 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:09:40 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:11:46 IST 2025) =====
+2025-04-25 17:11:46 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:11:46 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:11:46 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:11:46 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:11:46 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:11:46 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:11:46 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:11:46 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:11:46 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:11:46 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:11:46 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:11:46 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:11:46 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:11:46 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:11:46 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:11:46 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:11:46 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:11:46 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:11:46 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:11:46 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:11:49 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:11:49 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:11:49 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:11:49 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:11:49 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:11:49 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:11:49 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:11:49 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:11:49 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@6f8d7714
+2025-04-25 17:11:49 INFO  TokenManagers:94 - 200
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:11:49 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:11:49 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:11:49 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:11:50 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:11:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:11:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:11:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:11:50 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:11:50 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:16:16 IST 2025) =====
+2025-04-25 17:16:16 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:16:16 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:16:16 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:16:16 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:16:16 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:16:16 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:16:16 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:16:16 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:16:16 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:16:16 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:16:16 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:16:16 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:16:16 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:16:16 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:16:17 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:16:17 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:16:17 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:16:17 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:16:17 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:16:17 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:19 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:19 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:16:19 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:16:19 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:16:19 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:16:19 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:16:19 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:19 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:19 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@1e6b9a95
+2025-04-25 17:16:19 INFO  TokenManagers:94 - 200
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:16:20 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:16:20 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:16:20 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:16:20 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:16:20 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:16:20 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:20 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:20 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:16:20 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:16:47 IST 2025) =====
+2025-04-25 17:16:47 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:16:47 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:16:47 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:16:47 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:16:47 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:16:47 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:16:47 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:16:47 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:16:47 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:16:47 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:16:47 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:16:47 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:16:47 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:16:47 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:16:48 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:16:48 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:16:48 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:16:48 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:16:48 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:16:48 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:50 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:16:50 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:16:50 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:16:50 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:16:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:16:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:51 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:51 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:16:51 INFO  TokenManagers:94 - 200
+2025-04-25 17:16:51 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:16:51 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:16:51 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:16:51 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:16:59 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:16:59 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:16:59 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:16:59 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:16:59 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:16:59 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:16:59 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:16:59 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:16:59 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:16:59 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:16:59 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:16:59 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:17:31 IST 2025) =====
+2025-04-25 17:17:31 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:17:31 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:17:31 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:17:31 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:17:31 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:17:31 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:17:31 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:17:31 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:17:31 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:17:31 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:17:31 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:17:31 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:17:31 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:17:31 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:17:31 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:17:31 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:17:31 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:17:31 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:17:31 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:17:31 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:17:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:17:34 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:17:34 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:17:34 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:17:34 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:17:34 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:17:34 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:17:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:17:34 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:17:34 INFO  TokenManagers:94 - 200
+2025-04-25 17:17:36 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:17:36 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:17:36 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:17:36 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:17:54 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:17:54 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:17:54 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:17:54 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:18:18 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:18:18 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:18:18 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:18:18 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:18:18 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:18:18 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:18:18 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:18:18 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:18:32 IST 2025) =====
+2025-04-25 17:18:32 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:18:32 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:18:32 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:18:32 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:18:32 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:18:32 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:18:32 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:18:32 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:18:32 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:18:32 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:18:32 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:18:32 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:18:32 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:18:32 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:18:32 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:18:32 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:18:32 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:18:32 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:18:32 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:18:32 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:18:35 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:18:35 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:18:35 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:18:35 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:18:35 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:18:35 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:18:35 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:18:35 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:18:35 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:18:35 INFO  TokenManagers:94 - 200
+2025-04-25 17:18:37 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:18:37 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:18:37 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:18:37 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:18:42 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:18:42 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:18:42 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:18:42 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:19:14 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:19:15 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:19:15 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:19:15 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:19:15 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:19:15 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:19:15 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:19:15 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:19:28 IST 2025) =====
+2025-04-25 17:19:28 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:19:28 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:19:28 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:19:28 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:19:28 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:19:28 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:19:28 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:19:28 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:19:28 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:19:28 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:19:28 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:19:28 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:19:28 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:19:28 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:19:28 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:19:28 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:19:28 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:19:28 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:19:28 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:19:28 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:19:31 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:19:31 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:19:31 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:19:31 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:19:31 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:19:31 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:19:31 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:19:31 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:19:31 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:19:31 INFO  TokenManagers:94 - 200
+2025-04-25 17:19:33 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:19:33 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:19:33 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:19:33 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:19:37 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:19:37 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:19:37 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:19:37 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:20:50 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:20:50 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:20:50 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:20:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:20:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:20:51 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:20:51 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:20:51 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:21:20 IST 2025) =====
+2025-04-25 17:21:20 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:21:20 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:21:20 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:21:20 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:21:20 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:21:20 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:21:20 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:21:20 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:21:20 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:21:20 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:21:20 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:21:20 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:21:20 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:21:20 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:21:20 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:21:20 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:21:20 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:21:20 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:21:20 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:21:20 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:21:23 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:21:23 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:21:23 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:21:23 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:21:23 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:21:23 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:21:23 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:21:23 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:21:23 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@795f5d51
+2025-04-25 17:21:23 INFO  TokenManagers:94 - 200
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:21:24 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:21:24 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:22:25 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:22:25 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:22:25 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:22:25 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:22:25 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:22:25 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:22:25 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:22:45 IST 2025) =====
+2025-04-25 17:22:45 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:22:45 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:22:45 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:22:45 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:22:45 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:22:45 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:22:45 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:22:45 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:22:45 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:22:45 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:22:45 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:22:45 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:22:45 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:22:45 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:22:45 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:22:45 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:22:45 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:22:45 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:22:45 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:22:45 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:22:48 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:22:48 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:22:48 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:22:48 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:22:48 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:22:48 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:22:48 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:22:48 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:22:48 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:22:48 INFO  TokenManagers:94 - 200
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:22:49 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:22:49 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:22:52 INFO  Listener:94 - Test case passed: updateStaff
+2025-04-25 17:22:52 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:22:52 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:22:52 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:22:52 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:22:52 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:22:52 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:23:31 IST 2025) =====
+2025-04-25 17:23:31 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:23:31 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:23:31 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:23:31 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:23:31 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:23:31 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:23:31 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:23:31 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:23:31 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:23:31 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:23:31 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:23:31 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:23:31 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:23:31 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:23:31 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:23:31 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:23:31 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:23:31 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:23:31 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:23:31 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:23:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:23:34 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:23:34 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:23:34 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:23:34 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:23:34 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:23:34 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:23:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:23:34 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@795f5d51
+2025-04-25 17:23:34 INFO  TokenManagers:94 - 200
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:23:35 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:23:35 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:23:46 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:23:46 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:23:46 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:23:59 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:23:59 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:23:59 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:23:59 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:23:59 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:23:59 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:23:59 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:23:59 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:24:23 IST 2025) =====
+2025-04-25 17:24:23 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:24:23 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:24:23 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:24:23 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:24:23 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:24:23 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:24:23 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:24:23 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:24:23 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:24:23 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:24:23 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:24:23 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:24:23 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:24:23 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:24:24 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:24:24 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:24:24 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:24:24 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:24:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:24:24 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:26 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:26 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:24:26 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:24:26 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:24:26 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:24:26 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:24:26 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:26 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:26 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:24:26 INFO  TokenManagers:94 - 200
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:24:27 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:24:27 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:30 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:24:30 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:24:30 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:30 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:30 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:24:30 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:24:39 IST 2025) =====
+2025-04-25 17:24:39 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:24:39 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:24:39 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:24:39 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:24:39 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:24:39 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:24:39 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:24:39 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:24:39 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:24:39 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:24:39 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:24:39 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:24:39 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:24:39 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:24:39 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:24:39 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:24:39 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:24:39 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:24:39 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:24:39 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:42 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:42 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:24:42 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:24:42 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:24:42 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:24:42 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:24:42 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:42 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:42 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@32b0876c
+2025-04-25 17:24:42 INFO  TokenManagers:94 - 200
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:24:43 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:24:43 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:24:45 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:24:45 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:45 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:48 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:24:48 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:24:48 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:24:48 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:24:48 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:24:48 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:24:48 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:24:48 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:27:19 IST 2025) =====
+2025-04-25 17:27:19 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:27:19 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:27:19 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:27:19 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:27:19 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:27:19 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:27:19 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:27:19 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:27:19 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:27:19 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:27:19 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:27:19 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:27:19 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:27:19 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:27:19 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:27:19 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:27:19 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:27:19 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:27:19 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:27:19 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:27:22 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:27:22 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:27:22 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:27:22 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:27:22 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:27:22 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:27:22 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:27:22 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:27:22 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:27:22 INFO  TokenManagers:94 - 200
+2025-04-25 17:27:22 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:27:22 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:27:22 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:27:22 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:27:23 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:27:23 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:27:23 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:27:23 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:27:23 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:27:25 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:27:25 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:27:26 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:27:53 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:27:53 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:27:53 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:27:53 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:27:53 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:27:53 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:27:53 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:27:53 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:28:47 IST 2025) =====
+2025-04-25 17:28:47 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:28:47 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:28:47 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:28:47 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:28:47 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:28:47 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:28:47 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:28:47 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:28:47 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:28:47 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:28:47 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:28:47 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:28:47 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:28:47 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:28:47 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:28:47 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:28:47 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:28:47 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:28:47 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:28:47 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:28:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:28:50 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:28:50 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:28:50 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:28:50 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:28:50 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:28:50 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:28:50 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:28:50 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:28:50 INFO  TokenManagers:94 - 200
+2025-04-25 17:28:50 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:28:50 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:28:50 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:28:50 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:28:51 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:28:51 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:28:51 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:28:51 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:28:51 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:29:01 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:29:01 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:01 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:17 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:29:17 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:29:17 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:29:17 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:29:17 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:17 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:17 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:29:17 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:29:29 IST 2025) =====
+2025-04-25 17:29:29 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:29:29 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:29:29 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:29:29 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:29:29 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:29:29 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:29:29 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:29:29 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:29:29 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:29:29 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:29:29 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:29:29 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:29:29 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:29:29 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:29:29 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:29:29 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:29:29 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:29:29 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:29:29 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:29:29 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:32 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:32 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:29:32 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:29:32 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:29:32 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:29:32 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:29:32 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:32 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:32 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:29:32 INFO  TokenManagers:94 - 200
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:29:33 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:29:33 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:29:34 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:29:34 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:35 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:29:35 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:29:35 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:29:35 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:29:35 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:29:35 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:29:35 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:29:35 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:31:21 IST 2025) =====
+2025-04-25 17:31:21 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:31:21 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:31:21 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:31:21 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:31:21 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:31:21 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:31:21 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:31:21 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:31:21 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:31:21 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:31:21 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:31:21 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:31:21 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:31:21 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:31:21 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:31:21 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:31:21 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:31:21 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:31:21 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:31:21 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:31:24 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:31:24 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:31:24 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:31:24 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:31:24 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:31:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:31:24 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:31:24 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:31:24 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:31:24 INFO  TokenManagers:94 - 200
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:31:25 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:31:25 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:31:26 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:31:26 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:31:26 INFO  ResponseUtil:94 - POST request completed successfully
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:32:09 IST 2025) =====
+2025-04-25 17:32:09 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:32:09 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:32:09 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:32:09 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:32:09 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:32:09 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:32:09 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:32:09 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:32:09 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:32:09 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:32:09 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:32:09 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:32:09 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:32:09 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:32:10 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:32:10 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:32:10 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:32:10 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:32:10 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:32:10 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:32:12 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:32:12 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:32:12 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:32:12 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:32:12 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:32:12 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:32:12 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:32:13 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:32:13 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:32:13 INFO  TokenManagers:94 - 200
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:32:13 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:32:13 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:32:26 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update
+2025-04-25 17:32:26 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:32:26 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:32:26 ERROR StaffUpdateTestScript:118 - 400
+2025-04-25 17:32:26 ERROR StaffUpdateTestScript:118 - io.restassured.internal.RestAssuredResponseImpl@64aeaf29
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:48:05 IST 2025) =====
+2025-04-25 17:48:05 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:48:05 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:48:05 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:48:05 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:48:05 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:48:05 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:48:05 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:48:05 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:48:05 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:48:05 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:48:05 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:48:05 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:48:05 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:48:05 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:48:05 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:48:05 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:48:05 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:48:05 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:48:05 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:48:05 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:48:08 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:48:08 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:48:08 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:48:08 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:48:08 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:48:08 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:48:08 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:48:08 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:48:08 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:48:08 INFO  TokenManagers:94 - 200
+2025-04-25 17:48:09 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:48:09 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:48:09 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:48:09 INFO  DataDriven:94 - Excel workbook closed successfully.
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:58:37 IST 2025) =====
+2025-04-25 17:58:37 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:58:37 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:58:37 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:58:37 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:58:37 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:58:37 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:58:37 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:58:37 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:58:37 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:58:37 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:58:37 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:58:37 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:58:37 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:58:37 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:58:37 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:58:37 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:58:37 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:58:37 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:58:37 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:58:37 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:58:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:58:40 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:58:40 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:58:40 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:58:40 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:58:40 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:58:40 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:58:40 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:58:40 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 17:58:40 INFO  TokenManagers:94 - 200
+2025-04-25 17:58:41 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:58:41 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:58:41 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:58:41 INFO  DataDriven:94 - Excel workbook closed successfully.
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 17:59:21 IST 2025) =====
+2025-04-25 17:59:21 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 17:59:21 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 17:59:21 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 17:59:21 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 17:59:21 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 17:59:21 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 17:59:21 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 17:59:21 INFO  APIBase:94 - Properties object initialized
+2025-04-25 17:59:21 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 17:59:21 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 17:59:21 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 17:59:21 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 17:59:21 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 17:59:21 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 17:59:21 INFO  TokenManagers:94 - Starting login process
+2025-04-25 17:59:21 INFO  TokenManagers:94 - Building login request
+2025-04-25 17:59:21 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 17:59:21 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:59:21 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 17:59:21 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:59:24 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:59:24 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 17:59:24 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 17:59:24 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 17:59:24 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 17:59:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 17:59:24 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:59:25 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:59:25 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 17:59:25 INFO  TokenManagers:94 - 200
+2025-04-25 17:59:25 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:59:25 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:59:25 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:59:25 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:59:44 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 17:59:44 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 17:59:44 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 17:59:44 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 17:59:44 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 17:59:49 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+2025-04-25 17:59:49 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:59:49 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:59:49 ERROR StaffUpdateTestScript:118 - 400
+2025-04-25 17:59:49 ERROR StaffUpdateTestScript:118 - io.restassured.internal.RestAssuredResponseImpl@6fe595dc
+2025-04-25 17:59:51 ERROR StaffUpdateTestScript:118 - Error occurred during staff update test case: staffupdate_001 - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-25 17:59:51 ERROR Listener:118 - Test case failed: updateStaff
+2025-04-25 17:59:51 INFO  TokenManagers:94 - Starting logout process
+2025-04-25 17:59:51 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/logout
+2025-04-25 17:59:51 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 17:59:51 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 17:59:51 INFO  TokenManagers:94 - Suucess: Logout user
+2025-04-25 17:59:51 INFO  Listener:94 - Test Suite finished: Default test
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 18:00:13 IST 2025) =====
+2025-04-25 18:00:13 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 18:00:13 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 18:00:13 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 18:00:13 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 18:00:13 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 18:00:13 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 18:00:13 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 18:00:13 INFO  APIBase:94 - Properties object initialized
+2025-04-25 18:00:13 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 18:00:13 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 18:00:13 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 18:00:13 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 18:00:13 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 18:00:13 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:00:13 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:00:13 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:00:13 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 18:00:13 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:00:13 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:00:13 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:00:16 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:00:16 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 18:00:16 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 18:00:16 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 18:00:16 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 18:00:16 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 18:00:16 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:00:16 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:00:16 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@2aaf152b
+2025-04-25 18:00:16 INFO  TokenManagers:94 - 200
+2025-04-25 18:00:17 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:00:17 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:00:17 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:00:17 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:00:20 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:00:20 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:00:20 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:00:20 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:00:20 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 18:00:21 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+2025-04-25 18:00:21 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:00:22 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:00:22 ERROR StaffUpdateTestScript:118 - 400
+2025-04-25 18:00:22 ERROR StaffUpdateTestScript:118 - io.restassured.internal.RestAssuredResponseImpl@5af5d76f
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 18:01:55 IST 2025) =====
+2025-04-25 18:01:55 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 18:01:55 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 18:01:55 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 18:01:55 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 18:01:55 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 18:01:55 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 18:01:55 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 18:01:55 INFO  APIBase:94 - Properties object initialized
+2025-04-25 18:01:55 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 18:01:55 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 18:01:55 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 18:01:55 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 18:01:55 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 18:01:55 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:01:55 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:01:55 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:01:55 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 18:01:55 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:01:55 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:01:58 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:02:18 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:02:24 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 18:02:24 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 18:02:24 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 18:02:24 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 18:02:24 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 18:02:26 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:02:30 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:02:30 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@39bbd9e0
+2025-04-25 18:02:30 INFO  TokenManagers:94 - 200
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:02:31 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:02:31 INFO  Listener:94 - updateStaff test case started!
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 18:02:45 IST 2025) =====
+2025-04-25 18:02:45 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 18:02:45 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 18:02:45 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 18:02:45 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 18:02:45 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 18:02:45 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 18:02:45 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 18:02:45 INFO  APIBase:94 - Properties object initialized
+2025-04-25 18:02:45 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 18:02:45 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 18:02:45 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 18:02:45 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 18:02:45 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 18:02:45 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:02:45 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:02:45 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:02:45 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 18:02:45 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:02:45 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:02:48 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:02:55 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:02:57 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 18:02:57 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 18:02:57 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 18:02:57 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 18:02:57 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 18:02:59 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:03:09 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:03:10 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@4397a639
+2025-04-25 18:03:10 INFO  TokenManagers:94 - 200
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:03:11 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:03:11 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 18:03:13 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+2025-04-25 18:03:13 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:03:14 INFO  ResponseUtil:94 - POST request completed successfully
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 18:04:00 IST 2025) =====
+2025-04-25 18:04:00 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 18:04:00 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 18:04:00 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 18:04:00 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 18:04:00 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 18:04:00 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 18:04:00 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 18:04:00 INFO  APIBase:94 - Properties object initialized
+2025-04-25 18:04:00 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 18:04:00 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 18:04:00 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 18:04:00 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 18:04:00 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 18:04:00 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:04:01 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:04:01 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:04:01 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 18:04:01 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:04:01 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:04:01 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:04:03 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:04:03 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 18:04:03 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 18:04:03 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 18:04:03 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 18:04:03 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 18:04:03 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:04:04 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:04:04 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 18:04:04 INFO  TokenManagers:94 - 200
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:04:04 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:04:04 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 18:04:05 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+
+
+
+===== MenuMitra Execution Start (Fri Apr 25 18:05:17 IST 2025) =====
+2025-04-25 18:05:17 INFO  menumitra:40 - === Logger initialized with session markers ===
+2025-04-25 18:05:17 INFO  APIBase:94 - Starting test suite setup
+2025-04-25 18:05:17 INFO  APIBase:94 - Loading properties file from: src\test\resources\configFile\config.properties
+2025-04-25 18:05:17 INFO  ReadFile:94 - Attempting to read file from path: src\test\resources\configFile\config.properties
+2025-04-25 18:05:17 INFO  ReadFile:94 - Opening FileInputStream for file
+2025-04-25 18:05:17 INFO  ReadFile:94 - Successfully opened file stream
+2025-04-25 18:05:17 INFO  APIBase:94 - Properties file opened successfully
+2025-04-25 18:05:17 INFO  APIBase:94 - Properties object initialized
+2025-04-25 18:05:17 INFO  APIBase:94 - Properties loaded successfully
+2025-04-25 18:05:17 INFO  APIBase:94 - Properties file loaded successfully
+2025-04-25 18:05:17 INFO  EnviromentChanges:94 - Environment switched to: qa
+2025-04-25 18:05:17 INFO  APIBase:94 - Setting QA environment...
+2025-04-25 18:05:17 INFO  APIBase:94 - Setup completed. Log4j configured and properties loaded.
+2025-04-25 18:05:17 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:05:17 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:05:17 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:05:17 INFO  TokenManagers:94 - Preparing login request parameters
+2025-04-25 18:05:17 INFO  TokenManagers:94 - Sending login request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:05:17 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/user_login
+2025-04-25 18:05:17 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:05:20 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:05:20 INFO  TokenManagers:94 - Success: login in user
+2025-04-25 18:05:20 INFO  TokenManagers:94 - Starting OTP verification process
+2025-04-25 18:05:20 INFO  TokenManagers:94 - Building OTP verification request
+2025-04-25 18:05:20 INFO  TokenManagers:94 - Preparing OTP verification request parameters
+2025-04-25 18:05:20 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/owner_api/verify_otp
+2025-04-25 18:05:20 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:05:20 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:05:20 INFO  TokenManagers:94 - io.restassured.internal.RestAssuredResponseImpl@26fb4d06
+2025-04-25 18:05:20 INFO  TokenManagers:94 - 200
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel sheet read successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel file closed successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel data read successfully.
+2025-04-25 18:05:21 INFO  DataDriven:94 - Excel workbook closed successfully.
+2025-04-25 18:05:21 INFO  Listener:94 - updateStaff test case started!
+2025-04-25 18:05:23 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+2025-04-25 18:05:25 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:05:58 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:06:04 INFO  ResponseUtil:94 - Making POST request to: https://men4u.xyz/common_api/staff_update?remove_image_flag=False
+2025-04-25 18:06:07 INFO  ResponseUtil:94 - Executing POST request
+2025-04-25 18:06:34 INFO  ResponseUtil:94 - POST request completed successfully
+2025-04-25 18:07:14 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:07:14 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:07:14 ERROR TokenManagers:118 - Error: Login process failed - null
+2025-04-25 18:08:08 INFO  Listener:94 - Test Suite started: Default test
+2025-04-25 18:08:12 INFO  TokenManagers:94 - Starting login process
+2025-04-25 18:08:12 INFO  TokenManagers:94 - Building login request
+2025-04-25 18:08:12 ERROR TokenManagers:118 - Error: Login process failed - null
+2025-04-25 18:08:12 INFO  Listener:94 - verifyStaffListView test case started!
+2025-04-25 18:08:12 WARN  Listener:106 - Test case skipped: verifyStaffListView
+2025-04-25 18:08:12 INFO  Listener:94 - Test Suite finished: Default test
