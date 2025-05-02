@@ -18,6 +18,7 @@ public class EnviromentChanges
         }
         
         public String getName() {
+        	System.out.println(name);
             return name;
         }
     }
@@ -29,7 +30,8 @@ public class EnviromentChanges
      * Set the current environment
      * @param env The environment to switch to
      */
-    public static void setEnvironment(Environment env) {
+    public static void setEnvironment(Environment env) 
+    {
         currentEnv = env;
         LogUtils.info("Environment switched to: " + env.getName());
     }
@@ -51,6 +53,7 @@ public class EnviromentChanges
         switch(currentEnv) {
            
             case QA:
+            	
                 return APIBase.property.getProperty("QAbaseURI");
             
             case PRODUCTION:

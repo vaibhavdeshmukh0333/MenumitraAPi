@@ -1,23 +1,29 @@
 package com.menumitratCommonAPITestScript;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.menumitra.apiRequest.staffRequest;
 import com.menumitra.superclass.APIBase;
+import com.menumitra.utilityclass.ActionsMethods;
 import com.menumitra.utilityclass.DataDriven;
 import com.menumitra.utilityclass.EnviromentChanges;
 import com.menumitra.utilityclass.ExtentReport;
+import com.menumitra.utilityclass.Listener;
 import com.menumitra.utilityclass.LogUtils;
 import com.menumitra.utilityclass.RequestValidator;
 import com.menumitra.utilityclass.ResponseUtil;
@@ -26,111 +32,91 @@ import com.menumitra.utilityclass.customException;
 
 import io.restassured.response.Response;
 
+@Listeners(Listener.class)
 public class StaffViewTestScript extends APIBase
 {
-    
-    private String baseUri;
-    private String accessToken;
-    private String userId;
-    private String deviceToken;
-    private Response response;
     private JSONObject requestBodyJson;
-    private JSONObject actualResponseBody;
-    private JSONObject expectedResponse;
+    private Response response;
+    private String baseURI;
+    private String accessToken;
     private staffRequest staffViewRequest;
-    private com.menumitra.utilityclass.validateResponseBody validateResponseBody;
     private URL url;
+    Logger logger=LogUtils.getLogger(StaffViewTestScript.class);
 
-    /**
-     * Setup method to initialize test data
-     */
-    @BeforeClass
-    private void staffViewsetUp() throws customException 
+    @DataProvider(name="getStaffViewUrl")
+    private Object[][] getStaffViewUrl() throws customException
     {
-        try {
-            LogUtils.info("Setting up test environment");
-
-            TokenManagers.login();
-            TokenManagers.verifyOtp();
-            // Get base URL
-            baseUri = EnviromentChanges.getBaseUrl();
-            LogUtils.info("Base URI set to: " + baseUri);
-
-            // Get and set staff view URL
-            Object[][] staffViewData = getStaffViewURL();
-            if (staffViewData.length > 0) {
-                String endpoint = staffViewData[0][2].toString();
-                url = new URL(endpoint);
-                baseUri = RequestValidator.buildUri(endpoint, baseUri);
-                LogUtils.info("Staff View URL set to: " + baseUri);
-            } else {
-                LogUtils.error("No staff view URL found in test data");
-                throw new customException("No staff view URL found in test data");
-            }
-
-            // Get tokens from TokenManager
-            accessToken = TokenManagers.getJwtToken();
-            deviceToken = TokenManagers.getDeviceToken();
-            userId = TokenManagers.getUserId();
-
-            if (accessToken.isEmpty() || deviceToken.isEmpty()) {
-                LogUtils.error("Error: Required tokens not found. Please ensure login and OTP verification is completed");
-                throw new customException("Required tokens not found. Please ensure login and OTP verification is completed");
-            }
-
-            staffViewRequest = new staffRequest();
-            validateResponseBody = new com.menumitra.utilityclass.validateResponseBody();
-            LogUtils.info("Staff view setup completed successfully");
-
-        } catch (Exception e) {
-            LogUtils.error("Error during staff view setup: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error during staff view setup: " + e.getMessage());
-            throw new customException("Error during setup: " + e.getMessage());
-        }
-    }
-
-    @DataProvider(name="getStaffViewURL")
-    public Object[][] getStaffViewURL() throws customException
-    {
-        try{
-            Object[][] readData=DataDriven.readExcelData("excelSheetPathForGetApis","commonAPI");
-            if(readData==null)
+        try
+        {
+            LogUtils.info("Reading staff view URL from Excel sheet");
+            ExtentReport.getTest().log(Status.INFO, "Reading staff view URL from Excel sheet");
+            
+            Object[][] readExcelData=DataDriven.readExcelData(excelSheetPathForGetApis, "commonAPI");
+            if(readExcelData==null)
             {
-            	LogUtils.error("Error: Getting an error while read Staff URL Excel File");
-            	throw new customException("Error: Getting an error while read Staff URL Excel File");
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
             }
             
-            return Arrays.stream(readData)
-            		.filter(row -> "staffview".equalsIgnoreCase(row[0].toString()))
-            		.toArray(Object[][]::new);
-        }
-        catch (Exception e) {
-            LogUtils.error("Error: Getting an error while read Staff URL Excel File");
-            throw new customException("Error: Getting an error while read Staff URL Excel File");
-		}
-    }
-    
-    @DataProvider(name = "getStaffViewData")
-    public static Object[][] getStaffViewData() throws customException {
-        try {
-            LogUtils.info("Reading staff view test scenario data");
-
-            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
-            if (readExcelData == null || readExcelData.length == 0) {
-                LogUtils.error("No staff view test scenario data found in Excel sheet");
-                throw new customException("No staff view test scenario data found in Excel sheet");
+            Object[][] filteredData = Arrays.stream(readExcelData)
+                    .filter(row -> "staffview".equalsIgnoreCase(row[0].toString()))
+                    .toArray(Object[][]::new);
+                    
+            if(filteredData.length == 0) {
+                String errorMsg = "No staff view URL data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
             }
-
+            
+            LogUtils.info("Successfully retrieved staff view URL data");
+            ExtentReport.getTest().log(Status.PASS, "Successfully retrieved staff view URL data");
+            return filteredData;
+        }
+        catch(Exception e)
+        {
+            String errorMsg = "Error in getStaffViewUrl: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            throw new customException(errorMsg);
+        }
+    }
+   
+    @DataProvider(name="getstaffviewValidData")
+    public Object[][] getstaffviewValidData() throws customException
+    {
+        try
+        {
+            LogUtils.info("Reading staff view valid data from Excel sheet");
+            ExtentReport.getTest().log(Status.INFO, "Reading staff view valid data from Excel sheet");
+            
+            Object[][] readExcelData=DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if(readExcelData==null)
+            {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
             List<Object[]> filteredData = new ArrayList<>();
-
+            
             for (int i = 0; i < readExcelData.length; i++) {
                 Object[] row = readExcelData[i];
-                if (row != null && row.length >= 2 &&
-                        "staffview".equalsIgnoreCase(Objects.toString(row[0], "")) &&
-                        "positive".equalsIgnoreCase(Objects.toString(row[2], ""))) {
-
-                    filteredData.add(row); // Add the full row (all columns)
+                if (row != null && row.length >= 3 &&
+                    "staffview".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                    "positive".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
                 }
+            }
+
+            if(filteredData.isEmpty()) {
+                String errorMsg = "No valid staff view test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
             }
 
             Object[][] obj = new Object[filteredData.size()][];
@@ -138,66 +124,132 @@ public class StaffViewTestScript extends APIBase
                 obj[i] = filteredData.get(i);
             }
 
-            LogUtils.info("Successfully retrieved " + obj.length + " test scenarios");
+            LogUtils.info("Successfully retrieved " + obj.length + " staff view test scenarios");
+            ExtentReport.getTest().log(Status.PASS, "Successfully retrieved " + obj.length + " staff view test scenarios");
             return obj;
-        } catch (Exception e) {
-            LogUtils.error("Error while reading staff view test scenario data from Excel sheet: " + e.getMessage());
-            ExtentReport.getTest().log(Status.ERROR,
-                    "Error while reading staff view test scenario data: " + e.getMessage());
-            throw new customException(
-                    "Error while reading staff view test scenario data from Excel sheet: " + e.getMessage());
         }
-    }
-
-
-
-    
-    /**
-     * Test method for positive scenarios in staff view
-     */
-    @Test(dataProvider="getStaffViewData")
-    public void verifyStaffViewUsingPositiveData(String apiName, String testCaseid, String testType, String description,
-            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
-        try {
-            LogUtils.info("Starting staff view test: " + description);
-            ExtentReport.getTest().log(Status.INFO, "Starting staff view test: " + description);
-            
-            if (apiName.equalsIgnoreCase("staffView") && testType.equalsIgnoreCase("positive")) {
-                requestBodyJson = new JSONObject(requestBody);
-                
-                switch (testCaseid) {
-                    case "staff_view_001":
-                        try {
-                            staffViewRequest.setUser_id(userId);
-                            staffViewRequest.setDevice_token(deviceToken);
-                            staffViewRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
-                            
-                            response = ResponseUtil.getResponseWithAuth(baseUri, staffViewRequest, httpsmethod, accessToken);
-                            actualResponseBody = new JSONObject(response.body().toString());
-                            expectedResponse = new JSONObject(expectedResponseBody);
-
-                            validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(),
-                                                                expectedResponse.get("status").toString(),
-                                                                response.getStatusCode());
-                            validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                                                expectedResponse.get("msg").toString(),
-                                                                response.getStatusCode());
-                        } catch (Exception e) {
-                            LogUtils.error("Error during staff view test: " + e.getMessage());
-                            throw new customException("Error during staff view test: " + e.getMessage());
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        } 
-        catch (Exception e) 
+        catch(Exception e)
         {
-        	LogUtils.error("Error occurred during staff view test case: " + testCaseid + " - " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error occurred during staff view test case: " + testCaseid + " - " + e.getMessage());
-            throw new customException("Error during staff view: " + e.getMessage());
+            String errorMsg = "Error in getstaffviewValidData: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            throw new customException(errorMsg);
         }
     }
+
+
+    @BeforeClass
+    private void staffviewsetUp() throws customException
+    {
+        try
+        {
+            LogUtils.info("Setting up staff view test");
+            ExtentReport.createTest("Staff View Test Setup");
+            ExtentReport.getTest().log(Status.INFO, "Initializing staff view test setup");
+
+            ActionsMethods.login();
+            ActionsMethods.verifyOTP();
+            baseURI=EnviromentChanges.getBaseUrl();
+            
+            Object[][] staffViewData = getStaffViewUrl();
+            if (staffViewData.length > 0) {
+                String endpoint = staffViewData[0][2].toString();
+                url = new URL(endpoint);
+                baseURI = RequestValidator.buildUri(endpoint, baseURI);
+                LogUtils.info("Constructed base URI: " + baseURI);
+                ExtentReport.getTest().log(Status.INFO, "Constructed base URI: " + baseURI);
+            } else {
+                String errorMsg = "No staff view URL found in test data";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            accessToken=TokenManagers.getJwtToken();
+            if (accessToken.isEmpty()) 
+            {
+                String errorMsg = "Required tokens not found. Please ensure login and OTP verification is completed";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            staffViewRequest = new staffRequest();
+            LogUtils.info("Staff view test setup completed successfully");
+            ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Staff view test setup completed successfully", ExtentColor.GREEN));
+        }
+        catch(Exception e)
+        {
+            String errorMsg = "Error in staff view setUp: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            throw new customException(errorMsg);
+        }
+    }
+    
+    @Test(dataProvider="getstaffviewValidData")
+    private void verifyStaffView(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException
+    {
+        try
+        {
+            LogUtils.info("Starting staff view test case: " + testCaseid);
+            ExtentReport.createTest("Staff View Test - " + testCaseid);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+
+            if(apiName.equalsIgnoreCase("staffview"))
+            {
+                requestBodyJson = new JSONObject(requestBody);
+                staffViewRequest.setStaff_id(String.valueOf(requestBodyJson.getInt("staff_id")));
+                staffViewRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
+                
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+                
+                response = ResponseUtil.getResponseWithAuth(baseURI, staffViewRequest, httpsmethod, accessToken);
+                
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+                
+                // Validate status code
+                if(response.getStatusCode() != Integer.parseInt(statusCode)) {
+                    String errorMsg = "Status code mismatch - Expected: " + statusCode + ", Actual: " + response.getStatusCode();
+                    LogUtils.failure(logger, errorMsg);
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                    throw new customException(errorMsg);
+                }
+                
+                // Validate response body if expected response is provided
+                if(expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                    JSONObject expectedJson = new JSONObject(expectedResponseBody);
+                    JSONObject actualJson = new JSONObject(response.asString());
+                    
+                    if(!expectedJson.similar(actualJson)) {
+                        String errorMsg = "Response body mismatch\nExpected: " + expectedJson.toString(2) + "\nActual: " + actualJson.toString(2);
+                        LogUtils.failure(logger, errorMsg);
+                        ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                        throw new customException(errorMsg);
+                    }
+                }
+                
+                LogUtils.success(logger, "Staff view test completed successfully\nResponse: " + response.asPrettyString());
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Staff view test completed successfully", ExtentColor.GREEN));
+                ExtentReport.getTest().log(Status.PASS, "Response: " + response.asPrettyString());
+            }
+        }
+        catch (Exception e)
+        {
+            String errorMsg = "Error in staff view test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if(response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+            
 }

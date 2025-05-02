@@ -61,6 +61,17 @@ public class ExtentReport
 		
 	}
 
+	// Add this method
+    public static ExtentTest createTest(String testName, String description) {
+        ExtentTest extentTest = extent.createTest(testName, description);
+        test.set(extentTest);
+        return extentTest;
+    }
+
+    // Add overloaded method for single parameter
+    public static ExtentTest createTest(String testName) {
+        return createTest(testName, "");
+    }
 	public static ExtentTest getTest() {
 		return test.get();
 	}

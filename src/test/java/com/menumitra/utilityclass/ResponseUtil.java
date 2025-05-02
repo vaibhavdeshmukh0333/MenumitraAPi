@@ -31,33 +31,54 @@ public class ResponseUtil
            
             switch (method.toLowerCase()) {
                 case "post":
-                    LogUtils.info("Executing POST request");
-                    response = RestAssured.given()
-                            .contentType(ContentType.JSON)
-                            .body(requestBody)
-                            .when()
-                            .post(url);
-                    LogUtils.info("POST request completed successfully");
-                    return response;
+                   try
+                   {
+                	   LogUtils.info("Executing POST request");
+                       response = RestAssured.given()
+   	                    	    .contentType(ContentType.JSON)
+   	                    	    .body(requestBody)
+   	                    	    .when()
+   	                    	    .post(url)
+   	                    	    .then()
+   	                    	    .log().all()
+   	                    	    .extract()
+   	                    	    .response();
+                       LogUtils.info("POST request completed successfully");
+                       return response;
+                   }
+                   catch (Exception e)
+                   {
+                	   LogUtils.error("Error: Get response..");
+                       throw new customException("Error: Get response");
+                   }
                     
                 case "put":
-                    LogUtils.info("Executing PUT request");
-                    response = RestAssured.given()
-                            .contentType(ContentType.JSON)
-                            .body(requestBody)
-                            .when()
-                            .put(url);
+		                	response=RestAssured.given()
+				            	    .contentType(ContentType.JSON)
+				            	    .body(requestBody)
+				            	    .when()
+				            	    .put(url)
+				            	    .then()
+				            	    .log().all()
+				            	    .extract()
+				            	    .response();
+             
                     LogUtils.info("PUT request completed successfully");
                     return response;
 
                 case "get":
                             try{
                                 LogUtils.info("start get response...");
-                                response=(Response) RestAssured.given()
-                                .contentType(ContentType.JSON)
-                                .when()
-                                .get(url)
-                                .then().log().all();
+                                response=RestAssured
+                                		.given()
+                                		.contentType(ContentType.JSON)
+                                		.when()
+                                		.get(url)
+                                		.then()
+                                		.log()
+                                		.all()
+                                		.extract()
+                                		.response();
                                 
                                 LogUtils.info("successfully get response..");
                                 return response;
@@ -74,9 +95,14 @@ public class ResponseUtil
                                     
                                     LogUtils.info("start delete data..");
                                     response=RestAssured.given()
-                                    .contentType(ContentType.JSON)
-                                    .body(requestBody)
-                                    .delete();
+		                            	    .contentType(ContentType.JSON)
+		                            	    .body(requestBody)
+		                            	    .when()
+		                            	    .post(url)
+		                            	    .then()
+		                            	    .log().all()
+		                            	    .extract()
+		                            	    .response();
                                     LogUtils.info("Delete Data Successfully");
                                     return response;
                                     
@@ -112,16 +138,27 @@ public class ResponseUtil
            
             switch (method.toLowerCase()) {
                 case "post":
-                    LogUtils.info("Executing POST request");
-                    response =RestAssured.given()
-                            .header("Authorization","Bearer ",jwttoken)
-                            .body(requestBody)
-                            .when()
-                            .post(url);
-
-                    LogUtils.info("POST request completed successfully");
-                  
-                    return response;
+                	 try
+                     {
+                  	   LogUtils.info("Executing POST request");
+                         response = RestAssured.given()
+     	                    	    .contentType(ContentType.JSON)
+     	                    	    .header("Authorization","Bearer "+jwttoken)
+     	                    	    .body(requestBody)
+     	                    	    .when()
+     	                    	    .post(url)
+     	                    	    .then()
+     	                    	    .log().all()
+     	                    	    .extract()
+     	                    	    .response();
+                         LogUtils.info("POST request completed successfully");
+                         return response;
+                     }
+                     catch (Exception e)
+                     {
+                  	   LogUtils.error("Error: Get response..");
+                         throw new customException("Error: Get response");
+                     }
                     
                 case "put":
                     LogUtils.info("Executing PUT request");

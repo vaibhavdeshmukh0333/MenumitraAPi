@@ -55,7 +55,7 @@
           </li>
             <li class="m-r-10">
                 <a href="#">
-                    <span class="badge badge-primary">Friday, April 25, 2025, 06:08 PM (IST)</span>
+                    <span class="badge badge-primary">Friday, May 02, 2025, 03:02 PM (IST)</span>
                 </a>
             </li>
         </ul>
@@ -100,12 +100,12 @@
                                             <i class="fa fa-exclamation-circle"></i>
                                         </a>
                                         <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-                                            
+                                            <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success pull-right"></span></a>
 	                                        
 	                                        
 	                                        
 	                                        
-	                                        <a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning pull-right"></span></a>
+	                                        
 	                                        <div class="dropdown-divider"></div>
                                             <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
                                         </ul>
@@ -114,31 +114,31 @@
                             </div>
                             <div class="test-list-wrapper scrollable">
                                 <ul class="test-list-item">
-                                    <li class="test-item"  status="skip" test-id="1"
+                                    <li class="test-item"  status="pass" test-id="1"
                                             author=""
                                             tag=""
                                             device="">
-                                        <div class="status-avatar skip-bg">
-                                            <i class="fa fa-long-arrow-right text-white"></i>
+                                        <div class="status-avatar pass-bg">
+                                            <i class="fa fa-check text-white"></i>
                                         </div>
                                         <div class="open-test">
                                             <div class="test-detail"> 
-                                                <p class="name">verifyStaffListView</p> 
-                                                <p class="duration text-sm">0h 0m 0s+25ms</p> 
-                                                <span class="datetime">18:08:12 PM</span>
+                                                <p class="name">Staff View Test Setup</p> 
+                                                <p class="duration text-sm">0h 0m 3s+685ms</p> 
+                                                <span class="datetime">15:02:55 PM</span>
                                             </div>
                                         </div>
                                         <div class="test-contents d-none">
                                             <div class="detail-head">
                                                 <div class="p-v-10 d-inline-block"> 
                                                     <div class="info">
-                                                        <h5 class="test-status text-skip">verifyStaffListView</h5>
-                                                        <span class='badge badge-success'>04.25.2025 18:08:12</span>
-                                                        <span class='badge badge-danger'>04.25.2025 18:08:12</span>
-                                                        <span class='badge badge-default'>0h 0m 0s+25ms</span>
+                                                        <h5 class="test-status text-pass">Staff View Test Setup</h5>
+                                                        <span class='badge badge-success'>05.02.2025 15:02:55</span>
+                                                        <span class='badge badge-danger'>05.02.2025 15:02:58</span>
+                                                        <span class='badge badge-default'>0h 0m 3s+685ms</span>
                                                     </div>
                                                     <div class="m-t-10 m-l-5">
-                                                        Test Description: null
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,10 +151,236 @@
 	</tr></thead>
 	<tbody>
 			<tr class="event-row">
-				<td><i class="fa fa-long-arrow-right text-skip"></i></td>
-				<td>6:08:12 PM</td>
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:55 PM</td>
 				<td>
-						<span class='badge white-text orange'>verifyStaffListView - Test Case SKIPPED</span>
+						Initializing staff view test setup
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:55 PM</td>
+				<td>
+						===== Starting Login API Execution =====
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:55 PM</td>
+				<td>
+						Constructed Login Base URI: https://men4u.xyz/v2/common/login
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:55 PM</td>
+				<td>
+						Login payload prepared with mobile: 6264335759
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						POST request executed for login API
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						Login API responded with status code 200
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						Base URI: https://men4u.xyz/v2/common/login
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						===== Starting VerifyOTP API Execution =====
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						Constructed Verify OTP Base URI: https://men4u.xyz/v2/common/verify_otp
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:57 PM</td>
+				<td>
+						Verify OTP payload prepared
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						POST request executed for Verify OTP API
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						verify OTP API responded with status code 200
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Reading staff view URL from Excel sheet
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Successfully retrieved staff view URL data
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Constructed base URI: https://men4u.xyz/v2/common/staff_view
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						<span class='badge white-text green'>Staff view test setup completed successfully</span>
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Reading staff view valid data from Excel sheet
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Successfully retrieved 1 staff view test scenarios
+				</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+                                        </div>
+                                    </li>
+                                    <li class="test-item"  status="pass" test-id="2"
+                                            author=""
+                                            tag=""
+                                            device="">
+                                        <div class="status-avatar pass-bg">
+                                            <i class="fa fa-check text-white"></i>
+                                        </div>
+                                        <div class="open-test">
+                                            <div class="test-detail"> 
+                                                <p class="name">Staff View Test - staffview_001</p> 
+                                                <p class="duration text-sm">0h 0m 0s+308ms</p> 
+                                                <span class="datetime">15:02:58 PM</span>
+                                            </div>
+                                        </div>
+                                        <div class="test-contents d-none">
+                                            <div class="detail-head">
+                                                <div class="p-v-10 d-inline-block"> 
+                                                    <div class="info">
+                                                        <h5 class="test-status text-pass">Staff View Test - staffview_001</h5>
+                                                        <span class='badge badge-success'>05.02.2025 15:02:58</span>
+                                                        <span class='badge badge-danger'>05.02.2025 15:02:59</span>
+                                                        <span class='badge badge-default'>0h 0m 0s+308ms</span>
+                                                    </div>
+                                                    <div class="m-t-10 m-l-5">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+<div class="detail-body mt-4">                                              
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Test Description: verify staff view using valid data
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:58 PM</td>
+				<td>
+						Request Body: {"outlet_id":1,"staff_id":1}
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:59 PM</td>
+				<td>
+						Response Status Code: 200
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>3:02:59 PM</td>
+				<td>
+						Response Body: {"msg":"Staff details retrieved successfully","data":{"staff_id":1,"outlet_id":1,"name":"stafff","mobile":"7918232897","address":"dfddd","role":"receptionist","dob":"02 Jul 2003","aadhar_number":"321291198274","photo":null,"created_by":"owner","created_on":"30 Apr 2025 12:05:36 PM","updated_by":"owner","updated_on":"02 May 2025 11:13:51 AM"}}
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:59 PM</td>
+				<td>
+						<span class='badge white-text green'>Staff view test completed successfully</span>
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:59 PM</td>
+				<td>
+						Response: {
+    "msg": "Staff details retrieved successfully",
+    "data": {
+        "staff_id": 1,
+        "outlet_id": 1,
+        "name": "stafff",
+        "mobile": "7918232897",
+        "address": "dfddd",
+        "role": "receptionist",
+        "dob": "02 Jul 2003",
+        "aadhar_number": "321291198274",
+        "photo": null,
+        "created_by": "owner",
+        "created_on": "30 Apr 2025 12:05:36 PM",
+        "updated_by": "owner",
+        "updated_on": "02 May 2025 11:13:51 AM"
+    }
+}
+				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>3:02:59 PM</td>
+				<td>
+						<span class='badge white-text green'>verifyStaffView - Test Case PASSED</span>
 				</td>
 			</tr>
 	</tbody>

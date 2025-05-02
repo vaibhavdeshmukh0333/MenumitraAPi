@@ -24,8 +24,8 @@ public class Listener implements ITestListener {
 		System.out.println("Test case started: " + result.getMethod().getMethodName());
 		
 		// Create a test in ExtentReports
-		ExtentReport.setTest(ExtentReport.getInstance().createTest(result.getMethod().getMethodName(), 
-				"Test Description: " + result.getMethod().getDescription()));
+		/*ExtentReport.setTest(ExtentReport.getInstance().createTest(result.getMethod().getMethodName(), 
+				"Test Description: " + result.getMethod().getDescription()));*/
 		
 		LogUtils.info(result.getMethod().getMethodName() + " test case started!");
 	}

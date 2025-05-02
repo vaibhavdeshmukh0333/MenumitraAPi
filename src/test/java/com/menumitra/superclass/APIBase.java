@@ -140,6 +140,6 @@ public class APIBase
 	@AfterSuite
 	void tearDown() 
 	{
-		TokenManagers.logout();
+		
 	}
 }

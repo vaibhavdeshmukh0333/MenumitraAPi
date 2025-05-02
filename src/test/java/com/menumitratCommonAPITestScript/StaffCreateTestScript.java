@@ -1,14 +1,16 @@
 package com.menumitratCommonAPITestScript;
 
-import java.net.MalformedURLException;
+import java.io.File;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
-import org.testng.Assert;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,11 +28,15 @@ import com.menumitra.utilityclass.ResponseUtil;
 import com.menumitra.utilityclass.TokenManagers;
 import com.menumitra.utilityclass.customException;
 import com.menumitra.utilityclass.validateResponseBody;
+import com.menumitra.utilityclass.ActionsMethods;
 import com.menumitra.utilityclass.DataDriven;
 import com.menumitra.utilityclass.EnviromentChanges;
 import com.menumitra.utilityclass.ExtentReport;
 
+import io.restassured.RestAssured;
+
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 /**
  * Test class for Staff Creation API functionality
@@ -40,14 +46,16 @@ public class StaffCreateTestScript extends APIBase {
 
     private staffRequest staffCreateRequest;
     private Response response;
-    private JSONObject requestBodyJson;
+   
     private JSONObject actualResponseBody;
     private JSONObject expectedResponse;
     private String baseUri = null;
     private URL url;
-    private String userId;
+    private int userId;
     private String accessToken;
     private String deviceToken;
+    Logger logger=LogUtils.getLogger(StaffCreateTestScript.class);
+    RequestSpecification request;
 
     /**
      * Data provider for staff create API endpoint URLs
@@ -158,14 +166,14 @@ public class StaffCreateTestScript extends APIBase {
     @BeforeClass
     private void setup() throws customException {
         try {
-            LogUtils.info("Setting up test environment");
-
-            TokenManagers.login();
-            TokenManagers.verifyOtp();
+            LogUtils.info("====start setup create staff====");
+            ExtentReport.createTest("Create Staff Setup"); 
+            ActionsMethods.login();
+            ActionsMethods.verifyOTP();
+            
             // Get base URL
             baseUri = EnviromentChanges.getBaseUrl();
-            LogUtils.info("Base URI set to: " + baseUri);
-            // ExtentReport.getTest().log(Status.INFO, "Base URI set to: " + baseUri);
+           
 
             // Get and set staff create URL
             Object[][] staffCreateData = getStaffCreateUrl();
@@ -173,29 +181,32 @@ public class StaffCreateTestScript extends APIBase {
                 String endpoint = staffCreateData[0][2].toString();
                 url = new URL(endpoint);
                 baseUri = RequestValidator.buildUri(endpoint, baseUri);
-                LogUtils.info("Staff Create URL set to: " + baseUri);
+                LogUtils.info("Constructed base URI: " + baseUri);
+                ExtentReport.getTest().log(Status.INFO, "Constructed base URI: " + baseUri);
 
             } else {
-                LogUtils.error("No staff create URL found in test data");
+                LogUtils.failure(logger, "No staff create URL found in test data");
+                ExtentReport.getTest().log(Status.FAIL, "No staff create URL found in test data");
                 throw new customException("No staff create URL found in test data");
             }
 
             // Get tokens from TokenManager
             accessToken = TokenManagers.getJwtToken();
-            deviceToken = TokenManagers.getDeviceToken();
             userId = TokenManagers.getUserId();
 
-            if (accessToken.isEmpty() || deviceToken.isEmpty()) {
+            if (accessToken.isEmpty()) {
                 LogUtils.error(
                         "Error: Required tokens not found. Please ensure login and OTP verification is completed");
                 throw new customException(
                         "Required tokens not found. Please ensure login and OTP verification is completed");
             }
             staffCreateRequest = new staffRequest();
-            LogUtils.info("Staff Setup completed successfully");
+            LogUtils.success(logger, "Staff Setup completed successfully");
+            ExtentReport.getTest().log(Status.PASS, "Staff Setup completed successfully");
 
-        } catch (Exception e) {
-            LogUtils.error("Error during staff setup: " + e.getMessage());
+        } catch (Exception e)
+         {
+            LogUtils.failure(logger, "Error during staff setup: " + e.getMessage());
             ExtentReport.getTest().log(Status.FAIL, "Error during staff setup: " + e.getMessage());
             throw new customException("Error during setup: " + e.getMessage());
         }
@@ -209,119 +220,100 @@ public class StaffCreateTestScript extends APIBase {
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode)
             throws customException {
         try {
-            LogUtils.info("Starting staff creation test: " + description);
-            ExtentReport.getTest().log(Status.INFO, "Starting staff creation test: " + description);
+            LogUtils.info("Starting staff creation test case: " + testCaseid);
+            LogUtils.info("Test Description: " + description);
+            ExtentReport.createTest("Staff Creation Test - " + testCaseid);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            expectedResponse=new JSONObject(expectedResponseBody);
+            if (apiName.equalsIgnoreCase("staffcreate") && testType.equalsIgnoreCase("positive"))
+            {
+                LogUtils.info("Processing positive test case for staff creation");
+                ExtentReport.getTest().log(Status.INFO, "Processing positive test case for staff creation");
 
-            if (apiName.contains("staffCreate")) {
-                requestBodyJson = new JSONObject(requestBody);
+                // Replace single backslashes with double backslashes to properly escape file paths in JSON
+                requestBody=requestBody.replace("\\", "\\\\");
+                JSONObject requestjsonBody=new JSONObject(requestBody);
+                
+                LogUtils.info("Setting up multipart form request");
+                request=RestAssured.given();
+                request.header("Authorization", "Bearer " + accessToken);
+                request.contentType("multipart/form-data");
 
-                staffCreateRequest.setUser_id(userId);
-                staffCreateRequest.setMobile(requestBodyJson.getString("mobile"));
-                staffCreateRequest.setName(requestBodyJson.getString("name"));
-                staffCreateRequest.setDob(requestBodyJson.getString("dob"));
-                staffCreateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
-                staffCreateRequest.setAddress(requestBodyJson.getString("address"));
-                staffCreateRequest.setRole(requestBodyJson.getString("role"));
-                staffCreateRequest.setDevice_token(deviceToken);
-                staffCreateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
-
-                response = ResponseUtil.getResponseWithAuth(baseUri, staffCreateRequest, httpsmethod, accessToken);
-
-                if (response.getStatusCode() == Integer.parseInt(statusCode)) {
-                    LogUtils.info("Staff creation successful with status code: " + response.getStatusCode());
-                    ExtentReport.getTest().log(Status.PASS,
-                            "Staff creation successful with status code: " + response.getStatusCode());
-                } else {
-                    LogUtils.error("Staff creation failed. Expected status code: " + statusCode + ", Actual: "
-                            + response.getStatusCode());
-                    ExtentReport.getTest().log(Status.FAIL, "Staff creation failed. Expected status code: " + statusCode
-                            + ", Actual: " + response.getStatusCode());
+                if(requestjsonBody.has("image") && !requestjsonBody.getString("image").isEmpty())
+                {
+                    LogUtils.info("Processing image attachment");
+                    File imageFile=new File(requestjsonBody.getString("image"));
+                    if(imageFile.exists())
+                    {
+                        request.multiPart("image", imageFile);
+                        LogUtils.info("Image file attached successfully");
+                    } else {
+                        LogUtils.warn("Image file not found at specified path");
+                    }
                 }
+
+                LogUtils.info("Adding form data parameters to request");
+                request.multiPart("outlet_id", requestjsonBody.getInt("outlet_id"));
+                request.multiPart("user_id", userId);
+                request.multiPart("mobile", requestjsonBody.getString("mobile"));
+                request.multiPart("name", requestjsonBody.getString("name"));
+                request.multiPart("dob", requestjsonBody.getString("dob"));
+                request.multiPart("aadhar_number", requestjsonBody.getString("aadhar_number"));
+                request.multiPart("address", requestjsonBody.getString("address"));
+                request.multiPart("role", requestjsonBody.getString("role"));
+                
+                LogUtils.info("Sending POST request to " + baseUri);
+                ExtentReport.getTest().log(Status.INFO, "Sending POST request to create staff member");
+                response=request.when().post(baseUri).then().extract().response();
+                
+                if(response.getStatusCode()==201)
+                {
+                    LogUtils.success(logger, "Staff created successfully with status code 201");
+                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Staff created successfully", ExtentColor.GREEN));
+                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                    LogUtils.info("Staff creation successful. Response: " + response.asPrettyString());
+                    ExtentReport.getTest().log(Status.PASS, "Staff creation successful. Response: " + response.asPrettyString());
+                }
+                else{
+                    LogUtils.failure(logger, "Staff creation failed with status code: " + response.getStatusCode());
+                    LogUtils.error("Response body: " + response.asPrettyString());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Staff creation failed", ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response body: " + response.asPrettyString());
+                }
+               
             }
-        } catch (Exception e) {
-            LogUtils.error("Error during staff creation: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error during staff creation: " + e.getMessage());
-            throw new customException("Error during staff creation: " + e.getMessage());
+        } 
+        catch (Exception e) {
+            LogUtils.error("Error during staff creation test execution: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Test execution failed", ExtentColor.RED));
+            ExtentReport.getTest().log(Status.FAIL, "Error details: " + e.getMessage());
+            throw new customException("Error during staff creation test execution: " + e.getMessage());
         }
     }
 
-    public void verifystaffcreationUsingNegativeData(String apiName, String testCaseid, String testType,
-            String description,
-            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode)
-            throws customException {
-        try {
-            LogUtils.info("Starting staff creation using negative data test: " + description);
-            ExtentReport.getTest().log(Status.INFO, "Starting staff creation using negative data test: " + description);
-            requestBodyJson = new JSONObject(requestBody);
-            if (apiName.equalsIgnoreCase("staffcreate") && testType.equalsIgnoreCase("negative")) {
-                switch (testCaseid) {
-                    case "staff_002":
-                        try {
-                            staffCreateRequest.setUser_id(userId);
-                            staffCreateRequest.setMobile(requestBodyJson.getString("mobile"));
-                            staffCreateRequest.setName(requestBodyJson.getString("name"));
-                            staffCreateRequest.setDob(requestBodyJson.getString("dob"));
-                            staffCreateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
-                            staffCreateRequest.setAddress(requestBodyJson.getString("address"));
-                            staffCreateRequest.setRole(requestBodyJson.getString("role"));
-                            staffCreateRequest.setDevice_token(deviceToken);
-                            staffCreateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
-
-                            response = ResponseUtil.getResponseWithAuth(baseUri, staffCreateRequest, httpsmethod,
-                                    accessToken);
-                            actualResponseBody = new JSONObject(response.body().toString());
-                            expectedResponse = new JSONObject(expectedResponseBody);
-
-                            if (response.getStatusCode() == 200) {
-
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(),
-                                        expectedResponse.get("st").toString(), 200);
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                        expectedResponse.get("msg").toString(), 200);
-                            } else if (response.getStatusCode() == 400) {
-
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(),
-                                        expectedResponse.get("status").toString(), 400);
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                        expectedResponse.get("msg").toString(), 400);
-                            } else if (response.getStatusCode() == 401) {
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(),
-                                        expectedResponse.get("status").toString(), 401);
-                                validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                        expectedResponse.get("msg").toString(), 401);
-                            } else {
-                                LogUtils.error("Error: Getting 500 message code.");
-                            }
-                        } catch (Exception e) {
-                            LogUtils.error(
-                                    "Error occurred during staff creation using invalid input data: " + e.getMessage());
-                            throw new customException(
-                                    "Error occurred during staff creation using invalid input data: " + e.getMessage());
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        } catch (Exception e) {
-            LogUtils.error("Error during staff creation using negative data: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL,
-                    "Error during staff creation using negative data: " + e.getMessage());
-            throw new customException("Error during staff creation using negative data: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Cleanup method to perform post-test cleanup
-     */
+    
     @AfterClass
-    private void tearDown() {
-        LogUtils.info("Performing test cleanup - logging out");
-        // ExtentReport.getTest().log(Status.INFO, "Performing test cleanup - logging
-        // out");
-        TokenManagers.logout();
-        LogUtils.info("Cleanup completed successfully");
-        // ExtentReport.getTest().log(Status.PASS, "Cleanup completed successfully");
+    private void tearDown()
+    {
+        try 
+        {
+            LogUtils.info("===Test environment tear down successfully===");
+           
+            ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Test environment tear down successfully", ExtentColor.GREEN));
+            
+            ActionsMethods.logout();
+            TokenManagers.clearTokens();
+            
+        } 
+        catch (Exception e) 
+        {
+            LogUtils.exception(logger, "Error during test environment tear down", e);
+            ExtentReport.getTest().log(Status.FAIL, "Error during test environment tear down: " + e.getMessage());
+        }
     }
+
+
+
+
 }

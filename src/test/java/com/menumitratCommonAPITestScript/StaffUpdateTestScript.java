@@ -1,11 +1,13 @@
 package com.menumitratCommonAPITestScript;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,8 +15,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.menumitra.apiRequest.staffRequest;
 import com.menumitra.superclass.APIBase;
+import com.menumitra.utilityclass.ActionsMethods;
 import com.menumitra.utilityclass.DataDriven;
 import com.menumitra.utilityclass.EnviromentChanges;
 import com.menumitra.utilityclass.ExtentReport;
@@ -25,7 +30,9 @@ import com.menumitra.utilityclass.TokenManagers;
 import com.menumitra.utilityclass.customException;
 import com.menumitra.utilityclass.validateResponseBody;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 @Listeners(com.menumitra.utilityclass.Listener.class)
 public class StaffUpdateTestScript extends APIBase 
@@ -37,11 +44,18 @@ public class StaffUpdateTestScript extends APIBase
     private JSONObject expectedResponse;
     private String baseUri = null;
     private URL url;
-    private String userId;
+    private int userId;
     private String accessToken;
     private String deviceToken;
-
+    private RequestSpecification request;
+    Logger logger = Logger.getLogger(StaffUpdateTestScript.class);
+    
+    
+    
+    
     /**
+     * 
+     * 
      * Data provider for staff update API endpoint URLs
      */
     @DataProvider(name="getStaffUpdateUrl")
@@ -106,22 +120,24 @@ public class StaffUpdateTestScript extends APIBase
      * Setup method to initialize test environment
      */
     @BeforeClass
-    private void setup() throws customException {
+    private void setup() throws customException 
+    {
         try {
-            LogUtils.info("Setting up test environment for staff update");
+            LogUtils.info("Update Staff SetUp");
+            ExtentReport.createTest("Update Staff Setup");
+            ActionsMethods.login(); 
+            ActionsMethods.verifyOTP();
             
-            TokenManagers.login();
-            TokenManagers.verifyOtp();
             
             baseUri = EnviromentChanges.getBaseUrl();
             LogUtils.info("Base URI set to: " + baseUri);
             //ExtentReport.getTest().log(Status.INFO, "Base URI set to: " + baseUri);
             
-            Object[][] staffUpdateData = getStaffUpdateUrl();
-            if (staffUpdateData.length > 0) 
+            Object[][] staffurl = getStaffUpdateUrl();
+            if (staffurl.length > 0) 
             {
           
-                String endpoint = staffUpdateData[0][2].toString();
+                String endpoint = staffurl[0][2].toString();
                 url = new URL(endpoint);
                 baseUri =baseUri+""+url.getPath()+"?"+url.getQuery();
                 LogUtils.info("Staff Update URL set to: " + baseUri);
@@ -131,15 +147,14 @@ public class StaffUpdateTestScript extends APIBase
             }
             
             accessToken = TokenManagers.getJwtToken();
-            deviceToken = TokenManagers.getDeviceToken();
             userId = TokenManagers.getUserId();
             
-            if (accessToken.isEmpty() || deviceToken.isEmpty()) {
+            if (accessToken.isEmpty()) {
                 LogUtils.error("Required tokens not found");
                 throw new customException("Required tokens not found");
             }
             
-            staffUpdateRequest = new staffRequest();
+           
             LogUtils.info("Staff Update Setup completed successfully");
             
         } catch (Exception e) {
@@ -153,123 +168,90 @@ public class StaffUpdateTestScript extends APIBase
      * Test method to update staff member
      */
     @Test(dataProvider="getStaffUpdateData")
-    private void updateStaff(String apiName, String testCaseid, String testType, String description,
+    private void updateStaffUsingValidInputData(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {
-            LogUtils.info("Executing staff update test case: " + testCaseid + " - " + description);
-            ExtentReport.getTest().log(Status.INFO, "Executing staff update test case: " + testCaseid + " - " + description);
-            
-            if (apiName.contains("staffupdate")) {
-                requestBodyJson = new JSONObject(requestBody);
-                
-                staffUpdateRequest.setUser_id(userId);
-                staffUpdateRequest.setMobile(requestBodyJson.getString("mobile"));
-                staffUpdateRequest.setName(requestBodyJson.getString("name"));
-                staffUpdateRequest.setDob(requestBodyJson.getString("dob"));
-                staffUpdateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
-                staffUpdateRequest.setAddress(requestBodyJson.getString("address"));
-                staffUpdateRequest.setRole(requestBodyJson.getString("role"));
-                staffUpdateRequest.setDevice_token(deviceToken);
-                staffUpdateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+            LogUtils.info("Starting staff update test: " + description);
+            ExtentReport.createTest("Staff Update Using Valid Input Data");
+            ExtentReport.getTest().log(Status.INFO, "Starting staff update test: " + description);
+            ExtentReport.getTest().log(Status.INFO, "Base URI: " + baseUri);
 
-                LogUtils.info("Sending staff update request to API with endpoint: " + baseUri);
-                ExtentReport.getTest().log(Status.INFO, "Sending staff update request to API with endpoint: " + baseUri);
+            if (apiName.equalsIgnoreCase("staffUpdate") && testType.equalsIgnoreCase("positive")) {
+                LogUtils.info("Processing staff update request");
+                requestBodyJson = new JSONObject(requestBody.replace("\\", "\\\\"));
+                expectedResponse = new JSONObject(expectedResponseBody);
+                System.out.println(accessToken);
+                request = RestAssured.given();
+                request.header("Authorization", "Bearer " + accessToken);
+                request.header("Content-Type", "multipart/form-data");
 
-                response = ResponseUtil.getResponseWithAuth(baseUri, staffUpdateRequest, httpsmethod, accessToken);
-                LogUtils.error(String.valueOf(response.getStatusCode()));
-                LogUtils.error(response.body().toString());
-                
-                actualResponseBody = new JSONObject(response.body().toString());
-                expectedResponse=new JSONObject(expectedResponseBody);
+                // Set multipart form data
+                request.multiPart("user_id", userId);
+                request.multiPart("mobile", requestBodyJson.getInt("mobile"));
+                request.multiPart("name", requestBodyJson.getString("name")); 
+                request.multiPart("dob", requestBodyJson.getString("dob"));
+                request.multiPart("aadhar_number", requestBodyJson.getInt("aadhar_number"));
+                request.multiPart("address", requestBodyJson.getString("address"));
+                request.multiPart("role", requestBodyJson.getString("role"));
+                request.multiPart("outlet_id", requestBodyJson.getInt("outlet_id"));
+                request.multiPart("staff_id",requestBodyJson.getInt("staff_id"));
+                if (requestBodyJson.has("photo") && !requestBodyJson.getString("photo").isEmpty())
+                {
+                    File profileImage = new File(requestBodyJson.getString("photo"));
+                    if(profileImage.exists())
+                    {
+                        request.multiPart("photo", profileImage);
+                    }
+                }
+                LogUtils.info("Constructing request body");
+                ExtentReport.getTest().log(Status.INFO, "Constructing request body");
+                LogUtils.info("Sending PUT request to endpoint: " + baseUri);
+                ExtentReport.getTest().log(Status.INFO, "Sending PUT request to update staff");
+                response = request.when().post(baseUri).then().extract().response();
 
-                if (response.getStatusCode() == Integer.parseInt(statusCode)) {
-                    LogUtils.info("Staff update API responded successfully with status code: " + response.getStatusCode());
-                    ExtentReport.getTest().log(Status.PASS, "Staff update API responded successfully with status code: " + response.getStatusCode());
-                    
-                    validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(), 
-                                                         expectedResponse.get("st").toString(), 
-                                                         response.getStatusCode());
-                    validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                                         expectedResponse.get("msg").toString(),
-                                                         response.getStatusCode());
-                    
-                    LogUtils.info("Response body validation passed for test case: " + testCaseid);
-                    ExtentReport.getTest().log(Status.PASS, "Response body validation passed for test case: " + testCaseid);
-                } else {
-                    LogUtils.error("Staff update API failed. Expected status code: " + statusCode + ", but received: " + response.getStatusCode());
-                    ExtentReport.getTest().log(Status.FAIL, "Staff update API failed. Expected status code: " + statusCode + ", but received: " + response.getStatusCode());
-                    throw new customException("Staff update API failed with incorrect status code");
+                LogUtils.info("Received response with status code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Received response with status code: " + response.getStatusCode());
+                LogUtils.info("Response body: " + response.asPrettyString());
+                ExtentReport.getTest().log(Status.INFO, "Response body: " + response.asPrettyString());
+                if (response.getStatusCode() == 200) 
+                {
+                    LogUtils.success(logger, "Staff updated successfully");
+                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Staff updated successfully", ExtentColor.GREEN));
+                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                    LogUtils.info("Response validation completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, "Response validation completed successfully");
+                    ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
+                } 
+                else 
+                {
+                    LogUtils.failure(logger, "Staff update failed with status code: " + response.getStatusCode());
+                    LogUtils.error("Response body: " + response.asPrettyString());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Staff update failed", ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
                 }
             }
+
         } catch (Exception e) {
-            LogUtils.error("Error occurred during staff update test case: " + testCaseid + " - " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error occurred during staff update test case: " + testCaseid + " - " + e.getMessage());
-            throw new customException("Error during staff update: " + e.getMessage());
+            LogUtils.error("Error during staff update test execution: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Test execution failed", ExtentColor.RED));
+            ExtentReport.getTest().log(Status.FAIL, "Error details: " + e.getMessage());
+            throw new customException("Error during staff update test execution: " + e.getMessage());
         }
     }
 
-    /**
-     * Test method for negative scenarios in staff update
-     */
-    //@Test(dataProvider="getStaffUpdateData")
-    public void verifyStaffUpdateUsingNegativeData(String apiName, String testCaseid, String testType, String description,
-            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
-        try {
-            LogUtils.info("Starting staff update negative test: " + description);
-            ExtentReport.getTest().log(Status.INFO, "Starting staff update negative test: " + description);
-            
-            if (apiName.equalsIgnoreCase("staffUpdate") && testType.equalsIgnoreCase("negative")) {
-                requestBodyJson = new JSONObject(requestBody);
-                
-                switch (testCaseid) {
-                    case "staff_update_002":
-                        try {
-                            staffUpdateRequest.setUser_id(userId);
-                            staffUpdateRequest.setMobile(requestBodyJson.getString("mobile"));
-                            staffUpdateRequest.setName(requestBodyJson.getString("name"));
-                            staffUpdateRequest.setDob(requestBodyJson.getString("dob"));
-                            staffUpdateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
-                            staffUpdateRequest.setAddress(requestBodyJson.getString("address"));
-                            staffUpdateRequest.setRole(requestBodyJson.getString("role"));
-                            staffUpdateRequest.setDevice_token(deviceToken);
-                            staffUpdateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
-                            
-                            response = ResponseUtil.getResponseWithAuth(baseUri, staffUpdateRequest, httpsmethod, accessToken);
-                            actualResponseBody = new JSONObject(response.body().toString());
-                            expectedResponse = new JSONObject(expectedResponseBody);
-
-                            validateResponseBody.handleResponseBody(actualResponseBody.get("st").toString(), 
-                                                                 expectedResponse.get("status").toString(),
-                                                                 response.getStatusCode());
-                            validateResponseBody.handleResponseBody(actualResponseBody.get("msg").toString(),
-                                                                 expectedResponse.get("msg").toString(),
-                                                                 response.getStatusCode());
-                        } catch (Exception e) {
-                            LogUtils.error("Error during negative staff update test: " + e.getMessage());
-                            throw new customException("Error during negative staff update test: " + e.getMessage());
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        } catch (Exception e) {
-            LogUtils.error("Error during staff update negative test: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error during staff update negative test: " + e.getMessage());
-            throw new customException("Error during staff update negative test: " + e.getMessage());
-        }
-    }
+   
 
     /**
      * Cleanup method to perform post-test cleanup
+     * @throws customException 
      */
     @AfterClass
-    private void tearDown() 
+    private void tearDown() throws customException 
     {
     	
-        LogUtils.info("Performing test cleanup");
-        TokenManagers.logout();
-        LogUtils.info("Cleanup completed successfully");
+       /*LogUtils.info("Performing tear down");
+       ExtentReport.getTest().log(Status.INFO, "Performing tear down");
+       ActionsMethods.logout();
+       TokenManagers.clearTokens();*/
     }
 }
