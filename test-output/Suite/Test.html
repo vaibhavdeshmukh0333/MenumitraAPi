@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>23/12/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 23 16:55:16 IST 2025</td>
+<td>Started on:</td><td>Fri May 02 16:19:10 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>6 seconds (6175 ms)</td>
+<tr><td>Total time:</td><td>83 seconds (83507 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,17 +75,22 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyloginUsingValidInputData()'><b>verifyloginUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_001, positive, Valid login, post, {   
- "mobile":"8965432111"
-}, {
-    "st": 2,
-    "msg": "This Mobile Number is not registered in this App."
+<td title='com.menumitratCommonAPITestScript.StaffCreateTestScript.createStaff()'><b>createStaff</b><br>Test class: com.menumitratCommonAPITestScript.StaffCreateTestScript<br>Parameters: staffcreate, staffcreate_001, positive, Valid staff creation with all correct fields, post, {
+   "user_id":2,
+    "name":"RAJU", "mobile":"9767687698",
+    "dob":"06 Dec 2014",
+    "address":"Katraj Pune",
+    "role":"cleaner",
+    "aadhar_number": "523456789091",
+    "outlet_id":"1",                                                                                                                                                                                                                                                                                                                                                                          "image": "C:\Users\hp\Downloads\menus\medu vada.jpg"
+} , {
+    "staff_id": 9
 }, 200</td>
-<td><div><pre>com.menumitra.utilityclass.customException: An error occurred during login verification
-	at com.menumitratCommonAPITestScript.loginTestScript.verifyloginUsingValidInputData(loginTestScript.java:175)
-... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1380361139", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1380361139'><pre>com.menumitra.utilityclass.customException: An error occurred during login verification
-	at com.menumitratCommonAPITestScript.loginTestScript.verifyloginUsingValidInputData(loginTestScript.java:175)
+<td><div><pre>com.menumitra.utilityclass.customException: Error during staff creation test execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{staff_id=9}] but found [{staff_id=12}]
+	at com.menumitratCommonAPITestScript.StaffCreateTestScript.createStaff(StaffCreateTestScript.java:291)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1940783703", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1940783703'><pre>com.menumitra.utilityclass.customException: Error during staff creation test execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{staff_id=9}] but found [{staff_id=12}]
+	at com.menumitratCommonAPITestScript.StaffCreateTestScript.createStaff(StaffCreateTestScript.java:291)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -111,8 +116,445 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
 </pre></div></td>
-<td>3</td>
-<td>com.menumitratCommonAPITestScript.loginTestScript@50f8360d</td></tr>
+<td>2</td>
+<td>com.menumitratCommonAPITestScript.StaffCreateTestScript@598067a5</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData()'><b>resendOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_002, negative, Missing mobile field, post, {"mobile":""}, {
+    "msg": {
+        "mobile": "Please provide mobile"
+    }
+}, 400</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error in negative test case resendotp_002: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{msg={mobile=Please provide mobile}}] but found [{detail=Please provide mobile number}]
+	at com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData(ResendOTPTestScript.java:298)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace185587524", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace185587524'><pre>com.menumitra.utilityclass.customException: Error in negative test case resendotp_002: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{msg={mobile=Please provide mobile}}] but found [{detail=Please provide mobile number}]
+	at com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData(ResendOTPTestScript.java:298)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.StaffDeleteTestScript.testStaffDelete()'><b>testStaffDelete</b><br>Test class: com.menumitratCommonAPITestScript.StaffDeleteTestScript<br>Parameters: staffdelete, staffdelete_001, positive, verify staff delete, post, {
+    "user_id":2,
+    "outlet_id":1,
+    "staff_id":9
+}, {
+    "detail": "Staff deleted successfully"
+}, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error during staff deletion test execution: Status code mismatch - Expected: 200, Actual: 404
+	at com.menumitratCommonAPITestScript.StaffDeleteTestScript.testStaffDelete(StaffDeleteTestScript.java:206)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1764622989", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1764622989'><pre>com.menumitra.utilityclass.customException: Error during staff deletion test execution: Status code mismatch - Expected: 200, Actual: 404
+	at com.menumitratCommonAPITestScript.StaffDeleteTestScript.testStaffDelete(StaffDeleteTestScript.java:206)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.StaffDeleteTestScript@239963d8</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_006, negative, Invalid login using  Not register number, post, {   
+ "mobile":"9745635634"
+}, {
+ 
+    "details": " This Mobile Number is not resistered"
+}, 400</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Negative test case login_006 failed: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{details= This Mobile Number is not resistered}] but found [{detail=404: This mobile number is not registered with us. Please register first.}]
+	at com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData(loginTestScript.java:326)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1880484847", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1880484847'><pre>com.menumitra.utilityclass.customException: Negative test case login_006 failed: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{details= This Mobile Number is not resistered}] but found [{detail=404: This mobile number is not registered with us. Please register first.}]
+	at com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData(loginTestScript.java:326)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPAPiUsingValidInputData()'><b>verifyOTPAPiUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.verifyOTPTestScript<br>Parameters: verifyotp, verifyotp_001, positive, Verify OTP with valid data, post, { "mobile": "6264335759", "otp": "1234", "fcm_token": "4578963547892", "device_id": "8974561234", "device_model": "Laptop 122" }, {
+    "user_id": 2,
+    "name": "Heena",
+    "role": "owner",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzQ2NTMxOTEyLCJpYXQiOjE3NDU5MjcxMTIsImp0aSI6Ijc5NzRmYzkwLTY1MDAtNGQ2OS1iMWRmLWQwNmIzOWFiNGZiZSIsInJvbGUiOiJvd25lciIsImRldmljZSI6Ijg5NzQ1NjEyMzR8TGFwdG9wIDEyMiJ9.bQ2RYiEhNDHHW6ZAx3CqKkLu3QVdAyIm6Qz49eE9BCA",
+    "expires_at": "06 May 2025"
+}, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error during Verify OTP API execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzQ2NzIxMjMyLCJpYXQiOjE3NDYxMTY0MzIsImp0aSI6ImQ2MTUyNDFlLTM2NzctNGZhNy1iMGViLTRjZmNkMDhiMDFkMCIsInJvbGUiOiJvd25lciIsImRldmljZSI6Ijg5NzQ1NjEyMzR8TGFwdG9wIDEyMiJ9.5aKbOMW4pRS7RnuC5k3h89e9IPqWy2POCBiZTjRpmp0, role=owner, expires_at=06 May 2025, user_id=2, name=Heena}] but found [{access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzQ2NzIxMjMyLCJpYXQiOjE3NDYxMTY0MzIsImp0aSI6ImQ2MTUyNDFlLTM2NzctNGZhNy1iMGViLTRjZmNkMDhiMDFkMCIsInJvbGUiOiJvd25lciIsImRldmljZSI6Ijg5NzQ1NjEyMzR8TGFwdG9wIDEyMiJ9.5aKbOMW4pRS7RnuC5k3h89e9IPqWy2POCBiZTjRpmp0, role=owner, expires_at=08 May 2025, user_id=2, name=Heena}]
+	at com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPAPiUsingValidInputData(verifyOTPTestScript.java:243)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1466148437", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1466148437'><pre>com.menumitra.utilityclass.customException: Error during Verify OTP API execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzQ2NzIxMjMyLCJpYXQiOjE3NDYxMTY0MzIsImp0aSI6ImQ2MTUyNDFlLTM2NzctNGZhNy1iMGViLTRjZmNkMDhiMDFkMCIsInJvbGUiOiJvd25lciIsImRldmljZSI6Ijg5NzQ1NjEyMzR8TGFwdG9wIDEyMiJ9.5aKbOMW4pRS7RnuC5k3h89e9IPqWy2POCBiZTjRpmp0, role=owner, expires_at=06 May 2025, user_id=2, name=Heena}] but found [{access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzQ2NzIxMjMyLCJpYXQiOjE3NDYxMTY0MzIsImp0aSI6ImQ2MTUyNDFlLTM2NzctNGZhNy1iMGViLTRjZmNkMDhiMDFkMCIsInJvbGUiOiJvd25lciIsImRldmljZSI6Ijg5NzQ1NjEyMzR8TGFwdG9wIDEyMiJ9.5aKbOMW4pRS7RnuC5k3h89e9IPqWy2POCBiZTjRpmp0, role=owner, expires_at=08 May 2025, user_id=2, name=Heena}]
+	at com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPAPiUsingValidInputData(verifyOTPTestScript.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>1</td>
+<td>com.menumitratCommonAPITestScript.verifyOTPTestScript@42dafa95</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.verifyRessendOTPUSingPositiveInputData()'><b>verifyRessendOTPUSingPositiveInputData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_001, positive, Valid mobile, post, {"mobile":"6264335759"}, {"role":"owner"}, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error verifying resend OTP using positive input data: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{role=owner}] but found [{msg=Your OTP is sent successfully., st=1, role=owner}]
+	at com.menumitratCommonAPITestScript.ResendOTPTestScript.verifyRessendOTPUSingPositiveInputData(ResendOTPTestScript.java:223)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2107105388", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2107105388'><pre>com.menumitra.utilityclass.customException: Error verifying resend OTP using positive input data: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{role=owner}] but found [{msg=Your OTP is sent successfully., st=1, role=owner}]
+	at com.menumitratCommonAPITestScript.ResendOTPTestScript.verifyRessendOTPUSingPositiveInputData(ResendOTPTestScript.java:223)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingInvalidData()'><b>verifySectionDeleteUsingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.SectionDeleteTestScript<br>Parameters: sectiondelete, sectiondelete_002, negative, Invalid section_id, post, { "user_id": 2, "outlet_id": 1, "section_id": 9999 }, {
+    "detail": "Section does not exist"
+}, 400</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error during section delete negative test
+	at com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingInvalidData(SectionDeleteTestScript.java:243)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace672493939", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace672493939'><pre>com.menumitra.utilityclass.customException: Error during section delete negative test
+	at com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingInvalidData(SectionDeleteTestScript.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.SectionDeleteTestScript@553f17c</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingValidInputData()'><b>verifySectionDeleteUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.SectionDeleteTestScript<br>Parameters: sectiondelete, sectiondelete_001, positive, Valid user_id, outlet_id, and section_id, post, { "user_id": 2, "outlet_id": 1, "section_id": 17 }, {
+    "message": "Outlet Section and associated tables deleted successfully"
+}, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error during section delete verification
+	at com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingValidInputData(SectionDeleteTestScript.java:208)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1756064432", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1756064432'><pre>com.menumitra.utilityclass.customException: Error during section delete verification
+	at com.menumitratCommonAPITestScript.SectionDeleteTestScript.verifySectionDeleteUsingValidInputData(SectionDeleteTestScript.java:208)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.SectionDeleteTestScript@553f17c</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.sectionListViewTestScript.verifySectionListViewUsingValidInputData()'><b>verifySectionListViewUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.sectionListViewTestScript<br>Parameters: sectionlistview, section_001, positive, Valid request with correct outlet_id, post, { "outlet_id": "1" }, {
+    "data": [
+        {
+            "section_id": 16,
+            "section_name": "Family",
+            "table_count": 5,
+            "occupied_table_count": 0,
+            "remaining_table_count": 5
+        },
+        {
+            "section_id": 17,
+            "section_name": "Front-Top",
+            "table_count": 5,
+            "occupied_table_count": 0,
+            "remaining_table_count": 5
+        },
+        {
+            "section_id": 18,
+            "section_name": "Front-Top",
+            "table_count": 5,
+            "occupied_table_count": 0,
+            "remaining_table_count": 5
+        },
+        {
+            "section_id": 19,
+            "section_name": "Front-Top",
+            "table_count": 5,
+            "occupied_table_count": 0,
+            "remaining_table_count": 5
+        },
+        {
+            "section_id": 20,
+            "section_name": "Front-Top",
+            "table_count": 5,
+            "occupied_table_count": 0,
+            "remaining_table_count": 5
+        }
+    ]
+}, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: An error occurred during section list view verification
+	at com.menumitratCommonAPITestScript.sectionListViewTestScript.verifySectionListViewUsingValidInputData(sectionListViewTestScript.java:249)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace224473864", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace224473864'><pre>com.menumitra.utilityclass.customException: An error occurred during section list view verification
+	at com.menumitratCommonAPITestScript.sectionListViewTestScript.verifySectionListViewUsingValidInputData(sectionListViewTestScript.java:249)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.sectionListViewTestScript@31ef45e3</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.sectionCreateTestScript.verifySectionUsingValidInputData()'><b>verifySectionUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.sectionCreateTestScript<br>Parameters: sectioncreate, section_001, positive, Valid section create, post, { "outlet_id": 1, "user_id": 2, "section_name": "Front-Top" }, { "message": "Outlet Section and 5 tables created successfully" }, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error during section creation test execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{message=Outlet Section and 5 tables created successfully}] but found [{detail=Outlet Section and 5 tables created successfully}]
+	at com.menumitratCommonAPITestScript.sectionCreateTestScript.verifySectionUsingValidInputData(sectionCreateTestScript.java:254)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1590099678", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1590099678'><pre>com.menumitra.utilityclass.customException: Error during section creation test execution: Error validating response: success response validate failed: Acutal response does not matched expected response expected [{message=Outlet Section and 5 tables created successfully}] but found [{detail=Outlet Section and 5 tables created successfully}]
+	at com.menumitratCommonAPITestScript.sectionCreateTestScript.verifySectionUsingValidInputData(sectionCreateTestScript.java:254)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>2</td>
+<td>com.menumitratCommonAPITestScript.sectionCreateTestScript@271053e1</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingInvalidData()'><b>verifySectionViewUsingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.SectionViewTestScript<br>Parameters: sectionview, sectionview_002, negative, Invalid outlet_id, post, { "outlet_id": "9999", "section_id": "16" }, { "st": 0, "msg": "Outlet not found" } (example; may vary), 400 / 404</td>
+<td><div><pre>com.menumitra.utilityclass.customException: Error in negative test case sectionview_002: In section view API using negative input test case expected status code 200 but got 400
+	at com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingInvalidData(SectionViewTestScript.java:289)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2000267972", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2000267972'><pre>com.menumitra.utilityclass.customException: Error in negative test case sectionview_002: In section view API using negative input test case expected status code 200 but got 400
+	at com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingInvalidData(SectionViewTestScript.java:289)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.SectionViewTestScript@589838eb</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingValidInputData()'><b>verifySectionViewUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.SectionViewTestScript<br>Parameters: sectionview, sectionview_001, positive, Valid outlet_id and section_id, post, { "outlet_id": "1", "section_id": "16" }, { "data": { "section_id": 16, "section_name": "Family", "outlet_id": 1 } }, 200</td>
+<td><div><pre>com.menumitra.utilityclass.customException: An error occurred during section view verification
+	at com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingValidInputData(SectionViewTestScript.java:240)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1752402342", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1752402342'><pre>com.menumitra.utilityclass.customException: An error occurred during section view verification
+	at com.menumitratCommonAPITestScript.SectionViewTestScript.verifySectionViewUsingValidInputData(SectionViewTestScript.java:240)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+</pre></div></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.SectionViewTestScript@589838eb</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -122,147 +564,237 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.StaffCreateTestScript.createStaff()'><b>createStaff</b><br>Test class: com.menumitratCommonAPITestScript.StaffCreateTestScript<br>Parameters: staffcreate, staff_001, positive, Valid staff creation with all correct fields, post, { "user_id": 648, "name": "XYZ", "mobile": "9833445566", "dob": "06 Dec 2014", "address": "Katraj Pune", "role": "cleaner", "aadhar_number": "523456789091", "outlet_id": 101, "device_token": "token123" }, { "st": 1, "msg": "success" }, 200</td>
-<td></td>
-<td>0</td>
-<td>com.menumitratCommonAPITestScript.StaffCreateTestScript@12843fce</td></tr>
-<tr>
-<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.getOwnerUrl()'><b>getOwnerUrl</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyotp, post, https://menusmitra.xyz/owner_api/verify_otp, {
-    "mobile":"9999999991",
-    "otp":"1234",
-    "fcm_token":"8998998998",
-    "device_id":"h0ol74eq6rom9i826wa",
-    "device_model":"samsung"
+<td title='com.menumitratCommonAPITestScript.MenuCreateTestScript.createMenuUsigValidInputData()'><b>createMenuUsigValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.MenuCreateTestScript<br>Parameters: menucreate, menu_001, positive, Menu create with valid data, post, {
+    "outlet_id":"1",
+    "menu_cat_id":"3",
+    "user_id":"11",
+    "name":"Chicken biryani",
+    "food_type":"nonveg",
+    "description":"this healthy food",
+    "spicy_index":"2",
+    "portion_data":[{"portion_name":"Half","price":100,"unit":"250g"},{"portion_name":"Full","price":180,"unit":"500g"}],
+    "images":"C:\Users\hp\Downloads\menus\dal1.jpg",
+    "ingredients":"dal,vegetables",
+    "offer":"40 ",
+    "rating":"5.0",
+    "cgst":"5",
+    "sgst":"10"
 }, {
-    "st": 1,
-    "msg": "Success",
-    "owner_data": {
-        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgxNzM3MiwiaWF0IjoxNzQ1MjEyNTcyLCJqdGkiOiJmZTYwZGMyZDM0YzY0NDg0YTk0NGNhMzFkNDhiYjcxYiIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoicktDcXFDc25SVnFZRGJBSUNzSmFQZG5rWllpOGFlYU4xajUuSkwwTGduVXhFMjh2aGZkdVE0R1cyYjlTejB4WmY3OUpoTko5aWxEQ0ZWNG0ubEJ1SFhZZHlKZm80Mkk0by5ZayJ9.iQ_cxaj_X12Pi0hiR6ObnUl0dNhrd5mwr2Qq-Ohjj-4",
-        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODE3MzcyLCJpYXQiOjE3NDUyMTI1NzIsImp0aSI6IjZmOThkZmQzZmIzYTRhZThiYWE3NmNlNDc1MzIzMDRiIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJyS0NxcUNzblJWcVlEYkFJQ3NKYVBkbmtaWWk4YWVhTjFqNS5KTDBMZ25VeEUyOHZoZmR1UTRHVzJiOVN6MHhaZjc5SmhOSjlpbERDRlY0bS5sQnVIWFlkeUpmbzQySTRvLllrIn0.ZRhDl68saGfg-xdHtpNI_a6zkX9ZJ4OhoPXhe496NOA",
-        "device_token": "rKCqqCsnRVqYDbAICsJaPdnkZYi8aeaN1j5.JL0LgnUxE28vhfduQ4GW2b9Sz0xZf79JhNJ9ilDCFV4m.lBuHXYdyJfo42I4o.Yk",
-        "owner_name": "Santosh",
-        "user_id": 518,
-        "role": "owner",
-        "outlet_name": "Deshmukh Wada",
-        "outlet_id": 84,
-        "mobile": "9677777777",
-        "address": "Pune Satara Road Pune",
-        "outlet_status": true,
-        "order_number_sequence": "since_opening",
-        "is_open": true,
-        "gst": "4",
-        "service_charges": "2",
-        "upi_id": "9527279639@ybl",
-        "completed_orders": 0,
-        "active_orders": 0,
-        "today_total_revenue": null
-    },
-    "settings": {
-        "theme": "system",
-        "style": "blue",
-        "has_dine_in": true,
-        "has_parcel": false,
-        "has_counter": false,
-        "has_delivery": false,
-        "has_drive_through": true,
-        "print_and_save": true,
-        "KOT_and_save": true,
-        "settle": true,
-        "reserve_table": true,
-        "cancel": true,
-        "POS_show_menu_image": true
+    "message": "Menu created successfully",
+    "data": {
+        "menu_id": 4
     }
 }, 200</td>
 <td></td>
-<td>0</td>
-<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab</td></tr>
+<td>17</td>
+<td>com.menumitratCommonAPITestScript.MenuCreateTestScript@13deb50e</td></tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.getResendOTPURL()'><b>getResendOTPURL</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendOTP, post, https://men4u.xyz/common_api/resend_otp, {
-    "mobile":"9999999991",
-    "role":"owner"
-    
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData()'><b>resendOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_003, negative, Invalid mobile format, post, {"mobile":"abc123"}, {
+    "detail": "Mobile number must contain only digits"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData()'><b>resendOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_004, negative, Mobile less than 10 digits, post, {"mobile":"12345"}, {
+    "detail": "Mobile number must be exactly 10 digits long"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData()'><b>resendOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_005, negative, Mobile with special chars, post, {"mobile":"98765@#123"}, {
+    "detail": "Mobile number must contain only digits"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.resendOTPusingInvalidData()'><b>resendOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_006, negative, verify 1 to 5 first digit, post, {   
+ "mobile":"1264335759"
 }, {
-    "st": 1,
-    "msg": "OTP resent successfully",
-    "role": "owner"
+    "detail": "Mobile number must start with digits 6, 7, 8, or 9"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@14bf9759</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.StaffUpdateTestScript.updateStaffUsingValidInputData()'><b>updateStaffUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.StaffUpdateTestScript<br>Parameters: staffupdate, staffupdate_001, positive, verify update staff using valid input, post, {
+         "user_id":2,
+         "staff_id": 1,
+        "outlet_id": 1,
+        "name": "stafff one",
+        "mobile": 7918232897,
+        "address": "dfddd",
+        "role": "receptionist",
+        "dob": "2 Jul 2003",
+        "aadhar_number": 321291198274,
+        "photo": "C:\Users\hp\Downloads\menus\coca.jpg"
+}             , {
+    "detail": "Staff updated successfully"
 }, 200</td>
 <td></td>
 <td>0</td>
-<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b</td></tr>
+<td>com.menumitratCommonAPITestScript.StaffUpdateTestScript@6500df86</td></tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.loginTestScript.getUrl()'><b>getUrl</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, post, https://menusmitra.xyz/common_api/user_login, {   
- "mobile":"8484848484"
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_002, negative, Invalid login using empty test data, post, {   
+ "mobile":""
+}, {
+    "detail": "Please provide mobile number"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_003, negative, Invalid login using less than ten digit test data, post, {   
+ "mobile":"626433575"
+}, {
+    "detail": "Mobile number must be exactly 10 digits long"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_004, negative, Invalid login using special character, post, {   
+ "mobile":"626433@ 59"
+}, {
+    "detail": "Mobile number must contain only digits"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_005, negative, Invalid login using  character, post, {   
+ "mobile":"6264Af35759"
+}, {
+    "detail": "Mobile number must contain only digits"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_007, negative, Invalid login using  combination of all character and special character, post, {   
+ "mobile":"Adbt@#4Gh7"
+}, {
+    "detail": "Mobile number must contain only digits"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyLoginUsingInvalidInputData()'><b>verifyLoginUsingInvalidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_008, negative, verify 1 to 5 first digit, post, {   
+ "mobile":"1264335759"
+}, {
+    "detail": "Mobile number must start with digits 6, 7, 8, or 9"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPusingInvalidData()'><b>verifyOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.verifyOTPTestScript<br>Parameters: verifyotp, verifyotp_002, negative, Invalid OTP, post, { "mobile": "6264335759", "otp": "9999", "fcm_token": "4578963547892", "device_id": "8974561234", "device_model": "Laptop 122" }, {"detail":"Invalid OTP"}, 401</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.verifyOTPTestScript@42dafa95</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPusingInvalidData()'><b>verifyOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.verifyOTPTestScript<br>Parameters: verifyotp, verifyotp_003, negative, Missing mobile number, post, {"mobile":"", "otp": "1234", "fcm_token": "4578963547892", "device_id": "8974561234", "device_model": "Laptop 122" }, {
+    "detail": "Please provide mobile number"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.verifyOTPTestScript@42dafa95</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPusingInvalidData()'><b>verifyOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.verifyOTPTestScript<br>Parameters: verifyotp, verifyotp_004, negative, Invalid mobile number format, post, { "mobile": "123", "otp": "1234", "fcm_token": "4578963547892", "device_id": "8974561234", "device_model": "Laptop 122" }, {
+    "detail": "Mobile number must be exactly 10 digits long"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.verifyOTPTestScript@42dafa95</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.verifyOTPTestScript.verifyOTPusingInvalidData()'><b>verifyOTPusingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.verifyOTPTestScript<br>Parameters: verifyotp, verifyotp_005, negative, Missing OTP, post, { "mobile": "6264335759","otp": "", "fcm_token": "4578963547892", "device_id": "8974561234", "device_model": "Laptop 122" }, {
+    "detail": "OTP is required"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.verifyOTPTestScript@42dafa95</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.sectionUpdateTestScript.verifySectionCreateUsingInvalidData()'><b>verifySectionCreateUsingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.sectionUpdateTestScript<br>Parameters: sectionupdate, sectionupd_002, negative, Empty section_name value, post, { "user_id": 2, "section_id": 17, "outlet_id": 1, "section_name": "" }, {
+    "detail": "Please provide section_name"
+}, 400</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.sectionUpdateTestScript@3c0ecd4b</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.sectionListViewTestScript.verifySectionListViewUsingInvalidData()'><b>verifySectionListViewUsingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.sectionListViewTestScript<br>Parameters: sectionlistview, section_002, negative, Valid format but non-existent outlet_id, post, {
+    "outlet_id":"999"
+}, {
+    "detail": "The outlet ID provided does not exist in our system. Please check and try again with a valid outlet ID"
+}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.sectionListViewTestScript@31ef45e3</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.sectionUpdateTestScript.verifySectionUpdateUsingValidInputData()'><b>verifySectionUpdateUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.sectionUpdateTestScript<br>Parameters: sectionupdate, sectionupd_001, positive, Valid section update, post, {  
+    "user_id":2,
+    "section_id":17,
+    "outlet_id": 1,
+    "section_name": "Roof Top"
+}, {"detail":"Outlet Section updated successfully"}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.sectionUpdateTestScript@3c0ecd4b</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.staffListViewTestScript.verifyStaffListViewUsingPositiveData()'><b>verifyStaffListViewUsingPositiveData</b><br>Test class: com.menumitratCommonAPITestScript.staffListViewTestScript<br>Parameters: stafflistview, stafflistview_001, positive, verify staff list view using valid input, post, {
+    "outlet_id":1
+}, null, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.staffListViewTestScript@3abbfa04</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.StaffViewTestScript.verifyStaffView()'><b>verifyStaffView</b><br>Test class: com.menumitratCommonAPITestScript.StaffViewTestScript<br>Parameters: staffview, staffview_001, positive, verify staff view using valid data, post, {
+    "staff_id": 1,
+    "outlet_id": 1
+}, null, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.StaffViewTestScript@57fffcd7</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.TableListTestScript.verifyTableListView()'><b>verifyTableListView</b><br>Test class: com.menumitratCommonAPITestScript.TableListTestScript<br>Parameters: tablelistview, tablelistview_001, positive, verify table list view, post, {  
+    
+    "outlet_id": 1,
+    "section_id": "17"
+}, {
+    "data": [
+        {
+            "table_number": 76
+        },
+        {
+            "table_number": 77
+        },
+        {
+            "table_number": 78
+        },
+        {
+            "table_number": 79
+        },
+        {
+            "table_number": 80
+        }
+    ]
+}, 200</td>
+<td></td>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.TableListTestScript@5f341870</td></tr>
+<tr>
+<td title='com.menumitratCommonAPITestScript.loginTestScript.verifyloginUsingValidInputData()'><b>verifyloginUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.loginTestScript<br>Parameters: login, login_001, positive, Valid login, post, {   
+ "mobile":"6264335759"
 }, {
     "st": 1,
     "msg": "Your OTP is sent successfully.",
     "role": "owner"
 }, 200</td>
 <td></td>
-<td>0</td>
-<td>com.menumitratCommonAPITestScript.loginTestScript@50f8360d</td></tr>
-<tr>
-<td title='com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript.verifyOTPAPiUsingValidInputData()'><b>verifyOTPAPiUsingValidInputData</b><br>Test class: com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript<br>Parameters: ownerVerifyOTP, OwnerVerifyOTP_001, positive, valild verify OTP, post, {
-    "mobile":"9999999991",
-    "otp":"1234",
-    "fcm_token":"8998998998",
-    "device_id":"h0ol74eq6rom9i826wa",
-    "device_model":"samsung"
-}, {
-    "st": 1,
-    "msg": "Success",
-    "owner_data": {
-        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NTgyMjEyNiwiaWF0IjoxNzQ1MjE3MzI2LCJqdGkiOiJhZjY2OTNiYzI1ZDY0ZjIyOGY4MDMwYjdhN2RmZmE0OCIsInVzZXJfaWQiOjUxOCwiZGV2aWNlX3Rva2VuIjoiTW1tS20zdEszZ2xhWTRhNXZMSThsM1czWTUzLjBiazJ2TVl6WlRDU25xN0dHUml1dmM2SVF4cWhVVGVWODRXMkhuMUdqM3pra0VMZHhBeDFQMHBlVlRPdVhiV3JkUGxibTlRNyJ9.wofSFAthCt_AVCaxeTaufm0jkir3KIvJecXVh0lmazE",
-        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1ODIyMTI2LCJpYXQiOjE3NDUyMTczMjYsImp0aSI6ImZlN2YyMWY4NWNlZDQxNDg4MGM5NzJlNmVjODAwZDVhIiwidXNlcl9pZCI6NTE4LCJkZXZpY2VfdG9rZW4iOiJNbW1LbTN0SzNnbGFZNGE1dkxJOGwzVzNZNTMuMGJrMnZNWXpaVENTbnE3R0dSaXV2YzZJUXhxaFVUZVY4NFcySG4xR2ozemtrRUxkeEF4MVAwcGVWVE91WGJXcmRQbGJtOVE3In0.mS5cBmhZRYqeICdIAQM3Yo46zWSgFm1ybMwGAwDaCkk",
-        "device_token": "MmmKm3tK3glaY4a5vLI8l3W3Y53.0bk2vMYzZTCSnq7GGRiuvc6IQxqhUTeV84W2Hn1Gj3zkkELdxAx1P0peVTOuXbWrdPlbm9Q7",
-        "owner_name": "Santosh",
-        "user_id": 518,
-        "role": "owner",
-        "outlet_name": "Deshmukh Wada",
-        "outlet_id": 84,
-        "mobile": "9677777777",
-        "address": "Pune Satara Road Pune",
-        "outlet_status": true,
-        "order_number_sequence": "since_opening",
-        "is_open": true,
-        "gst": "4",
-        "service_charges": "2",
-        "upi_id": "9527279639@ybl",
-        "completed_orders": 0,
-        "active_orders": 0,
-        "today_total_revenue": null
-    },
-    "settings": {
-        "theme": "system",
-        "style": "blue",
-        "has_dine_in": true,
-        "has_parcel": false,
-        "has_counter": false,
-        "has_delivery": false,
-        "has_drive_through": true,
-        "print_and_save": true,
-        "KOT_and_save": true,
-        "settle": true,
-        "reserve_table": true,
-        "cancel": true,
-        "POS_show_menu_image": true
-    }
-}, 200</td>
-<td></td>
-<td>0</td>
-<td>com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript@2cb4c3ab</td></tr>
-<tr>
-<td title='com.menumitratCommonAPITestScript.ResendOTPTestScript.verifyRessendOTPUSingPositiveInputData()'><b>verifyRessendOTPUSingPositiveInputData</b><br>Test class: com.menumitratCommonAPITestScript.ResendOTPTestScript<br>Parameters: resendotp, resendotp_001, positive, Valid login, post, {
-    "mobile":"9999999991",
-    "role":"owner"
-    
-}, {
-    "st": 1,
-    "msg": "OTP resent successfully",
-    "role": "owner"
-}, 200</td>
-<td></td>
-<td>0</td>
-<td>com.menumitratCommonAPITestScript.ResendOTPTestScript@13c78c0b</td></tr>
+<td>1</td>
+<td>com.menumitratCommonAPITestScript.loginTestScript@4f7d0008</td></tr>
 </table><p>
 </body>
 </html>

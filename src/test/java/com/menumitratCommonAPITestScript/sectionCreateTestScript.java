@@ -255,66 +255,6 @@ public class sectionCreateTestScript extends APIBase
         }
     }
 
-/**
- * Test method for negative scenarios
- */
-@Test(dataProvider = "getverifyOTPInvalidData", priority = 2)
-private void verifySectionCreateUsingInvalidData(String apiName, String testCaseId, 
-    String testType, String description, String httpsMethod, 
-    String requestBody, String expectedResponseBody, String statusCode) throws customException 
-    {
-    
-    try {
-        LogUtils.info("Starting section creation negative test case: " + testCaseId);
-        LogUtils.info("Test Description: " + description);
-        ExtentReport.createTest("Section Creation Negative Test - " + testCaseId);
-        ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
-        ExtentReport.getTest().log(Status.INFO, "Base URI: " + baseUri);
-
-        if (apiName.contains("sectioncreate") && testType.contains("negative")) 
-        {
-            LogUtils.info("Processing negative test case for section creation");
-            requestBodyJson = new JSONObject(requestBody);
-            expectedJsonBody = new JSONObject(expectedResponseBody);
-            
-            LogUtils.info("Setting up request parameters");
-            sectionrequest = new sectionRequest();
-            sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.getInt("outlet_id")));
-            sectionrequest.setUser_id(userId);
-            sectionrequest.setSection_name(requestBodyJson.getString("section_name"));
-            
-            LogUtils.info("Sending POST request for negative test case");
-            response = ResponseUtil.getResponseWithAuth(baseUri, sectionrequest, httpsMethod, accessToken);
-            LogUtils.info("Received response with status code: " + response.getStatusCode());
-            LogUtils.info("Response body: " + response.asPrettyString());
-            ExtentReport.getTest().log(Status.INFO, "Response received from section create API");
-           
-            switch (testCaseId)
-             {
-                case "sectioncreate_002": 
-                        validateResponseBody.handleResponseBody(response, expectedJsonBody);
-                        LogUtils.success(logger,"Negative test case validated successfully");
-                        ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Negative test case validated successfully", ExtentColor.GREEN));
-                        ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
-                    break;
-                    
-                default:
-                    validateResponseBody.handleResponseBody(response, expectedJsonBody);
-                    LogUtils.success(logger,"Default negative test case validated successfully");
-                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Default negative test case validated successfully", ExtentColor.GREEN));
-                    ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
-            }
-            
-            LogUtils.success(logger, "Successfully completed negative test case: " + testCaseId);
-            ExtentReport.getTest().log(Status.PASS, "Successfully completed negative test case: " + testCaseId);
-        }
-    } catch (Exception e) {
-        LogUtils.error("Error during negative test execution: " + e.getMessage());
-        ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Test execution failed", ExtentColor.RED));
-        ExtentReport.getTest().log(Status.FAIL, "Error details: " + e.getMessage());
-        throw new customException("Error in negative test case " + testCaseId + ": " + e.getMessage());
-    }
-}
 
 
 @AfterClass

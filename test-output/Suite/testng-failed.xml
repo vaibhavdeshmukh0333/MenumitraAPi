@@ -4,37 +4,126 @@
   <test name="Test">
     <classes>
       <class name="com.menumitra.superclass.APIBase"/>
-      <class name="com.menumitratCommonAPITestScript.loginTestScript"/>
-      <class name="com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript"/>
-      <class name="com.menumitratCommonAPITestScript.ResendOTPTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.MenuCreateTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.StaffDeleteTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.staffListViewTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.StaffViewTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.sectionListViewTestScript"/>
       <class name="com.menumitratCommonAPITestScript.StaffCreateTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.sectionUpdateTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.ResendOTPTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.TableListTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.SectionDeleteTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.loginTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.sectionCreateTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.SectionViewTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.verifyOTPTestScript"/>
+      <class name="com.menumitratCommonAPITestScript.StaffUpdateTestScript"/>
     </classes>
   </test> <!-- Test -->
   <test name="Test(failed)">
     <classes>
-      <class name="com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript">
+      <class name="com.menumitratCommonAPITestScript.StaffUpdateTestScript">
         <methods>
+          <include name="tearDown"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- com.menumitraOwnerAPITestScript.OwnerverifyOtpTestScript -->
-      <class name="com.menumitratCommonAPITestScript.loginTestScript">
-        <methods>
-          <include name="testLoginApi"/>
-          <include name="verifyloginUsingValidInputData" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- com.menumitratCommonAPITestScript.loginTestScript -->
+      </class> <!-- com.menumitratCommonAPITestScript.StaffUpdateTestScript -->
       <class name="com.menumitra.superclass.APIBase">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.menumitra.superclass.APIBase -->
+      <class name="com.menumitratCommonAPITestScript.TableListTestScript">
+        <methods>
+          <include name="TableListViewSetUp"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.TableListTestScript -->
+      <class name="com.menumitratCommonAPITestScript.StaffViewTestScript">
+        <methods>
+          <include name="staffviewsetUp"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.StaffViewTestScript -->
+      <class name="com.menumitratCommonAPITestScript.sectionListViewTestScript">
+        <methods>
+          <include name="verifySectionListViewUsingValidInputData" invocation-numbers="0"/>
+          <include name="sectionListViewSetup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.sectionListViewTestScript -->
+      <class name="com.menumitratCommonAPITestScript.SectionDeleteTestScript">
+        <methods>
+          <include name="sectionDeleteSetup"/>
+          <include name="verifySectionDeleteUsingValidInputData" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="verifySectionDeleteUsingInvalidData" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.SectionDeleteTestScript -->
+      <class name="com.menumitratCommonAPITestScript.SectionViewTestScript">
+        <methods>
+          <include name="verifySectionViewUsingInvalidData" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sectionViewSetup"/>
+          <include name="verifySectionViewUsingValidInputData" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.SectionViewTestScript -->
       <class name="com.menumitratCommonAPITestScript.StaffCreateTestScript">
         <methods>
+          <include name="createStaff" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>
       </class> <!-- com.menumitratCommonAPITestScript.StaffCreateTestScript -->
+      <class name="com.menumitratCommonAPITestScript.loginTestScript">
+        <methods>
+          <include name="LoginAPiTestSetup"/>
+          <include name="verifyLoginUsingInvalidInputData" invocation-numbers="4"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.loginTestScript -->
+      <class name="com.menumitratCommonAPITestScript.sectionCreateTestScript">
+        <methods>
+          <include name="tearDown"/>
+          <include name="verifySectionUsingValidInputData" invocation-numbers="0"/>
+          <include name="sectionCreateSetup"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.sectionCreateTestScript -->
+      <class name="com.menumitratCommonAPITestScript.verifyOTPTestScript">
+        <methods>
+          <include name="verifyOTPAPiUsingValidInputData" invocation-numbers="0"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.verifyOTPTestScript -->
+      <class name="com.menumitratCommonAPITestScript.staffListViewTestScript">
+        <methods>
+          <include name="StaffListViewsetUp"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.staffListViewTestScript -->
+      <class name="com.menumitratCommonAPITestScript.MenuCreateTestScript">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.MenuCreateTestScript -->
+      <class name="com.menumitratCommonAPITestScript.ResendOTPTestScript">
+        <methods>
+          <include name="setupResendOTP"/>
+          <include name="resendOTPusingInvalidData" invocation-numbers="0"/>
+          <include name="verifyRessendOTPUSingPositiveInputData" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.ResendOTPTestScript -->
+      <class name="com.menumitratCommonAPITestScript.StaffDeleteTestScript">
+        <methods>
+          <include name="setup"/>
+          <include name="testStaffDelete" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.StaffDeleteTestScript -->
+      <class name="com.menumitratCommonAPITestScript.sectionUpdateTestScript">
+        <methods>
+          <include name="sectionUpdateSetup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.menumitratCommonAPITestScript.sectionUpdateTestScript -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
