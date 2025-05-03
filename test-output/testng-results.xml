@@ -2,29 +2,29 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="11602" started-at="2025-05-02T13:39:09Z" finished-at="2025-05-02T13:39:21Z">
+  <suite name="Default suite" duration-ms="9529" started-at="2025-05-03T13:10:26Z" finished-at="2025-05-03T13:10:36Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="11602" started-at="2025-05-02T13:39:09Z" finished-at="2025-05-02T13:39:21Z">
-      <class name="com.menumitratCommonAPITestScript.TableDeleteTestScript">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.TableDeleteTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="14" started-at="2025-05-02T19:09:09Z" finished-at="2025-05-02T19:09:09Z">
+    <test name="Default test" duration-ms="9529" started-at="2025-05-03T13:10:26Z" finished-at="2025-05-03T13:10:36Z">
+      <class name="com.menumitratCommonAPITestScript.UpdateOutletTestScript">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="27" started-at="2025-05-03T18:40:26Z" finished-at="2025-05-03T18:40:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.TableDeleteTestScript@7d9d1a19]" name="setup" is-config="true" duration-ms="8035" started-at="2025-05-02T19:09:10Z" finished-at="2025-05-02T19:09:18Z">
+        <test-method status="PASS" signature="updateOutletSetUp()[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="updateOutletSetUp" is-config="true" duration-ms="7791" started-at="2025-05-03T18:40:26Z" finished-at="2025-05-03T18:40:34Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="verifyTableDelete(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.TableDeleteTestScript@7d9d1a19]" name="verifyTableDelete" duration-ms="3336" started-at="2025-05-02T19:09:18Z" data-provider="getTableDeleteData" finished-at="2025-05-02T19:09:21Z">
+        </test-method> <!-- updateOutletSetUp -->
+        <test-method status="PASS" signature="verifyUpdateOutlet(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="verifyUpdateOutlet" duration-ms="1349" started-at="2025-05-03T18:40:34Z" data-provider="getUpdateOutletData" finished-at="2025-05-03T18:40:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[tabledelete]]>
+                <![CDATA[updateoutlet]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[tabledelete_001]]>
+                <![CDATA[updateoutlet_001]]>
               </value>
             </param>
             <param index="2">
@@ -34,7 +34,7 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[verify table delete]]>
+                <![CDATA[verify  update outlet]]>
               </value>
             </param>
             <param index="4">
@@ -45,16 +45,37 @@
             <param index="5">
               <value>
                 <![CDATA[{
-    "outlet_id": "1",
-    "section_id": "17",
-    "user_id":"2"
+    "outlet_id":"1",
+    "user_id":"2",         
+    "name": "Bhavani Hotel",
+    "outlet_type": "mess",
+    "fssainumber": "12345678901239",
+    "gstnumber": "354545ddede1237",
+    "mobile": "6767679760",
+    "veg_nonveg": "veg",
+    "service_charges": "1",
+    "gst": "1",
+    "address": "satara, maharashtra",
+    "is_open":true,
+    "upi_id":"dd@ok",
+    "website":"http://website",
+    "whatsapp":"https://whatsapp",
+    "facebook":"https://facebook",
+    "instagram":"https://instagram",
+    "google_business_link":"https://business.com",
+    "google_review":"https://google-review"
+
 }]]>
               </value>
             </param>
             <param index="6">
               <value>
                 <![CDATA[{
-    "detail": "outlet table deleted successfully"
+    "detail": "Outlet information updated successfully",
+    "data": {
+        "outlet_id": 1,
+        "name": "Khana Khazana"
+    }
 }]]>
               </value>
             </param>
@@ -66,8 +87,8 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyTableDelete -->
-      </class> <!-- com.menumitratCommonAPITestScript.TableDeleteTestScript -->
+        </test-method> <!-- verifyUpdateOutlet -->
+      </class> <!-- com.menumitratCommonAPITestScript.UpdateOutletTestScript -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

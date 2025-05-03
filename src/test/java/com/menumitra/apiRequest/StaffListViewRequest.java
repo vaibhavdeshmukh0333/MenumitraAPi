@@ -11,7 +11,8 @@ public class StaffListViewRequest
         return outlet_id;
     }
 
-    public void setOutlet_id(int outlet_id) {
+    public void setOutlet_id(int outlet_id) 
+    {
         this.outlet_id = outlet_id;
     }
 

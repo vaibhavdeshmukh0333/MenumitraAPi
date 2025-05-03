@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\hp\AppData\Local\Temp\testng-eclipse--1234422264\testng-customsuite.xml</span>
+                    <span>C:\Users\hp\AppData\Local\Temp\testng-eclipse-1681326914\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,11 +102,11 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.menumitratCommonAPITestScript.TableDeleteTestScript" hash-for-method="verifyTableDelete(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    &quot;outlet_id&quot;: &quot;1&quot;,
-    &quot;sect...)">verifyTableDelete(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    "outlet_id": "1",
-    "sect...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.menumitratCommonAPITestScript.UpdateOutletTestScript" hash-for-method="verifyUpdateOutlet(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    &quot;outlet_id&quot;:&quot;1&quot;,
+    &quot;u...)">verifyUpdateOutlet(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    "outlet_id":"1",
+    "u...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -124,24 +124,45 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.menumitratCommonAPITestScript.TableDeleteTestScript</span>
+              <span class="class-name">com.menumitratCommonAPITestScript.UpdateOutletTestScript</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyTableDelete(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    &quot;outlet_id&quot;: &quot;1&quot;,
-    &quot;sect...)">
-                  </a> <!-- verifyTableDelete(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    "outlet_id": "1",
-    "sect...) -->
-                  <span class="method-name">verifyTableDelete</span>
-                  <span class="parameters">(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    "outlet_id": "1",
-    "section_id": "17",
-    "user_id":"2"
+                  <a name="verifyUpdateOutlet(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    &quot;outlet_id&quot;:&quot;1&quot;,
+    &quot;u...)">
+                  </a> <!-- verifyUpdateOutlet(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    "outlet_id":"1",
+    "u...) -->
+                  <span class="method-name">verifyUpdateOutlet</span>
+                  <span class="parameters">(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    "outlet_id":"1",
+    "user_id":"2",         
+    "name": "Bhavani Hotel",
+    "outlet_type": "mess",
+    "fssainumber": "12345678901239",
+    "gstnumber": "354545ddede1237",
+    "mobile": "6767679760",
+    "veg_nonveg": "veg",
+    "service_charges": "1",
+    "gst": "1",
+    "address": "satara, maharashtra",
+    "is_open":true,
+    "upi_id":"dd@ok",
+    "website":"http://website",
+    "whatsapp":"https://whatsapp",
+    "facebook":"https://facebook",
+    "instagram":"https://instagram",
+    "google_business_link":"https://business.com",
+    "google_review":"https://google-review"
+
 }, {
-    "detail": "outlet table deleted successfully"
+    "detail": "Outlet information updated successfully",
+    "data": {
+        "outlet_id": 1,
+        "name": "Khana Khazana"
+    }
 }, 200)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -150,7 +171,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\hp\AppData\Local\Temp\testng-eclipse--1234422264\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\hp\AppData\Local\Temp\testng-eclipse-1681326914\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -159,7 +180,7 @@
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.menumitratCommonAPITestScript.TableDeleteTestScript&quot;/&gt;
+      &lt;class name=&quot;com.menumitratCommonAPITestScript.UpdateOutletTestScript&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -201,14 +222,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyTableDelete')
-data.setCell(0, 2, 'com.menumitratCommonAPITestScript.TableDeleteTestScript')
-data.setCell(0, 3, 3336);
+data.setCell(0, 1, 'verifyUpdateOutlet')
+data.setCell(0, 2, 'com.menumitratCommonAPITestScript.UpdateOutletTestScript')
+data.setCell(0, 3, 1349);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 1 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -234,20 +255,20 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.menumitratCommonAPITestScript.TableDeleteTestScript</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.menumitratCommonAPITestScript.UpdateOutletTestScript</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">setUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
-                <span class="method-name">setup</span>
-                <span class="method-start">132 ms</span>
+                <span class="method-name">updateOutletSetUp</span>
+                <span class="method-start">277 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">verifyTableDelete(tabledelete, tabledelete_001, positive, verify table delete, post, {
-    "outlet_id": "1",
-    "sect...)</span>
-                <span class="method-start">8279 ms</span>
+                <span class="method-name">verifyUpdateOutlet(updateoutlet, updateoutlet_001, positive, verify  update outlet, post, {
+    "outlet_id":"1",
+    "u...)</span>
+                <span class="method-start">8203 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
