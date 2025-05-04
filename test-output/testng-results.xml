@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9529" started-at="2025-05-03T13:10:26Z" finished-at="2025-05-03T13:10:36Z">
+  <suite name="Default suite" duration-ms="8540" started-at="2025-05-04T08:52:36Z" finished-at="2025-05-04T08:52:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9529" started-at="2025-05-03T13:10:26Z" finished-at="2025-05-03T13:10:36Z">
-      <class name="com.menumitratCommonAPITestScript.UpdateOutletTestScript">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="27" started-at="2025-05-03T18:40:26Z" finished-at="2025-05-03T18:40:26Z">
+    <test name="Default test" duration-ms="8540" started-at="2025-05-04T08:52:36Z" finished-at="2025-05-04T08:52:45Z">
+      <class name="com.menumitratCommonAPITestScript.ChefDeleteTestScript">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.ChefDeleteTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="12" started-at="2025-05-04T14:22:36Z" finished-at="2025-05-04T14:22:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="updateOutletSetUp()[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="updateOutletSetUp" is-config="true" duration-ms="7791" started-at="2025-05-03T18:40:26Z" finished-at="2025-05-03T18:40:34Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.ChefDeleteTestScript@7d9d1a19]" name="setup" is-config="true" duration-ms="6060" started-at="2025-05-04T14:22:36Z" finished-at="2025-05-04T14:22:42Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- updateOutletSetUp -->
-        <test-method status="PASS" signature="verifyUpdateOutlet(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.UpdateOutletTestScript@7d9d1a19]" name="verifyUpdateOutlet" duration-ms="1349" started-at="2025-05-03T18:40:34Z" data-provider="getUpdateOutletData" finished-at="2025-05-03T18:40:36Z">
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="deleteChef(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ChefDeleteTestScript@7d9d1a19]" name="deleteChef" duration-ms="2308" started-at="2025-05-04T14:22:43Z" data-provider="getChefDeleteData" finished-at="2025-05-04T14:22:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[updateoutlet]]>
+                <![CDATA[chefdelete]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[updateoutlet_001]]>
+                <![CDATA[chefdelete_001]]>
               </value>
             </param>
             <param index="2">
@@ -34,7 +34,7 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[verify  update outlet]]>
+                <![CDATA[verify chef delete]]>
               </value>
             </param>
             <param index="4">
@@ -45,25 +45,9 @@
             <param index="5">
               <value>
                 <![CDATA[{
-    "outlet_id":"1",
-    "user_id":"2",         
-    "name": "Bhavani Hotel",
-    "outlet_type": "mess",
-    "fssainumber": "12345678901239",
-    "gstnumber": "354545ddede1237",
-    "mobile": "6767679760",
-    "veg_nonveg": "veg",
-    "service_charges": "1",
-    "gst": "1",
-    "address": "satara, maharashtra",
-    "is_open":true,
-    "upi_id":"dd@ok",
-    "website":"http://website",
-    "whatsapp":"https://whatsapp",
-    "facebook":"https://facebook",
-    "instagram":"https://instagram",
-    "google_business_link":"https://business.com",
-    "google_review":"https://google-review"
+ "update_user_id":2,
+ "user_id":13,
+ "outlet_id":1
 
 }]]>
               </value>
@@ -71,11 +55,7 @@
             <param index="6">
               <value>
                 <![CDATA[{
-    "detail": "Outlet information updated successfully",
-    "data": {
-        "outlet_id": 1,
-        "name": "Khana Khazana"
-    }
+    "detail": "(pymysql.err.IntegrityError) (1048, \"Column 'user_id' cannot be null\")\n[SQL: UPDATE user_settings SET user_id=%(user_id)s WHERE user_settings.user_settings_id = %(user_settings_user_settings_id)s]\n[parameters: {'user_id': None, 'user_settings_user_settings_id': 6}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)"
 }]]>
               </value>
             </param>
@@ -85,10 +65,44 @@
               </value>
             </param>
           </params>
+          <exception class="com.menumitra.utilityclass.customException">
+            <message>
+              <![CDATA[Test execution failed: Status code validation failed - Expected: 200, Actual: 500]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.menumitra.utilityclass.customException: Test execution failed: Status code validation failed - Expected: 200, Actual: 500
+	at com.menumitratCommonAPITestScript.ChefDeleteTestScript.deleteChef(ChefDeleteTestScript.java:233)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.menumitra.utilityclass.customException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUpdateOutlet -->
-      </class> <!-- com.menumitratCommonAPITestScript.UpdateOutletTestScript -->
+        </test-method> <!-- deleteChef -->
+      </class> <!-- com.menumitratCommonAPITestScript.ChefDeleteTestScript -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
