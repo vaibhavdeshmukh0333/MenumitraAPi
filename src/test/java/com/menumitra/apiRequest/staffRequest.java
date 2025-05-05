@@ -5,6 +5,9 @@ public class staffRequest
     private String staff_id;
 	private int outlet_id;
 	private int user_id;
+	private String staff_role;
+	
+	
 	public String getStaff_id() {
 		return staff_id;
 	}
@@ -27,6 +30,14 @@ public class staffRequest
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+
+	public String getStaff_role() {
+		return staff_role;
+	}
+
+	public void setStaff_role(String staff_role) {
+		this.staff_role = staff_role;
 	}
 	
 	

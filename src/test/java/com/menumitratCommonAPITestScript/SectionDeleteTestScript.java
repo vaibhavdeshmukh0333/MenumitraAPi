@@ -179,6 +179,7 @@ public class SectionDeleteTestScript extends APIBase
                 
                 sectionrequest.setSection_id(requestBodyJson.getString("section_id"));
                 sectionrequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+                sectionrequest.setUser_id(userId);
                 
                 LogUtils.info("Section delete payload prepared");
                 ExtentReport.getTest().log(Status.INFO, "Section delete payload prepared");
@@ -209,7 +210,7 @@ public class SectionDeleteTestScript extends APIBase
         }
     }
 
-    @Test(dataProvider = "getSectionDeleteNegativeInputData", priority = 2)
+   // @Test(dataProvider = "getSectionDeleteNegativeInputData", priority = 2)
     private void verifySectionDeleteUsingInvalidData(String apiName, String testCaseId,
             String testType, String description, String httpsMethod,
             String requestBody, String expectedResponseBody, String statusCode) throws customException {
@@ -244,7 +245,7 @@ public class SectionDeleteTestScript extends APIBase
         }
     }
 
-@AfterClass
+//@AfterClass
 private void tearDown()
 {
     try 

@@ -2,29 +2,29 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="26750" started-at="2025-05-04T11:51:28Z" finished-at="2025-05-04T11:51:54Z">
+  <suite name="Default suite" duration-ms="7275" started-at="2025-05-05T06:43:43Z" finished-at="2025-05-05T06:43:50Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="26750" started-at="2025-05-04T11:51:28Z" finished-at="2025-05-04T11:51:54Z">
-      <class name="com.menumitratCommonAPITestScript.RemoveTemplateTestScript">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.RemoveTemplateTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="19" started-at="2025-05-04T17:21:28Z" finished-at="2025-05-04T17:21:28Z">
+    <test name="Default test" duration-ms="7275" started-at="2025-05-05T06:43:43Z" finished-at="2025-05-05T06:43:50Z">
+      <class name="com.menumitratCommonAPITestScript.DeleteTemplatesTestScript">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="10" started-at="2025-05-05T12:13:43Z" finished-at="2025-05-05T12:13:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.RemoveTemplateTestScript@7d9d1a19]" name="setup" is-config="true" duration-ms="18995" started-at="2025-05-04T17:21:28Z" finished-at="2025-05-04T17:21:47Z">
+        <test-method status="PASS" signature="deleteTemplatesSetUp()[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="deleteTemplatesSetUp" is-config="true" duration-ms="6007" started-at="2025-05-05T12:13:43Z" finished-at="2025-05-05T12:13:49Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="removeTemplate(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.RemoveTemplateTestScript@7d9d1a19]" name="removeTemplate" duration-ms="7415" started-at="2025-05-04T17:21:47Z" data-provider="getRemoveTemplateData" finished-at="2025-05-04T17:21:54Z">
+        </test-method> <!-- deleteTemplatesSetUp -->
+        <test-method status="PASS" signature="deleteTemplatesTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="deleteTemplatesTest" duration-ms="1080" started-at="2025-05-05T12:13:49Z" data-provider="getDeleteTemplatesData" finished-at="2025-05-05T12:13:50Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[removetemplate]]>
+                <![CDATA[deletetemplates]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[removetemplate_001]]>
+                <![CDATA[deletetemplates_001]]>
               </value>
             </param>
             <param index="2">
@@ -34,7 +34,7 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[Verify Remove Template]]>
+                <![CDATA[Verify Delete Templates]]>
               </value>
             </param>
             <param index="4">
@@ -45,7 +45,7 @@
             <param index="5">
               <value>
                 <![CDATA[{
-    "section_id":"17"
+    "template_id":"3"
 }]]>
               </value>
             </param>
@@ -60,8 +60,8 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- removeTemplate -->
-      </class> <!-- com.menumitratCommonAPITestScript.RemoveTemplateTestScript -->
+        </test-method> <!-- deleteTemplatesTest -->
+      </class> <!-- com.menumitratCommonAPITestScript.DeleteTemplatesTestScript -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

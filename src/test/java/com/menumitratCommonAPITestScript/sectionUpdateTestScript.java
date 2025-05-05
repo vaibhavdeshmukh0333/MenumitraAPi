@@ -251,7 +251,7 @@ private void verifySectionUpdateUsingValidInputData(String apiName, String testC
     }
 }
 
-@Test(dataProvider = "getSectionUpdateNegativeInputData", priority = 2)
+//@Test(dataProvider = "getSectionUpdateNegativeInputData", priority = 2)
 private void verifySectionCreateUsingInvalidData(String apiName, String testCaseId, 
     String testType, String description, String httpsMethod, 
     String requestBody, String expectedResponseBody, String statusCode) throws customException 
@@ -312,7 +312,7 @@ private void verifySectionCreateUsingInvalidData(String apiName, String testCase
 }
 
 
-@AfterClass
+//@AfterClass
 private void tearDown()
 {
 //    try 

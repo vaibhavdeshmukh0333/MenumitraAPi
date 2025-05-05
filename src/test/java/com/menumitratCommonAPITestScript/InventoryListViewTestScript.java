@@ -196,7 +196,7 @@ public class InventoryListViewTestScript extends APIBase
             ExtentReport.createTest("Inventory List Test - " + testCaseid);
             ExtentReport.getTest().log(Status.INFO, "Inventory list test execution: " + description);
 
-            if(apiName.equalsIgnoreCase("inventorylist"))
+            if(apiName.equalsIgnoreCase("inventorylistview"))
             {
                 requestBodyJson = new JSONObject(requestBody);
 
@@ -207,46 +207,29 @@ public class InventoryListViewTestScript extends APIBase
                 ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
 
                 response = ResponseUtil.getResponseWithAuth(baseURI, inventoryListViewRequest, httpsmethod, accessToken);
-                LogUtils.info("Received response with status code: " + response.getStatusCode());
-                LogUtils.info("Response Body: " + response.asString());
-                ExtentReport.getTest().log(Status.INFO, "Received response with status code: " + response.getStatusCode());
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                    LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
                 ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
-
-                if(response.getStatusCode() == Integer.parseInt(statusCode))
-                {
-                    LogUtils.success(logger, "Inventory list API executed successfully");
-                    LogUtils.info("Status Code: " + response.getStatusCode());
-                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Inventory list API executed successfully", ExtentColor.GREEN));
-                    ExtentReport.getTest().log(Status.PASS, "Status Code: " + response.getStatusCode());
-                    
-                    // Validate response body if expected response is provided
-                    actualJsonBody = new JSONObject(response.asString());
-                    if(expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
-                        expectedJsonBody = new JSONObject(expectedResponseBody);
-                        
-                        // Log response information to report without validation
-                        LogUtils.info("Response received successfully");
-                        LogUtils.info("Response Body: " + actualJsonBody.toString());
-                        ExtentReport.getTest().log(Status.PASS, "Response received successfully");
-                        ExtentReport.getTest().log(Status.PASS, "Expected response structure available in test data");
-                        ExtentReport.getTest().log(Status.PASS, "Response Body: " + actualJsonBody.toString());
-                    }
-                    
-                    // Make sure to use Status.PASS for the response to show in the report
-                    ExtentReport.getTest().log(Status.PASS, "Full Response:");
-                    ExtentReport.getTest().log(Status.PASS, response.asPrettyString());
-                    
-                    // Add a screenshot or additional details that might help visibility
-                    ExtentReport.getTest().log(Status.INFO, MarkupHelper.createLabel("Test completed successfully", ExtentColor.GREEN));
-                }
-                else{
+                
+                // Validate status code
+                if (response.getStatusCode() != 200) {
                     String errorMsg = "Status code mismatch - Expected: " + statusCode + ", Actual: " + response.getStatusCode();
                     LogUtils.failure(logger, errorMsg);
-                    LogUtils.info("Response Body: " + response.asString());
                     ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                    ExtentReport.getTest().log(Status.FAIL, "Response: " + response.asPrettyString());
                     throw new customException(errorMsg);
                 }
+                
+                // Only show response without validation
+                actualJsonBody = new JSONObject(response.asString());
+                LogUtils.info("Inventory list response received successfully");
+                LogUtils.success(logger, "Inventory list API executed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Inventory list API executed successfully", ExtentColor.GREEN));
+                ExtentReport.getTest().log(Status.PASS, "Inventory list response received successfully");
+                ExtentReport.getTest().log(Status.PASS, "Response: " + response.asPrettyString());
+                
+                // Add a screenshot or additional details that might help visibility
+                ExtentReport.getTest().log(Status.INFO, MarkupHelper.createLabel("Test completed successfully", ExtentColor.GREEN));
             }
         }
         catch(Exception e)

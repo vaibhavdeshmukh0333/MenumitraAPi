@@ -293,7 +293,7 @@ public class StaffCreateTestScript extends APIBase {
     }
 
     
-    @AfterClass
+   // @AfterClass
     private void tearDown()
     {
         try 

@@ -257,7 +257,7 @@ public class sectionCreateTestScript extends APIBase
 
 
 
-@AfterClass
+//@AfterClass
 private void tearDown()
 {
     try 
