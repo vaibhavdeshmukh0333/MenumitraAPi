@@ -266,4 +266,147 @@ public class ViewOutletTestScript extends APIBase
             throw new customException("Error in view outlet test: " + e.getMessage());
         }
     }
+    
+    @DataProvider(name = "getViewOutletNegativeData")
+    public Object[][] getViewOutletNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading view outlet negative test scenario data");
+            ExtentReport.getTest().log(Status.INFO, "Reading view outlet negative test scenario data");
+
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            List<Object[]> filteredData = new ArrayList<>();
+
+            for (Object[] row : readExcelData) {
+                if (row != null && row.length >= 3 &&
+                        "viewoutlet".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                        "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    filteredData.add(row);
+                }
+            }
+
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid view outlet negative test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            return filteredData.toArray(new Object[0][]);
+        } catch (Exception e) {
+            LogUtils.failure(logger, "Error in getting view outlet negative test data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting view outlet negative test data: " + e.getMessage());
+            throw new customException("Error in getting view outlet negative test data: " + e.getMessage());
+        }
+    }
+
+    private int countSentences(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+        // Split by common sentence endings and count
+        return text.split("[.!?]+").length;
+    }
+
+    @Test(dataProvider = "getViewOutletNegativeData")
+    public void viewOutletNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting view outlet negative test case: " + testCaseid);
+            ExtentReport.createTest("View Outlet Negative Test - " + testCaseid);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+
+            if (apiName.equalsIgnoreCase("viewoutlet") && testType.equalsIgnoreCase("negative")) {
+                requestBodyJson = new JSONObject(requestBody);
+                viewOutletRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+                viewOutletRequest.setUser_id(String.valueOf(user_id));
+
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+
+                response = ResponseUtil.getResponseWithAuth(baseURI, viewOutletRequest, httpsmethod, accessToken);
+
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+
+                int expectedStatusCode = Integer.parseInt(statusCode);
+
+                // Validate status code
+                if (response.getStatusCode() != expectedStatusCode) {
+                    String errorMsg = "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode();
+                    LogUtils.failure(logger, errorMsg);
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Expected Status Code: " + expectedStatusCode);
+                    ExtentReport.getTest().log(Status.FAIL, "Actual Status Code: " + response.getStatusCode());
+                } else {
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                }
+
+                // Validate response body
+                actualJsonBody = new JSONObject(response.asString());
+                if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                    expectedJsonBody = new JSONObject(expectedResponseBody);
+
+                    // Validate error message sentences
+                    if (actualJsonBody.has("detail")) {
+                        String errorMessage = actualJsonBody.getString("detail");
+                        int sentenceCount = countSentences(errorMessage);
+                        
+                        if (sentenceCount > 6) {
+                            String errorMsg = "Error message exceeds 6 sentences. Current count: " + sentenceCount;
+                            LogUtils.failure(logger, errorMsg);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                            ExtentReport.getTest().log(Status.FAIL, "Error Message: " + errorMessage);
+                        } else {
+                            LogUtils.success(logger, "Error message sentence count validation passed: " + sentenceCount + " sentences");
+                            ExtentReport.getTest().log(Status.PASS, "Error message sentence count validation passed: " + sentenceCount + " sentences");
+                        }
+                    }
+
+                    // Validate response message content
+                    if (expectedJsonBody.has("detail") && actualJsonBody.has("detail")) {
+                        String expectedDetail = expectedJsonBody.getString("detail");
+                        String actualDetail = actualJsonBody.getString("detail");
+
+                        if (expectedDetail.equals(actualDetail)) {
+                            LogUtils.success(logger, "Error message content validation passed");
+                            ExtentReport.getTest().log(Status.PASS, "Error message content validation passed");
+                        } else {
+                            String errorMsg = "Error message content mismatch";
+                            LogUtils.failure(logger, errorMsg);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                            ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail);
+                            ExtentReport.getTest().log(Status.FAIL, "Actual: " + actualDetail);
+                        }
+                    }
+
+                    // Complete response validation
+                    validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                }
+
+                // Always log the full response
+                ExtentReport.getTest().log(Status.INFO, "Full Response:");
+                ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            }
+        } catch (Exception e) {
+            String errorMsg = "Error in view outlet negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+
 }

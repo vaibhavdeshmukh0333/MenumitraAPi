@@ -111,6 +111,7 @@ public class ResponseUtil
                                 	LogUtils.error("Error:Unable to delete data check request body");
                                 	throw new customException("Error:Unble to delete data check request body");
                                 }
+                
                 default:
                     LogUtils.warn("Unsupported HTTP method: " + method);
                     return null;
@@ -161,14 +162,27 @@ public class ResponseUtil
                      }
                     
                 case "put":
-                    LogUtils.info("Executing PUT request");
-                   response =RestAssured.given()
-                            .header("Authorization","Bearer ",jwttoken)
+                    try
+                    {
+                        LogUtils.info("Executing PUT request");
+                        response = RestAssured.given()
+                            .contentType(ContentType.JSON)
+                            .header("Authorization","Bearer "+jwttoken)
                             .body(requestBody)
                             .when()
-                            .put(url);
-                    LogUtils.info("PUT request completed successfully");
-                    return response;
+                            .put(url)
+                            .then()
+                            .log().all()
+                            .extract()
+                            .response();
+                        LogUtils.info("PUT request completed successfully");
+                        return response;
+                    }
+                    catch (Exception e)
+                    {
+                        LogUtils.error("Error: Get response..");
+                        throw new customException("Error: Get response");
+                    }
 
                 case "get":
                             try{
@@ -203,6 +217,25 @@ public class ResponseUtil
                                   
                                 	LogUtils.error("Error:Unable to delete data check request body");
                                 	throw new customException("Error:Unble to delete data check request body");
+                                }
+                case "patch":
+                                try {
+                                    LogUtils.info("Executing PATCH request");
+                                    response = RestAssured.given()
+                                        .contentType(ContentType.JSON)  // Add content type
+                                        .header("Authorization", "Bearer " + jwttoken)  // Fix the header format
+                                        .body(requestBody)
+                                        .when()
+                                        .patch(url)
+                                        .then()
+                                        .log().all()
+                                        .extract()
+                                        .response();
+                                    LogUtils.info("PATCH request completed successfully");
+                                    return response;
+                                } catch (Exception e) {
+                                    LogUtils.error("Error: PATCH request failed");
+                                    throw new customException("Error: Failed to execute PATCH request");
                                 }
                 default:
                     LogUtils.warn("Unsupported HTTP method: " + method);

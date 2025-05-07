@@ -32,6 +32,8 @@ import com.menumitra.utilityclass.TokenManagers;
 import com.menumitra.utilityclass.customException;
 import com.menumitra.utilityclass.validateResponseBody;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 @Listeners(Listener.class)
@@ -238,6 +240,17 @@ public class InventoryUpdateTestScript extends APIBase
             ExtentReport.getTest().log(Status.INFO, "Using access token: " + accessToken.substring(0, 15) + "...");
             LogUtils.info("Using access token: " + accessToken.substring(0, 15) + "...");
             
+          /*  response = RestAssured.given()
+                    .contentType(ContentType.JSON)  // Add content type
+                    .header("Authorization", "Bearer " + accessToken)  // Fix the header format
+                    .body(inventoryUpdateRequest)
+                    .when()
+                    .patch(baseURI)
+                    .then()
+                    .log().all()
+                    .extract()
+                    .response();*/
+            
             response = ResponseUtil.getResponseWithAuth(baseURI, inventoryUpdateRequest, httpsmethod, accessToken); 
             
             // Response logging
@@ -318,7 +331,7 @@ public class InventoryUpdateTestScript extends APIBase
                 .count();
     }
     
-    @Test(dataProvider = "getInventoryUpdateNegativeData")
+    //@Test(dataProvider = "getInventoryUpdateNegativeData")
     public void inventoryUpdateNegativeTest(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {

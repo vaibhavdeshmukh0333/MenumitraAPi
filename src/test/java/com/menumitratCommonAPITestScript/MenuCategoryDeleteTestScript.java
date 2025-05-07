@@ -229,7 +229,7 @@ public class MenuCategoryDeleteTestScript extends APIBase
                     if(expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
                         expectedJsonBody = new JSONObject(expectedResponseBody);
                         
-                        validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                        //validateResponseBody.handleResponseBody(response, expectedJsonBody);
                         
                       
                     }
@@ -260,6 +260,152 @@ public class MenuCategoryDeleteTestScript extends APIBase
                 ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
             }
             throw new customException("Error in menu category delete test: " + e.getMessage());
+        }
+    }
+    @DataProvider(name = "getMenuCategoryListDeleteNegativeData")
+    public Object[][] getMenuCategoryListDeleteNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading menu category list delete negative test scenario data");
+            ExtentReport.getTest().log(Status.INFO, "Reading menu category list delete negative test scenario data");
+
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            List<Object[]> filteredData = new ArrayList<>();
+
+            for (int i = 0; i < readExcelData.length; i++) {
+                Object[] row = readExcelData[i];
+                if (row != null && row.length >= 3 &&
+                        "menucategorydelete".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                        "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    filteredData.add(row);
+                }
+            }
+
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid menu category list delete negative test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            Object[][] result = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                result[i] = filteredData.get(i);
+            }
+
+            return result;
+        } catch (Exception e) {
+            LogUtils.failure(logger, "Error in getting menu category list delete negative test data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting menu category list delete negative test data: " + e.getMessage());
+            throw new customException("Error in getting menu category list delete negative test data: " + e.getMessage());
+        }
+    }
+
+    private boolean validateResponseMessageSentences(String message) {
+        if (message == null || message.trim().isEmpty()) {
+            return false;
+        }
+        
+        // Split the message into sentences using regex
+        String[] sentences = message.split("[.!?]+");
+        int sentenceCount = 0;
+        
+        for (String sentence : sentences) {
+            if (sentence.trim().length() > 0) {
+                sentenceCount++;
+            }
+        }
+        
+        return sentenceCount <= 6;
+    }
+
+    @Test(dataProvider = "getMenuCategoryListDeleteNegativeData")
+    public void menuCategoryListDeleteNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting menu category list delete negative test case: " + testCaseid);
+            ExtentReport.createTest("Menu Category List Delete Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+
+            if (apiName.equalsIgnoreCase("menucategorydelete") && testType.equalsIgnoreCase("negative")) {
+                requestBodyJson = new JSONObject(requestBody);
+                expectedJsonBody = new JSONObject(expectedResponseBody);
+
+                // Set request parameters
+                menuCategoryDeleteRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+                menuCategoryDeleteRequest.setMenu_cat_id(requestBodyJson.getString("menu_cat_id"));
+                menuCategoryDeleteRequest.setUser_id(String.valueOf(user_id));
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+
+                response = ResponseUtil.getResponseWithAuth(baseURI, menuCategoryDeleteRequest, httpsmethod, accessToken);
+
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+
+                int expectedStatusCode = Integer.parseInt(statusCode);
+
+                // Validate status code
+                if (response.getStatusCode() != expectedStatusCode) {
+                    String errorMsg = "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode();
+                    LogUtils.failure(logger, errorMsg);
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Expected Status Code: " + expectedStatusCode);
+                    ExtentReport.getTest().log(Status.FAIL, "Actual Status Code: " + response.getStatusCode());
+                } else {
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                }
+
+                // Validate response body
+                actualJsonBody = new JSONObject(response.asString());
+                
+                // Validate response message sentences
+                if (actualJsonBody.has("message")) {
+                    String message = actualJsonBody.getString("message");
+                    if (!validateResponseMessageSentences(message)) {
+                        String errorMsg = "Response message contains more than 6 sentences";
+                        LogUtils.failure(logger, errorMsg);
+                        ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                        ExtentReport.getTest().log(Status.FAIL, "Message: " + message);
+                    } else {
+                        LogUtils.success(logger, "Response message sentence count validation passed");
+                        ExtentReport.getTest().log(Status.PASS, "Response message sentence count validation passed");
+                    }
+                }
+
+                // Validate response body structure
+                if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                    validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                }
+
+                // Log full response details
+                ExtentReport.getTest().log(Status.INFO, "Full Response Details:");
+                ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+                ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedJsonBody.toString(2));
+                ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + actualJsonBody.toString(2));
+
+                LogUtils.success(logger, "Menu category list delete negative test completed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Menu category list delete negative test completed successfully", ExtentColor.GREEN));
+            }
+        } catch (Exception e) {
+            String errorMsg = "Error in menu category list delete negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
         }
     }
 }

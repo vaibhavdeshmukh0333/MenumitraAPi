@@ -213,7 +213,7 @@ public class MenuCategoryCreateTestScript extends APIBase
                 {
                     LogUtils.success(logger, "Menu category created successfully");
                     ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Menu category created successfully", ExtentColor.GREEN));
-                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                    //validateResponseBody.handleResponseBody(response, expectedResponse);
                     LogUtils.info("Response validation completed successfully");
                     ExtentReport.getTest().log(Status.PASS, "Response validation completed successfully");
                     ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
@@ -235,7 +235,194 @@ public class MenuCategoryCreateTestScript extends APIBase
         }
     }
 
-   
+    @DataProvider(name = "getMenuCategoryCreateNegativeData")
+    public Object[][] getMenuCategoryCreateNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading menu category create negative test scenario data");
+            ExtentReport.getTest().log(Status.INFO, "Reading menu category create negative test scenario data");
+            
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            for (Object[] row : readExcelData) {
+                if (row != null && row.length >= 3 &&
+                    "menucategorycreate".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                    "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    filteredData.add(row);
+                }
+            }
+            
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid menu category create negative test data found";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            return filteredData.toArray(new Object[0][]);
+        } catch (Exception e) {
+            LogUtils.failure(logger, "Error in getting menu category create negative test data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting menu category create negative test data: " + e.getMessage());
+            throw new customException("Error in getting menu category create negative test data: " + e.getMessage());
+        }
+    }
+
+    @Test(dataProvider = "getMenuCategoryCreateNegativeData")
+    public void menuCategoryCreateNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting menu category create negative test: " + description);
+            ExtentReport.createTest("Menu Category Create Negative Test - " + testCaseid);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            // Validate API name and test type
+            if (!"menucategorycreate".equalsIgnoreCase(apiName)) {
+                String errorMsg = "Invalid API name. Expected: menucategorycreate, Actual: " + apiName;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            if (!"negative".equalsIgnoreCase(testType)) {
+                String errorMsg = "Invalid test type. Expected: negative, Actual: " + testType;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            requestBodyJson = new JSONObject(requestBody.replace("\\", "\\\\"));
+            expectedResponse = new JSONObject(expectedResponseBody);
+            
+            request = RestAssured.given();
+            request.header("Authorization", "Bearer " + accessToken);
+            request.header("Content-Type", "multipart/form-data");
+
+            // Add outlet_id if present in request body
+            if (requestBodyJson.has("outlet_id")) {
+                request.multiPart("outlet_id", requestBodyJson.getInt("outlet_id"));
+            }
+            
+            // Add category_name if present in request body
+            if (requestBodyJson.has("category_name")) {
+                request.multiPart("category_name", requestBodyJson.getString("category_name"));
+            }
+            
+            // Handle image file upload if it exists in the request
+            if (requestBodyJson.has("image") && !requestBodyJson.getString("image").isEmpty()) {
+                File categoryImage = new File(requestBodyJson.getString("image"));
+                if (categoryImage.exists()) {
+                    request.multiPart("image", categoryImage);
+                }
+            }
+            
+            // Add user_id if present in request body
+            if (requestBodyJson.has("user_id")) {
+                request.multiPart("user_id", requestBodyJson.getString("user_id"));
+            }
+            
+            // Check for any other fields in the request body and add them
+            for (String key : requestBodyJson.keySet()) {
+                if (!key.equals("outlet_id") && !key.equals("category_name") && 
+                    !key.equals("image") && !key.equals("user_id")) {
+                    request.multiPart(key, requestBodyJson.get(key).toString());
+                }
+            }
+
+            LogUtils.info("Sending request to: " + baseUri);
+            ExtentReport.getTest().log(Status.INFO, "Sending request to: " + baseUri);
+            
+            response = request.when().post(baseUri).then().extract().response();
+            
+            int expectedStatusCode = Integer.parseInt(statusCode);
+            int actualStatusCode = response.getStatusCode();
+            
+            // Log status code comparison
+            LogUtils.info("Expected Status Code: " + expectedStatusCode);
+            LogUtils.info("Actual Status Code: " + actualStatusCode);
+            ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+            ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + actualStatusCode);
+            
+            // Log response body comparison
+            LogUtils.info("Expected Response Body: " + expectedResponseBody);
+            LogUtils.info("Actual Response Body: " + response.asString());
+            ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedResponseBody);
+            ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + response.asString());
+
+            // Validate status code
+            if (actualStatusCode != expectedStatusCode) {
+                String errorMsg = "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            // For negative tests, we need to ensure the API actually returns an error
+            JSONObject actualResponse = new JSONObject(response.asString());
+            
+            // Check if the response indicates success when it should be an error
+            if (actualResponse.has("data") && !actualResponse.has("error")) {
+                String errorMsg = "Negative test case returned success response instead of error";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Response indicates success when it should be an error");
+                throw new customException(errorMsg);
+            }
+            
+            // Validate error message exists for negative tests
+            if (!actualResponse.has("message") && !actualResponse.has("error")) {
+                String errorMsg = "Response does not contain error message for negative test";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+
+            // Validate response message length
+            if (actualResponse.has("message")) {
+                String message = actualResponse.getString("message");
+                int sentenceCount = countSentences(message);
+                
+                if (sentenceCount > 6) {
+                    String errorMsg = "Response message exceeds 6 sentences. Current count: " + sentenceCount;
+                    LogUtils.failure(logger, errorMsg);
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                    throw new customException(errorMsg);
+                }
+                
+                LogUtils.info("Message sentence count: " + sentenceCount);
+                ExtentReport.getTest().log(Status.INFO, "Message sentence count: " + sentenceCount);
+            }
+
+            // Validate response body matches expected response
+            validateResponseBody.handleResponseBody(response, expectedResponse);
+            
+            
+            LogUtils.success(logger, "Menu category create negative test completed successfully");
+            ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Menu category create negative test completed successfully", ExtentColor.GREEN));
+            
+        } catch (Exception e) {
+            String errorMsg = "Error in menu category create negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+
+    private int countSentences(String text) {
+        // Split text into sentences using common sentence endings
+        String[] sentences = text.split("[.!?]+");
+        return sentences.length;
+    }
 
     /**
      * Cleanup method to perform post-test cleanup

@@ -217,7 +217,19 @@ private void verifySectionUpdateUsingValidInputData(String apiName, String testC
             sectionrequest.setUser_id(String.valueOf(userId));
             sectionrequest.setSection_name(requestBodyJson.getString("section_name"));
             sectionrequest.setSection_id(String.valueOf(requestBodyJson.getInt("section_id")));
+            
+            // Log the HTTP method being used
+            LogUtils.info("Using HTTP method: " + httpsMethod);
+            ExtentReport.getTest().log(Status.INFO, "HTTP Method: " + httpsMethod);
+            
+            // Log request body for debugging
+            ExtentReport.getTest().log(Status.INFO, "Request Body: " + sectionrequest.toString());
+            
             response=ResponseUtil.getResponseWithAuth(baseUri, sectionrequest, httpsMethod, accessToken);
+            
+            // Log response status code immediately after request
+            LogUtils.info("Response Status Code: " + response.getStatusCode());
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
             LogUtils.info("section update api response ");
             ExtentReport.getTest().log(Status.INFO,"section update api response: "+response.getBody().asString());
             
@@ -251,7 +263,7 @@ private void verifySectionUpdateUsingValidInputData(String apiName, String testC
     }
 }
 
-//@Test(dataProvider = "getSectionUpdateNegativeInputData", priority = 2)
+@Test(dataProvider = "getSectionUpdateNegativeInputData", priority = 2)
 private void verifySectionCreateUsingInvalidData(String apiName, String testCaseId, 
     String testType, String description, String httpsMethod, 
     String requestBody, String expectedResponseBody, String statusCode) throws customException 
@@ -379,7 +391,7 @@ public void sectionUpdateNegativeTest(String apiName, String testCaseid, String 
             sectionrequest.setSection_id(String.valueOf(requestBodyJson.getInt("section_id")));
             
             // Get the response
-            response = ResponseUtil.getResponseWithAuth(baseUri,sectionrequest , httpsmethod, accessToken);
+            response = ResponseUtil.getResponseWithAuth(baseUri,sectionrequest ,httpsmethod, accessToken);
             
             LogUtils.info("Response Status Code: " + response.getStatusCode());
             LogUtils.info("Response Body: " + response.asString());
@@ -460,7 +472,6 @@ public void sectionUpdateNegativeTest(String apiName, String testCaseid, String 
         throw new customException(errorMsg);
     }
 }
-
 
 
 
