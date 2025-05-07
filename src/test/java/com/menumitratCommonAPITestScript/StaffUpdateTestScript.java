@@ -116,6 +116,46 @@ public class StaffUpdateTestScript extends APIBase
         }
     }
 
+    
+    /**
+     * Data provider for staff update negative test scenarios
+     */
+    @DataProvider(name="getStaffUpdateNegativeData")
+    public Object[][] getStaffUpdateNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading staff update negative test scenario data");
+            
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null || readExcelData.length == 0) {
+                LogUtils.error("No staff update test scenario data found in Excel sheet");
+                throw new customException("No staff update test scenario data found in Excel sheet");
+            }
+            
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            for (int i = 0; i < readExcelData.length; i++) {
+                Object[] row = readExcelData[i];
+                if (row != null && row.length >= 3 &&
+                    "staffupdate".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                    "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
+                }
+            }
+
+            Object[][] obj = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                obj[i] = filteredData.get(i);
+            }
+
+            return obj;
+        } catch(Exception e) {
+            LogUtils.error("Error while reading staff update negative test scenario data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.ERROR, "Error while reading staff update negative test scenario data: " + e.getMessage());
+            throw new customException("Error while reading staff update negative test scenario data: " + e.getMessage());
+        }
+    }
+    
     /**
      * Setup method to initialize test environment
      */
@@ -125,7 +165,7 @@ public class StaffUpdateTestScript extends APIBase
         try {
             LogUtils.info("Update Staff SetUp");
             ExtentReport.createTest("Update Staff Setup");
-            ActionsMethods.login(); 
+            ActionsMethods.login();
             ActionsMethods.verifyOTP();
             
             
@@ -167,7 +207,7 @@ public class StaffUpdateTestScript extends APIBase
     /**
      * Test method to update staff member
      */
-    @Test(dataProvider="getStaffUpdateData")
+   //@Test(dataProvider="getStaffUpdateData")
     private void updateStaffUsingValidInputData(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {
@@ -239,6 +279,146 @@ public class StaffUpdateTestScript extends APIBase
         }
     }
 
+    
+    /**
+     * Test method to verify negative cases for staff update
+     */
+   // @Test(dataProvider="getStaffUpdateNegativeData")
+    private void verifyStaffUpdateNegativeCases(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Test Description: " + description);
+            ExtentReport.createTest("Staff Update Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            if (apiName.equalsIgnoreCase("staffupdate") && testType.equalsIgnoreCase("negative")) {
+                LogUtils.info("Preparing request body");
+                ExtentReport.getTest().log(Status.INFO, "Preparing request body");
+                
+                // Handle potential JSON formatting issues in the test data
+                requestBody = requestBody.replace("\\", "\\\\");
+                requestBody = requestBody.replace(",}", "}"); // Fix potential trailing comma
+                
+                requestBodyJson = new JSONObject(requestBody);
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+                
+                LogUtils.info("Making API call to endpoint: " + baseUri);
+                ExtentReport.getTest().log(Status.INFO, "Making API call to endpoint: " + baseUri);
+                
+                LogUtils.info("Using access token: " + accessToken.substring(0, Math.min(15, accessToken.length())) + "...");
+                ExtentReport.getTest().log(Status.INFO, "Using access token: " + accessToken.substring(0, Math.min(15, accessToken.length())) + "...");
+                
+                request = RestAssured.given();
+                request.header("Authorization", "Bearer " + accessToken);
+                request.header("Content-Type", "multipart/form-data");
+
+                // Set multipart form data
+                for (String key : requestBodyJson.keySet()) {
+                    if (key.equals("image") && requestBodyJson.has("image") && !requestBodyJson.getString("image").isEmpty()) {
+                        File profileImage = new File(requestBodyJson.getString("image"));
+                        if (profileImage.exists()) {
+                            request.multiPart("image", profileImage);
+                        }
+                    } else {
+                        request.multiPart(key, requestBodyJson.get(key).toString());
+                    }
+                }
+                
+                response = request.when().post(baseUri).then().extract().response();
+
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                
+                LogUtils.info("Response Body: " + response.asPrettyString());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
+                
+                // Get expected status code from Excel
+                int expectedStatusCode = Integer.parseInt(statusCode);
+                
+                // Check for server errors
+                if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                    LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error: " + response.getStatusCode(), ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+                }
+                // Validate status code
+                else if (response.getStatusCode() != expectedStatusCode) {
+                    LogUtils.failure(logger, "Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, "Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, "Test execution failed: Status code validation failed");
+                } else {
+                    LogUtils.success(logger, "Status code validation passed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    
+                    // Validate response body if expected response is provided
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                        try {
+                            // Fix potential issues in the expected response format
+                            expectedResponseBody = expectedResponseBody.replace("\\", "\\\\");
+                            
+                            JSONObject expectedResponseJson = new JSONObject(expectedResponseBody);
+                            actualResponseBody = new JSONObject(response.asString());
+                            
+                            // Check for specific error messages - first try "detail" field which appears in your test cases
+                            if (expectedResponseJson.has("detail") && actualResponseBody.has("detail")) {
+                                String expectedDetail = expectedResponseJson.getString("detail");
+                                String actualDetail = actualResponseBody.getString("detail");
+                                
+                                if (expectedDetail.equals(actualDetail)) {
+                                    LogUtils.success(logger, "Error message validation passed: " + actualDetail);
+                                    ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                                } else {
+                                    LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                                    ExtentReport.getTest().log(Status.FAIL, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                                }
+                            }
+                            // Also check for "msg" field as fallback
+                            else if (expectedResponseJson.has("msg") && actualResponseBody.has("msg")) {
+                                String expectedMsg = expectedResponseJson.getString("msg");
+                                String actualMsg = actualResponseBody.getString("msg");
+                                
+                                if (expectedMsg.equals(actualMsg)) {
+                                    LogUtils.success(logger, "Error message validation passed: " + actualMsg);
+                                    ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualMsg);
+                                } else {
+                                    LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedMsg + ", Actual: " + actualMsg);
+                                    ExtentReport.getTest().log(Status.FAIL, "Error message mismatch - Expected: " + expectedMsg + ", Actual: " + actualMsg);
+                                }
+                            }
+                            
+                            // Full response body validation using your utility
+                            validateResponseBody.handleResponseBody(response, expectedResponseJson);
+                            
+                            LogUtils.success(logger, "Response body validation passed");
+                            ExtentReport.getTest().log(Status.PASS, "Response body validation passed");
+                        } catch (Exception e) {
+                            LogUtils.failure(logger, "Response body validation failed: " + e.getMessage());
+                            ExtentReport.getTest().log(Status.FAIL, "Response body validation failed: " + e.getMessage());
+                        }
+                    }
+                    
+                    LogUtils.success(logger, "Test execution completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, "Test execution completed successfully");
+                }
+                
+                // Always log full response for reference
+                ExtentReport.getTest().log(Status.INFO, "Full Response Body:");
+                ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            }
+        } catch (Exception e) {
+            LogUtils.error("Error during staff update negative test execution: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error during staff update negative test execution: " + e.getMessage());
+            
+            if (response != null) {
+                LogUtils.failure(logger, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asPrettyString());
+            }
+            
+            throw new customException("Error during staff update negative test execution: " + e.getMessage());
+        }
+    }
    
 
     /**

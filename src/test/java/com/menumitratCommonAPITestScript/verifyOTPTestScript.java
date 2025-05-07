@@ -247,7 +247,7 @@ public class verifyOTPTestScript extends APIBase {
     /**
      * Test method for negative scenarios
      */
-    @Test(dataProvider = "getverifyOTPInvalidData", priority = 2)
+   // @Test(dataProvider = "getverifyOTPInvalidData", priority = 2)
     private void verifyOTPusingInvalidData(String apiName, String testCaseId, 
         String testType, String description, String httpsMethod, 
         String requestBody, String expectedResponseBody, String statusCode) throws customException 

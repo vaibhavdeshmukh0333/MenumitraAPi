@@ -290,4 +290,142 @@ public class InventoryCategoryCreate extends APIBase
             throw new customException(errorMsg);
         }
     }
+
+   
+    
+    /**
+     * Test method for negative inventory category create scenarios
+     */
+    @Test(dataProvider = "getInventoryCategoryCreateNegativeData")
+    public void createInventoryCategoryNegative(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBodyPayload, String expectedResponseBody, String statusCode)
+            throws customException {
+        try {
+            LogUtils.info("Starting inventory category create negative test case: " + testCaseid);
+            LogUtils.info("Test Description: " + description);
+            ExtentReport.createTest("Inventory Category Create Negative Test - " + testCaseid);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            // Validate API name and test type
+            if (!"inventorycategorycreate".equalsIgnoreCase(apiName)) {
+                String errorMsg = "Invalid API name for inventory category create test: " + apiName;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            if (!"negative".equalsIgnoreCase(testType)) {
+                String errorMsg = "Invalid test type for inventory category create negative test: " + testType;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            // Request preparation
+            ExtentReport.getTest().log(Status.INFO, "Preparing request body");
+            LogUtils.info("Preparing request body");
+            requestBodyJson = new JSONObject(requestBodyPayload);
+            
+            // Initialize inventory category create request with payload from Excel sheet
+            inventoryCategoryCreateRequest = new InventoryCategoryCreateRequest();
+            
+           
+            
+            if (requestBodyJson.has("user_id")) {
+                inventoryCategoryCreateRequest.setUser_id(requestBodyJson.getString("user_id"));
+            } else {
+                inventoryCategoryCreateRequest.setUser_id(String.valueOf(user_id));
+            }
+            
+            if (requestBodyJson.has("name")) {
+                inventoryCategoryCreateRequest.setName(requestBodyJson.getString("name"));
+            }
+            
+            
+            LogUtils.info("Inventory category create request initialized with payload from Excel sheet");
+            ExtentReport.getTest().log(Status.INFO, "Inventory category create request initialized with payload from Excel sheet");
+            
+            // API call
+            ExtentReport.getTest().log(Status.INFO, "Making API call to endpoint: " + baseURI);
+            LogUtils.info("Making API call to endpoint: " + baseURI);
+            ExtentReport.getTest().log(Status.INFO, "Using access token: " + accessToken.substring(0, 15) + "...");
+            LogUtils.info("Using access token: " + accessToken.substring(0, 15) + "...");
+            
+            response = ResponseUtil.getResponseWithAuth(baseURI, inventoryCategoryCreateRequest, httpsmethod, accessToken);
+            
+            // Response logging
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+            LogUtils.info("Response Status Code: " + response.getStatusCode());
+            ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
+            LogUtils.info("Response Body: " + response.asPrettyString());
+            
+            // Validation
+            ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + statusCode);
+            ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+            
+            if (response.getStatusCode() == Integer.parseInt(statusCode)) {
+                ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                
+                actualResponseBody = new JSONObject(response.asString());
+                expectedResponse = new JSONObject(expectedResponseBody);
+                
+                ExtentReport.getTest().log(Status.INFO, "Starting response body validation");
+                LogUtils.info("Starting response body validation");
+                ExtentReport.getTest().log(Status.INFO, "Expected Response Body:\n" + expectedResponse.toString(2));
+                LogUtils.info("Expected Response Body:\n" + expectedResponse.toString(2));
+                ExtentReport.getTest().log(Status.INFO, "Actual Response Body:\n" + actualResponseBody.toString(2));
+                LogUtils.info("Actual Response Body:\n" + actualResponseBody.toString(2));
+                
+                // Validate response message sentence count
+                if (actualResponseBody.has("message")) {
+                    String message = actualResponseBody.getString("message");
+                    String[] sentences = message.split("[.!?]+");
+                    int sentenceCount = 0;
+                    
+                    for (String sentence : sentences) {
+                        if (!sentence.trim().isEmpty()) {
+                            sentenceCount++;
+                        }
+                    }
+                    
+                    ExtentReport.getTest().log(Status.INFO, "Response message contains " + sentenceCount + " sentences");
+                    LogUtils.info("Response message contains " + sentenceCount + " sentences");
+                    
+                    if (sentenceCount > 6) {
+                        String errorMsg = "Response message contains more than 6 sentences: " + sentenceCount;
+                        ExtentReport.getTest().log(Status.FAIL, errorMsg);
+                        LogUtils.failure(logger, errorMsg);
+                        throw new customException(errorMsg);
+                    }
+                }
+                
+                ExtentReport.getTest().log(Status.INFO, "Performing detailed response validation");
+                LogUtils.info("Performing detailed response validation");
+                validateResponseBody.handleResponseBody(response, expectedResponse);
+                
+                ExtentReport.getTest().log(Status.PASS, "Response body validation passed successfully");
+                LogUtils.success(logger, "Response body validation passed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Negative test case executed successfully", ExtentColor.GREEN));
+            } else {
+                String errorMsg = "Status code validation failed - Expected: " + statusCode + ", Actual: " + response.getStatusCode();
+                ExtentReport.getTest().log(Status.FAIL, errorMsg);
+                LogUtils.failure(logger, errorMsg);
+                LogUtils.error("Failed Response Body:\n" + response.asPrettyString());
+                throw new customException(errorMsg);
+            }
+        } catch (Exception e) {
+            String errorMsg = "Test execution failed: " + e.getMessage();
+            ExtentReport.getTest().log(Status.FAIL, errorMsg);
+            LogUtils.error(errorMsg);
+            LogUtils.error("Stack trace: " + Arrays.toString(e.getStackTrace()));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body:\n" + response.asPrettyString());
+                LogUtils.error("Failed Response Status Code: " + response.getStatusCode());
+                LogUtils.error("Failed Response Body:\n" + response.asPrettyString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
 }

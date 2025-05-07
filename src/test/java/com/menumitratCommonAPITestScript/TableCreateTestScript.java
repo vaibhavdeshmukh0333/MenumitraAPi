@@ -273,4 +273,197 @@ public class TableCreateTestScript extends APIBase
     }
 
    
+    @DataProvider(name = "getTableCreateNegativeData")
+    public  Object[][] getTableCreateNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading table create negative test scenario data from Excel");
+            ExtentReport.getTest().log(Status.INFO, "Reading table create negative test scenario data from Excel");
+            
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            for (int i = 0; i < readExcelData.length; i++) {
+                Object[] row = readExcelData[i];
+                if (row != null && row.length >= 3 &&
+                        "tablecreate".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                        "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
+                }
+            }
+            
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid table create negative test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            Object[][] result = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                result[i] = filteredData.get(i);
+            }
+            
+            return result;
+        } catch (Exception e) {
+            String errorMsg = "Error in getting table create negative test data: " + e.getMessage();
+            LogUtils.failure(logger, errorMsg);
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting table create negative test data: " + e.getMessage());
+            throw new customException(errorMsg);
+        }
+    }
+
+    @Test(dataProvider = "getTableCreateNegativeData")
+    public void verifyTableCreateNegative(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBodyPayload, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting table create negative test case: " + testCaseid);
+            ExtentReport.createTest("Table Create Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            if (apiName.equalsIgnoreCase("tablecreate") && testType.equalsIgnoreCase("negative")) {
+                requestBodyJson = new JSONObject(requestBodyPayload);
+                
+                LogUtils.info("Request Body: " + requestBodyJson.toString(2));
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString(2));
+                
+                // Set payload for table create request
+                if (requestBodyJson.has("outlet_id")) {
+                    tableRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
+                }
+                
+                if (requestBodyJson.has("section_id")) {
+                    tableRequest.setSection_id(requestBodyJson.getString("section_id"));
+                }
+                
+                if (requestBodyJson.has("user_id")) {
+                    tableRequest.setUser_id(requestBodyJson.getString("user_id"));
+                } else {
+                    tableRequest.setUser_id(String.valueOf(user_id));
+                }
+                
+               
+                
+                response = ResponseUtil.getResponseWithAuth(baseURI, tableRequest, httpsmethod, accessToken);
+                
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+                
+                int expectedStatusCode = Integer.parseInt(statusCode);
+                
+                // Report actual and expected status codes
+                ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+                ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+                
+                // Check for server errors
+                if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                    LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+                }
+                // Validate status code
+                else if (response.getStatusCode() != expectedStatusCode) {
+                    LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                }
+                else {
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                    
+                    // Validate response body
+                    actualResponseBody = new JSONObject(response.asString());
+                    
+                    // Report actual and expected response bodies
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                        expectedResponse = new JSONObject(expectedResponseBody);
+                        
+                        ExtentReport.getTest().log(Status.INFO, "Expected Response Body:\n" + expectedResponse.toString(2));
+                        ExtentReport.getTest().log(Status.INFO, "Actual Response Body:\n" + actualResponseBody.toString(2));
+                        
+                        // Validate response message sentence count
+                        if (actualResponseBody.has("detail")) {
+                            String detailMessage = actualResponseBody.getString("detail");
+                            int sentenceCount = countSentences(detailMessage);
+                            
+                            if (sentenceCount > 5) {
+                                String errorMsg = "Error message contains more than 5 sentences: " + sentenceCount;
+                                LogUtils.failure(logger, errorMsg);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                            } else {
+                                LogUtils.info("Error message sentence count validation passed: " + sentenceCount + " sentences");
+                                ExtentReport.getTest().log(Status.PASS, "Error message sentence count validation passed: " + sentenceCount + " sentences");
+                            }
+                        }
+                        
+                        // Validate error message
+                        if (expectedResponse.has("detail") && actualResponseBody.has("detail")) {
+                            String expectedDetail = expectedResponse.getString("detail");
+                            String actualDetail = actualResponseBody.getString("detail");
+                            
+                            if (expectedDetail.equals(actualDetail)) {
+                                LogUtils.info("Error message validation passed: " + actualDetail);
+                                ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                            } else {
+                                LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                                ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            }
+                        }
+                        
+                        // Complete response validation
+                        validateResponseBody.handleResponseBody(response, expectedResponse);
+                    }
+                    
+                    LogUtils.success(logger, "Table create negative test completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Table create negative test completed successfully", ExtentColor.GREEN));
+                }
+                
+                // Always log the full response
+                ExtentReport.getTest().log(Status.INFO, "Full Response:");
+                ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            }
+        } catch (Exception e) {
+            String errorMsg = "Error in table create negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+
+    /**
+     * Helper method to count sentences in a string.
+     * A sentence is considered to end with a period, question mark, or exclamation mark.
+     */
+    private int countSentences(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        
+        // Count the number of sentence-ending punctuation marks
+        int count = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c == '.' || c == '?' || c == '!') {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+    
+    
 }

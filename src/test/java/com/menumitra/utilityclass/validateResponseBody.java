@@ -92,7 +92,9 @@ public class validateResponseBody {
                 case 408:
                 	validateSuccessResponse(actualResponseJson.toString(), expectedResponse.toString());
                     break;
-                    
+                case 409:
+                    validateSuccessResponse(actualResponseJson.toString(), expectedResponse.toString());
+                break;    
                 case 429:
                 	validateSuccessResponse(actualResponseJson.toString(), expectedResponse.toString());
                     break;
@@ -134,26 +136,37 @@ public class validateResponseBody {
     {
         try
         {
-        	ObjectMapper objectmapper=new ObjectMapper();
-        	 Map<String, Object> actualMap = objectmapper.readValue(actualResponse, Map.class);
-             Map<String, Object> expectedMap = objectmapper.readValue(expectedResponse, Map.class);
+            ObjectMapper objectmapper=new ObjectMapper();
+            Map<String, Object> actualMap = objectmapper.readValue(actualResponse, Map.class);
+            Map<String, Object> expectedMap = objectmapper.readValue(expectedResponse, Map.class);
              
-             Assert.assertEquals(actualMap,expectedMap,"Acutal response does not matched expected response");
-             LogUtils.info("Success response matched as expected");
-             ExtentReport.getTest().log(Status.PASS,"Success response matched as expeted\n"+actualMap);
+            boolean isMatched = actualMap.equals(expectedMap);
+            
+            if (isMatched) {
+                LogUtils.info("Success response matched as expected");
+                ExtentReport.getTest().log(Status.PASS, "Success response matched as expected");
+                ExtentReport.getTest().log(Status.PASS, "Expected response: " + expectedResponse);
+                ExtentReport.getTest().log(Status.PASS, "Actual response: " + actualResponse);
+            } else {
+                LogUtils.error("Actual response does not match expected response");
+                ExtentReport.getTest().log(Status.FAIL, "Mismatch in success response");
+                ExtentReport.getTest().log(Status.FAIL, "Expected response: " + expectedResponse);
+                ExtentReport.getTest().log(Status.FAIL, "Actual response: " + actualResponse);
+                throw new customException("Actual response does not match expected response");
+            }
         }
         catch (AssertionError e) 
         {
-        	 LogUtils.error("Success response validation failed: " + e.getMessage());
-             ExtentReport.getTest().log(Status.FAIL, "Mismatch in success response:\nExpected response: " + expectedResponse + "\nActual response: " + actualResponse);
-             throw new customException("success response validate failed: "+e.getMessage());
-		}
+            LogUtils.error("Success response validation failed: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Mismatch in success response:\nExpected response: " + expectedResponse + "\nActual response: " + actualResponse);
+            throw new customException("success response validate failed: "+e.getMessage());
+        }
         catch (Exception e) 
         {
-        	LogUtils.error("Error processing success response: " + e.getMessage());
+            LogUtils.error("Error processing success response: " + e.getMessage());
             ExtentReport.getTest().log(Status.FAIL, "Exception while processing success response: " + e.getMessage());
             throw new customException("Error processing success response: " + e.getMessage());
-		}
+        }
     }
 
     /**

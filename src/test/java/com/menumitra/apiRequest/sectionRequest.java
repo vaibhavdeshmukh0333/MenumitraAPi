@@ -3,7 +3,7 @@ package com.menumitra.apiRequest;
 public class sectionRequest
 {
 	private String outlet_id;
-	private int user_id;
+	private String user_id;
 	private String section_name;
 	private String section_id;
 	
@@ -13,10 +13,10 @@ public class sectionRequest
 	public void setOutlet_id(String outlet_id) {
 		this.outlet_id = outlet_id;
 	}
-	public int getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 	public String getSection_name() {

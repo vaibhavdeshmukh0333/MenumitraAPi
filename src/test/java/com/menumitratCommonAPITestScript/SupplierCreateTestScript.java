@@ -317,6 +317,208 @@ public class SupplierCreateTestScript extends APIBase
         }
     }
     
+   
+    @Test(dataProvider = "getSupplierNegativeData")
+    public void supplierCreateNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBodyPayload, String expectedResponseBody, String statusCode) 
+            throws customException {
+        try {
+            LogUtils.info("Starting supplier create negative test case: " + testCaseid);
+            ExtentReport.createTest("Supplier Create Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            // Verify API name and test type
+            if (!apiName.equalsIgnoreCase("suppliercreate") || !testType.equalsIgnoreCase("negative")) {
+                String errorMsg = "Invalid API name or test type - Expected: 'suppliercreate' and 'negative', Actual: '" 
+                        + apiName + "' and '" + testType + "'";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            // Request preparation
+            ExtentReport.getTest().log(Status.INFO, "Preparing request body");
+            LogUtils.info("Preparing request body");
+            JSONObject requestBodyJson = new JSONObject(requestBodyPayload);
+            
+            // Set all the necessary fields from request
+            if (requestBodyJson.has("outlet_id")) {
+                supplierCreateRequest.setOutlet_id(String.valueOf(requestBodyJson.get("outlet_id")));
+            }
+            
+            // Check if name field is present and not empty
+            // This is a mandatory field and should trigger an error if missing
+            if (requestBodyJson.has("name") && !requestBodyJson.getString("name").trim().isEmpty()) {
+                supplierCreateRequest.setName(requestBodyJson.getString("name"));
+            } else {
+                // For negative test cases, we might intentionally omit the name field
+                // to test the validation error "Supplier name is required"
+                LogUtils.info("Name field is missing or empty in request - expecting validation error");
+                ExtentReport.getTest().log(Status.INFO, "Name field is missing or empty - expecting validation error");
+            }
+            
+            supplierCreateRequest.setUser_id(String.valueOf(user_id));
+            
+            if (requestBodyJson.has("name")) {
+                supplierCreateRequest.setName(requestBodyJson.getString("name"));
+            }
+            
+            if (requestBodyJson.has("credit_limit")) {
+                supplierCreateRequest.setCredit_limit(requestBodyJson.getString("credit_limit"));
+            }
+            
+            if (requestBodyJson.has("credit_rating")) {
+                supplierCreateRequest.setCredit_rating(requestBodyJson.getString("credit_rating"));
+            }
+            
+            if (requestBodyJson.has("location")) {
+                supplierCreateRequest.setLocation(requestBodyJson.getString("location"));
+            }
+            
+            if (requestBodyJson.has("owner_name")) {
+                supplierCreateRequest.setOwner_name(requestBodyJson.getString("owner_name"));
+            }
+            
+            if (requestBodyJson.has("website")) {
+                supplierCreateRequest.setWebsite(requestBodyJson.getString("website"));
+            }
+            
+            if (requestBodyJson.has("mobile_number1")) {
+                supplierCreateRequest.setMobile_number1(requestBodyJson.getString("mobile_number1"));
+            }
+            
+            if (requestBodyJson.has("mobille_number2")) {
+                supplierCreateRequest.setMobille_number2(requestBodyJson.getString("mobille_number2"));
+            }
+            
+            if (requestBodyJson.has("address")) {
+                supplierCreateRequest.setAddress(requestBodyJson.getString("address"));
+            }
+            
+            if (requestBodyJson.has("supplier_status")) {
+                supplierCreateRequest.setSupplier_status(requestBodyJson.getString("supplier_status"));
+            }
+            
+            LogUtils.info("Request Body: " + requestBodyJson.toString());
+            ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+            
+            // API call
+            response = ResponseUtil.getResponseWithAuth(baseURI, supplierCreateRequest, httpsmethod, accessToken);
+            
+            LogUtils.info("Response Status Code: " + response.getStatusCode());
+            LogUtils.info("Response Body: " + response.asString());
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+            ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+            
+            int expectedStatusCode = Integer.parseInt(statusCode);
+            
+            // Report actual vs expected status code
+            ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+            ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+            
+            // Check for server errors
+            if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+            }
+            // Validate status code
+            else if (response.getStatusCode() != expectedStatusCode) {
+                LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+            }
+            else {
+                LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                
+                // Validate response body
+                actualResponseBody = new JSONObject(response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedResponseBody);
+                ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + actualResponseBody.toString());
+                
+                if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                    expectedResponse = new JSONObject(expectedResponseBody);
+                    
+                    // Validate response message
+                    if (expectedResponse.has("detail") && actualResponseBody.has("detail")) {
+                        String expectedDetail = expectedResponse.getString("detail");
+                        String actualDetail = actualResponseBody.getString("detail");
+                        
+                        // Count and validate sentence count (maximum 6 sentences allowed)
+                        int sentenceCount = countSentences(actualDetail);
+                        
+                        // Validate sentence count - 6 or fewer sentences required
+                        if (sentenceCount > 6) {
+                            String errorMsg = "Response message contains more than 6 sentences. Found: " + sentenceCount;
+                            LogUtils.failure(logger, errorMsg);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                        } else {
+                            LogUtils.info("Sentence count validation passed. Found: " + sentenceCount + " sentences (maximum 6 allowed)");
+                            ExtentReport.getTest().log(Status.PASS, "Sentence count validation passed. Found: " + sentenceCount + " sentences (maximum 6 allowed)");
+                        }
+                        
+                        // Validate message content
+                        if (expectedDetail.equals(actualDetail)) {
+                            LogUtils.info("Error message validation passed: " + actualDetail);
+                            ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                        } else {
+                            LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                            ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                        }
+                    }
+                    
+                    // Complete response validation
+                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                }
+                
+                LogUtils.success(logger, "Supplier create negative test completed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Supplier create negative test completed successfully", ExtentColor.GREEN));
+            }
+            
+            // Always log the full response
+            ExtentReport.getTest().log(Status.INFO, "Full Response:");
+            ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            
+        } catch (Exception e) {
+            String errorMsg = "Error in supplier create negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+
+    /**
+     * Count the number of sentences in a string.
+     * Sentences are delimited by periods, exclamation marks, or question marks.
+     * 
+     * @param text The text to count sentences in
+     * @return The number of sentences
+     */
+    private int countSentences(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        
+        // Split by common sentence terminators
+        String[] sentences = text.split("[.!?]+");
+        
+        // Filter out empty strings that may result from sequential punctuation
+        int count = 0;
+        for (String sentence : sentences) {
+            if (!sentence.trim().isEmpty()) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+    
     
 
    // @AfterClass

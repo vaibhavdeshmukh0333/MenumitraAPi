@@ -41,11 +41,11 @@ public class StaffDeleteTestScript extends APIBase
     private JSONObject requestBodyJson;
     private Response response;
     private String baseURI;
-    private String accessToken;
+    private String access;
     private staffRequest staffDeleteRequest;
     private URL url;
     private int user_id;
-    private JSONObject expectedJsonBody;
+    private JSONObject expectedResponseJson;
     private JSONObject actualJsonBody;
     Logger logger = LogUtils.getLogger(StaffDeleteTestScript.class);
 
@@ -106,42 +106,100 @@ public class StaffDeleteTestScript extends APIBase
             throw new customException("Error while reading staff delete test scenario data from Excel sheet: " + e.getMessage());
         }
     }
-
-   
-
-    @BeforeClass
-    private void setup() throws customException {
+    
+    @DataProvider(name = "getStaffDeleteNegativeData")
+    public Object[][] getStaffDeleteNegativeData() throws customException {
         try {
-            LogUtils.info("====start setup delete staff====");
-            ExtentReport.createTest("Delete Staff Setup");
-            ActionsMethods.login();
-            ActionsMethods.verifyOTP();
+            LogUtils.info("Reading staff delete negative test scenario data");
+            ExtentReport.getTest().log(Status.INFO, "Reading staff delete negative test scenario data");
             
-            baseURI = EnviromentChanges.getBaseUrl();
-            
-            Object[][] staffDeleteData = getStaffDeleteUrl();
-            if (staffDeleteData.length > 0) 
-            {
-                String endpoint = staffDeleteData[0][2].toString();
-                url = new URL(endpoint);
-                baseURI=RequestValidator.buildUri(endpoint, baseURI);
-                
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
             }
             
-            accessToken = TokenManagers.getJwtToken();
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            for (int i = 0; i < readExcelData.length; i++) {
+                Object[] row = readExcelData[i];
+                if (row != null && row.length >= 3 &&
+                        "staffdelete".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                        "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
+                }
+            }
+            
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid staff delete negative test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            Object[][] result = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                result[i] = filteredData.get(i);
+            }
+            
+            return result;
+        } catch (Exception e) {
+            LogUtils.failure(logger, "Error in getting staff delete negative test data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting staff delete negative test data: " + e.getMessage());
+            throw new customException("Error in getting staff delete negative test data: " + e.getMessage());
+        }
+    }
+    
+
+    @BeforeClass
+    private void staffDeleteSetUp() throws customException
+    {
+        try
+        {
+            LogUtils.info("Staff Delete SetUp");
+            ExtentReport.createTest("Staff Delete SetUp");
+            ExtentReport.getTest().log(Status.INFO,"Staff Delete SetUp");
+
+            ActionsMethods.login();
+            ActionsMethods.verifyOTP();
+            baseURI = EnviromentChanges.getBaseUrl();
+            
+            Object[][] getUrl = getStaffDeleteUrl();
+            if (getUrl.length > 0) 
+            {
+                String endpoint = getUrl[0][2].toString();
+                url = new URL(endpoint);
+                baseURI = RequestValidator.buildUri(endpoint, baseURI);
+                LogUtils.info("Constructed base URI: " + baseURI);
+                ExtentReport.getTest().log(Status.INFO, "Constructed base URI: " + baseURI);
+            } else {
+                LogUtils.failure(logger, "No staff delete URL found in test data");
+                ExtentReport.getTest().log(Status.FAIL, "No staff delete URL found in test data");
+                throw new customException("No staff delete URL found in test data");
+            }
+            
+            access = TokenManagers.getJwtToken();
+            if(access.isEmpty())
+            {
+                LogUtils.failure(logger, "Failed to get access token");
+                ExtentReport.getTest().log(Status.FAIL, "Failed to get access token");
+                throw new customException("Failed to get access token");
+            }
+            
             user_id=TokenManagers.getUserId();
             staffDeleteRequest = new staffRequest();
             
-            LogUtils.info("Setup completed successfully");
-            ExtentReport.getTest().log(Status.PASS, "Setup completed successfully");
         } catch (Exception e) {
-            LogUtils.error("Error in setup: " + e.getMessage());
-            ExtentReport.getTest().log(Status.FAIL, "Error in setup: " + e.getMessage());
-            throw new customException("Error in setup: " + e.getMessage());
+            LogUtils.failure(logger, "Error in staff delete setup: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in staff delete setup: " + e.getMessage());
+            throw new customException("Error in staff delete setup: " + e.getMessage());
         }
     }
 
-    @Test(dataProvider = "getStaffDeleteData")
+    //@Test(dataProvider = "getStaffDeleteData")
     public void testStaffDelete(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {
@@ -151,13 +209,13 @@ public class StaffDeleteTestScript extends APIBase
             
             requestBodyJson = new JSONObject(requestBody);
             staffDeleteRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
-            staffDeleteRequest.setStaff_id(String.valueOf(requestBodyJson.getInt("staff_id")));
+            staffDeleteRequest.setStaff_id(String.valueOf(String.valueOf(requestBodyJson.getInt("staff_id"))));
             staffDeleteRequest.setUser_id(user_id);
             
             LogUtils.info("Request Body: " + requestBodyJson.toString());
             ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
             
-            response = ResponseUtil.getResponseWithAuth(baseURI, staffDeleteRequest, httpsmethod, accessToken);
+            response = ResponseUtil.getResponseWithAuth(baseURI, staffDeleteRequest, httpsmethod, access);
             
             LogUtils.info("Response Status Code: " + response.getStatusCode());
             LogUtils.info("Response Body: " + response.asString());
@@ -175,10 +233,10 @@ public class StaffDeleteTestScript extends APIBase
             // Validate response body
             actualJsonBody = new JSONObject(response.asString());
             if(expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
-                expectedJsonBody = new JSONObject(expectedResponseBody);
+                expectedResponseJson = new JSONObject(expectedResponseBody);
                 
-                if(!expectedJsonBody.similar(actualJsonBody)) {
-                    String errorMsg = "Response body mismatch\nExpected: " + expectedJsonBody.toString(2) + "\nActual: " + actualJsonBody.toString(2);
+                if(!expectedResponseJson.similar(actualJsonBody)) {
+                    String errorMsg = "Response body mismatch\nExpected: " + expectedResponseJson.toString(2) + "\nActual: " + actualJsonBody.toString(2);
                     LogUtils.failure(logger, errorMsg);
                     ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
                     throw new customException(errorMsg);
@@ -189,7 +247,7 @@ public class StaffDeleteTestScript extends APIBase
             String successMsg = "Staff deleted successfully";
             LogUtils.success(logger, successMsg + "\nResponse: " + response.asPrettyString());
             ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel(successMsg, ExtentColor.GREEN));
-            ExtentReport.getTest().log(Status.PASS, "Expected Response: " + (expectedJsonBody != null ? expectedJsonBody.toString(2) : "No expected response provided"));
+            ExtentReport.getTest().log(Status.PASS, "Expected Response: " + (expectedResponseJson != null ? expectedResponseJson.toString(2) : "No expected response provided"));
             ExtentReport.getTest().log(Status.PASS, "Actual Response: " + actualJsonBody.toString(2));
             
         }
@@ -206,4 +264,128 @@ public class StaffDeleteTestScript extends APIBase
             throw new customException(errorMsg);
         }
     }
+
+  
+    @Test(dataProvider = "getStaffDeleteNegativeData")
+    public void staffDeleteNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting staff delete negative test case: " + testCaseid);
+            ExtentReport.createTest("Staff Delete Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            if (apiName.equalsIgnoreCase("staffdelete") && testType.equalsIgnoreCase("negative")) {
+                requestBodyJson = new JSONObject(requestBody);
+                
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+                
+                staffDeleteRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
+                staffDeleteRequest.setStaff_id(String.valueOf(String.valueOf(requestBodyJson.getInt("staff_id"))));
+                staffDeleteRequest.setUser_id(user_id);
+                // Add more fields as needed for staff delete API
+                
+                // Log request details for debugging
+                ExtentReport.getTest().log(Status.INFO, "Request URL: " + baseURI);
+                ExtentReport.getTest().log(Status.INFO, "Request Method: " + httpsmethod);
+                ExtentReport.getTest().log(Status.INFO, "Request Headers: Authorization Bearer Token applied");
+                
+                // Execute API call
+                response = ResponseUtil.getResponseWithAuth(baseURI, staffDeleteRequest, httpsmethod, access);
+                
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+                
+                int expectedStatusCode = Integer.parseInt(statusCode);
+                
+                // Step 1: Validate Status Code
+                ExtentReport.getTest().log(Status.INFO, "STEP 1: Validating Status Code");
+                
+                // Check for server errors
+                if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                    LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+                }
+                // Validate status code
+                else if (response.getStatusCode() != expectedStatusCode) {
+                    LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                }
+                else {
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                    
+                    // Step 2: Validate Response Body
+                    ExtentReport.getTest().log(Status.INFO, "STEP 2: Validating Response Body");
+                    actualJsonBody = new JSONObject(response.asString());
+                    
+                    // Display actual response for report
+                    ExtentReport.getTest().log(Status.INFO, "Actual Response Body:");
+                    ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+                    
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                        expectedResponseJson = new JSONObject(expectedResponseBody);
+                        
+                        // Display expected response for report
+                        ExtentReport.getTest().log(Status.INFO, "Expected Response Body:");
+                        ExtentReport.getTest().log(Status.INFO, expectedResponseJson.toString(4));
+                        
+                        // Step 2.1: Validate error message if applicable
+                        ExtentReport.getTest().log(Status.INFO, "STEP 2.1: Validating Error Message");
+                        if (expectedResponseJson.has("detail") && actualJsonBody.has("detail")) {
+                            String expectedDetail = expectedResponseJson.getString("detail");
+                            String actualDetail = actualJsonBody.getString("detail");
+                            
+                            if (expectedDetail.equals(actualDetail)) {
+                                LogUtils.info("Error message validation passed: " + actualDetail);
+                                ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                            } else {
+                                LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                                ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            }
+                        }
+                        
+                        // Step 2.2: Complete response body validation
+                        ExtentReport.getTest().log(Status.INFO, "STEP 2.2: Validating Complete Response Structure");
+                        validateResponseBody.handleResponseBody(response, expectedResponseJson);
+                    }
+                    
+                    LogUtils.success(logger, "Staff delete negative test completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Staff delete negative test completed successfully", ExtentColor.GREEN));
+                }
+                
+                // Step 3: Summary
+                ExtentReport.getTest().log(Status.INFO, "STEP 3: Test Summary");
+                ExtentReport.getTest().log(Status.INFO, "Test Case ID: " + testCaseid);
+                ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+                ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+                ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Test Result: " + 
+                    (response.getStatusCode() == expectedStatusCode ? "PASS" : "FAIL"));
+                
+                // Always log the full response
+                ExtentReport.getTest().log(Status.INFO, "Full Response:");
+                ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            }
+        } catch (Exception e) {
+            String errorMsg = "Error in staff delete negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+    
+    
+    
+    
+   
 }

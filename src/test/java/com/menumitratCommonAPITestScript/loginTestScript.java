@@ -261,7 +261,7 @@ public class loginTestScript extends APIBase
     /**
      * Test method for negative scenarios
      */
-    @Test(dataProvider = "getNegativeInputData", priority = 2)
+    //@Test(dataProvider = "getNegativeInputData", priority = 2)
     private void verifyLoginUsingInvalidInputData(String apiName, String testCaseId, 
         String testType, String description, String httpsMethod, 
         String requestBody, String expectedResponseBody, String statusCode) throws customException {

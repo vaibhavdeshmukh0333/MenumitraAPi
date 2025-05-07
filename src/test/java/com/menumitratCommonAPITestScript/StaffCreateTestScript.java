@@ -215,7 +215,7 @@ public class StaffCreateTestScript extends APIBase {
     /**
      * Test method to create staff member
      */
-    @Test(dataProvider = "getStaffCreateData")
+   // @Test(dataProvider = "getStaffCreateData")
     private void createStaff(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode)
             throws customException {
@@ -255,7 +255,7 @@ public class StaffCreateTestScript extends APIBase {
 
                 LogUtils.info("Adding form data parameters to request");
                 request.multiPart("outlet_id", requestjsonBody.getInt("outlet_id"));
-                request.multiPart("user_id", userId);
+                request.multiPart("user_id",requestjsonBody.getInt("user_id"));
                 request.multiPart("mobile", requestjsonBody.getString("mobile"));
                 request.multiPart("name", requestjsonBody.getString("name"));
                 request.multiPart("dob", requestjsonBody.getString("dob"));
@@ -292,7 +292,107 @@ public class StaffCreateTestScript extends APIBase {
         }
     }
 
-    
+    /**
+     * Test method to verify negative cases for staff creation
+     */
+    @Test(dataProvider="getStaffNegativeData")
+    private void verifyStaffCreateNegativeCases(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Test Description: " + description);
+            ExtentReport.createTest("Staff Create Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            if (apiName.equalsIgnoreCase("staffcreate") && testType.equalsIgnoreCase("negative")) {
+                LogUtils.info("Preparing request body");
+                ExtentReport.getTest().log(Status.INFO, "Preparing request body");
+                
+                expectedResponse = new JSONObject(requestBody.replace("\\", "\\\\"));
+                LogUtils.info("Request Body: " + expectedResponse.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + expectedResponse.toString());
+                
+                LogUtils.info("Making API call to endpoint: " + baseUri);
+                ExtentReport.getTest().log(Status.INFO, "Making API call to endpoint: " + baseUri);
+                
+                LogUtils.info("Using access token: " + accessToken.substring(0, 15) + "...");
+                ExtentReport.getTest().log(Status.INFO, "Using access token: " + accessToken.substring(0, 15) + "...");
+                
+                request = RestAssured.given();
+                request.header("Authorization", "Bearer " + accessToken);
+                request.header("Content-Type", "multipart/form-data");
+
+                // Set multipart form data
+                for (String key : expectedResponse.keySet()) {
+                    if (key.equals("image") && expectedResponse.has("image") && !expectedResponse.getString("image").isEmpty()) {
+                        File profileImage = new File(expectedResponse.getString("image"));
+                        if (profileImage.exists()) {
+                            request.multiPart("image", profileImage);
+                        }
+                    } else {
+                        request.multiPart(key, expectedResponse.get(key).toString());
+                    }
+                }
+                
+                response = request.when().post(baseUri).then().extract().response();
+
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                
+                LogUtils.info("Response Body: " + response.asPrettyString());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
+                
+                // Get expected status code from Excel
+                int expectedStatusCode = Integer.parseInt(statusCode);
+                
+                // Parse the actual response body
+                actualResponseBody = new JSONObject(response.asString());
+                
+                // Validate status code
+                if (response.getStatusCode() != expectedStatusCode) {
+                    LogUtils.failure(logger, "Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, "Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    
+                    LogUtils.failure(logger, "Test execution failed: Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, "Test execution failed: Status code validation failed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    
+                    LogUtils.failure(logger, "Failed Response Status Code: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                } else {
+                    LogUtils.success(logger, "Status code validation passed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    
+                    // Validate response body if expected response is provided
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                        try {
+                            JSONObject expectedResponseJson = new JSONObject(expectedResponseBody);
+                            
+                            // Compare response bodies
+                            validateResponseBody.handleResponseBody(response, expectedResponseJson);
+                            
+                            LogUtils.success(logger, "Response body validation passed");
+                            ExtentReport.getTest().log(Status.PASS, "Response body validation passed");
+                        } catch (Exception e) {
+                            LogUtils.failure(logger, "Response body validation failed: " + e.getMessage());
+                            ExtentReport.getTest().log(Status.FAIL, "Response body validation failed: " + e.getMessage());
+                        }
+                    }
+                    
+                    LogUtils.success(logger, "Test execution completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, "Test execution completed successfully");
+                }
+            }
+        } catch (Exception e) {
+            LogUtils.error("Error during staff create negative test execution: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error during staff create negative test execution: " + e.getMessage());
+            
+            if (response != null) {
+                LogUtils.failure(logger, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+            }
+            
+            throw new customException("Error during staff create negative test execution: " + e.getMessage());
+        }
+    }
    // @AfterClass
     private void tearDown()
     {

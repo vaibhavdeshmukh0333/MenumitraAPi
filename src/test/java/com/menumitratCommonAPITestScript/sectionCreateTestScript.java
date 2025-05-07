@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -213,7 +214,7 @@ public class sectionCreateTestScript extends APIBase
                 
                 LogUtils.info("Setting up request parameters");
                 sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.getInt("outlet_id")));
-                sectionrequest.setUser_id(userId);
+                sectionrequest.setUser_id(String.valueOf(userId));
                 sectionrequest.setSection_name(requestBodyJson.getString("section_name"));
 
                 LogUtils.info("Sending POST request to create section");
@@ -255,6 +256,212 @@ public class sectionCreateTestScript extends APIBase
         }
     }
 
+    @DataProvider(name="getSectionCreateNegativeData")
+    private Object[][] getSectionCreateNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading negative test scenario data for section create API");
+            Object[][] testData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            
+            if (testData == null || testData.length == 0) {
+                LogUtils.failure(logger, "No section create API negative test scenario data found in Excel sheet");
+                throw new customException("No section create API negative test scenario data found in Excel sheet");
+            }
+            
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            // Filter for section create API negative test cases
+            for (int i = 0; i < testData.length; i++) {
+                Object[] row = testData[i];
+                if (row != null && row.length >= 3 &&
+                    "sectioncreate".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                    "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
+                }
+            }
+
+            if (filteredData.isEmpty()) {
+                LogUtils.failure(logger, "No section create API negative test data found after filtering");
+                throw new customException("No section create API negative test data found after filtering");
+            }
+
+            Object[][] obj = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                obj[i] = filteredData.get(i);
+            }
+            
+            return obj;
+        } catch (Exception e) {
+            LogUtils.exception(logger, "Failed to read section create API negative test scenario data: " + e.getMessage(), e);
+            throw new customException("Error reading section create API negative test scenario data: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Method to count the number of sentences in a string
+     * Treats end of sentence markers (., !, ?) followed by space or end of string as sentence boundaries
+     * @param text The text to analyze
+     * @return The number of sentences
+     */
+    private int countSentences(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+        
+        // Pattern to match end of sentences: period, exclamation, or question mark followed by space or end of string
+        Pattern pattern = Pattern.compile("[.!?][ $]");
+        String[] sentences = pattern.split(text);
+        return sentences.length;
+    }
+    
+    @Test(dataProvider = "getSectionCreateNegativeData", priority = 2)
+    public void sectionCreateNegativeTest(String apiName, String testCaseId, 
+            String testType, String description, String httpsMethod, 
+            String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        
+        try {
+            LogUtils.info("Starting section create negative test case: " + testCaseId);
+            ExtentReport.createTest("Section Create Negative Test - " + testCaseId + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            ExtentReport.getTest().log(Status.INFO, "Base URI: " + baseUri);
+            
+            // Verify this is the right API and test type
+            if (!"sectioncreate".equalsIgnoreCase(apiName) || !"negative".equalsIgnoreCase(testType)) {
+                String errorMsg = "Invalid test configuration. API Name must be 'sectioncreate' and Test Type must be 'negative'";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            // Parse request body
+            requestBodyJson = new JSONObject(requestBody);
+            
+            LogUtils.info("Request Body: " + requestBodyJson.toString());
+            ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+            
+            // Set up request parameters
+            sectionrequest = new sectionRequest();
+            if (requestBodyJson.has("outlet_id")) {
+                sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.get("outlet_id")));
+            }
+            
+            if (requestBodyJson.has("user_id")) {
+                sectionrequest.setUser_id(String.valueOf(requestBodyJson.get("user_id")));
+            } else {
+                sectionrequest.setUser_id(String.valueOf(userId));
+            }
+            
+            if (requestBodyJson.has("section_name")) {
+                sectionrequest.setSection_name(requestBodyJson.getString("section_name"));
+            }
+            
+            if (requestBodyJson.has("section_id")) {
+                sectionrequest.setSection_id(requestBodyJson.getString("section_id"));
+            }
+            
+            // Send request
+            response = ResponseUtil.getResponseWithAuth(baseUri, sectionrequest, httpsMethod, accessToken);
+            
+            // Log response details
+            LogUtils.info("Response Status Code: " + response.getStatusCode());
+            LogUtils.info("Response Body: " + response.asString());
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+            
+            // Parse expected status code
+            int expectedStatusCode = Integer.parseInt(statusCode);
+            
+            // Start validation - capture both actual and expected values for reporting
+            ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+            ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+            
+            // Check for server errors
+            if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+            }
+            // Validate status code
+            else if (response.getStatusCode() != expectedStatusCode) {
+                LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+            }
+            else {
+                LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                
+                // Validate response body if exists
+                String responseBody = response.getBody().asString();
+                if (responseBody != null && !responseBody.trim().isEmpty()) {
+                    actualResponseBody = new JSONObject(responseBody);
+                    
+                    // Log actual response body for reporting
+                    ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + actualResponseBody.toString(2));
+                    
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                        expectedJsonBody = new JSONObject(expectedResponseBody);
+                        
+                        // Log expected response body for reporting
+                        ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedJsonBody.toString(2));
+                        
+                        // Check response message sentence count if it has a detail field
+                        if (actualResponseBody.has("detail")) {
+                            String detailMessage = actualResponseBody.getString("detail");
+                            int sentenceCount = countSentences(detailMessage);
+                            
+                            ExtentReport.getTest().log(Status.INFO, "Response message sentence count: " + sentenceCount);
+                            
+                            if (sentenceCount > 6) {
+                                String errorMsg = "Response message contains more than 6 sentences. Found: " + sentenceCount;
+                                LogUtils.failure(logger, errorMsg);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                            } else {
+                                LogUtils.success(logger, "Response message sentence count validation passed: " + sentenceCount);
+                                ExtentReport.getTest().log(Status.PASS, "Response message sentence count validation passed: " + sentenceCount);
+                            }
+                            
+                            // Validate message matches expected
+                            if (expectedJsonBody.has("detail")) {
+                                String expectedDetail = expectedJsonBody.getString("detail");
+                                
+                                if (detailMessage.equals(expectedDetail)) {
+                                    LogUtils.success(logger, "Response message matches expected message");
+                                    ExtentReport.getTest().log(Status.PASS, "Response message matches expected message");
+                                } else {
+                                    LogUtils.failure(logger, "Response message mismatch - Expected: '" + expectedDetail + "', Actual: '" + detailMessage + "'");
+                                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Response message mismatch", ExtentColor.RED));
+                                    ExtentReport.getTest().log(Status.FAIL, "Expected: '" + expectedDetail + "'");
+                                    ExtentReport.getTest().log(Status.FAIL, "Actual: '" + detailMessage + "'");
+                                }
+                            }
+                        }
+                        
+                        // Perform full response validation
+                        validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                    }
+                } else {
+                    LogUtils.info("Empty response body received");
+                    ExtentReport.getTest().log(Status.WARNING, "Empty response body received");
+                }
+                
+                LogUtils.success(logger, "Section create negative test completed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Section create negative test completed successfully", ExtentColor.GREEN));
+            }
+            
+            // Always log the full response for debugging
+            ExtentReport.getTest().log(Status.INFO, "Full Response:");
+            ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            
+        } catch (Exception e) {
+            String errorMsg = "Error in section create negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
 
 
 //@AfterClass

@@ -1,4 +1,4 @@
-package com.menumitra.ownertTestScript;
+package com.menumitratCommonAPITestScript;
 
 import java.net.URL;
 import java.util.ArrayList;

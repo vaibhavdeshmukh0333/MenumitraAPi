@@ -261,7 +261,7 @@ private void verifySectionViewUsingInvalidData(String apiName, String testCaseId
             expectedJsonBody = new JSONObject(expectedResponseBody);
 
             sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.getInt("outlet_id")));
-            sectionrequest.setUser_id(userId);
+            sectionrequest.setUser_id(String.valueOf(userId));
             LogUtils.info("Section view payload prepared");
             ExtentReport.getTest().log(Status.INFO, "Section view payload prepared");
 
@@ -289,6 +289,146 @@ private void verifySectionViewUsingInvalidData(String apiName, String testCaseId
         throw new customException("Error in negative test case " + testCaseId + ": " + e.getMessage());
     }
 }
+
+
+@DataProvider(name = "getSectionViewNegativeData")
+public Object[][] getSectionViewNegativeData() throws customException {
+    try {
+        LogUtils.info("Reading section view negative test scenario data");
+        ExtentReport.getTest().log(Status.INFO, "Reading section view negative test scenario data");
+        
+        Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+        if (readExcelData == null) {
+            String errorMsg = "Error fetching data from Excel sheet - Data is null";
+            LogUtils.failure(logger, errorMsg);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            throw new customException(errorMsg);
+        }
+        
+        List<Object[]> filteredData = new ArrayList<>();
+        
+        for (int i = 0; i < readExcelData.length; i++) {
+            Object[] row = readExcelData[i];
+            if (row != null && row.length >= 3 &&
+                    "sectionview".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                    "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                
+                filteredData.add(row);
+            }
+        }
+        
+        if (filteredData.isEmpty()) {
+            String errorMsg = "No valid section view negative test data found after filtering";
+            LogUtils.failure(logger, errorMsg);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            throw new customException(errorMsg);
+        }
+        
+        Object[][] result = new Object[filteredData.size()][];
+        for (int i = 0; i < filteredData.size(); i++) {
+            result[i] = filteredData.get(i);
+        }
+        
+        return result;
+    } catch (Exception e) {
+        LogUtils.failure(logger, "Error in getting section view negative test data: " + e.getMessage());
+        ExtentReport.getTest().log(Status.FAIL, "Error in getting section view negative test data: " + e.getMessage());
+        throw new customException("Error in getting section view negative test data: " + e.getMessage());
+    }
+}
+
+@Test(dataProvider = "getSectionViewNegativeData")
+public void sectionViewNegativeTest(String apiName, String testCaseid, String testType, String description,
+        String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+    try {
+        LogUtils.info("Starting section view negative test case: " + testCaseid);
+        ExtentReport.createTest("Section View Negative Test - " + testCaseid + ": " + description);
+        ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+        
+        if (apiName.equalsIgnoreCase("sectionview") && testType.equalsIgnoreCase("negative")) {
+            requestBodyJson = new JSONObject(requestBody);
+            
+            LogUtils.info("Request Body: " + requestBodyJson.toString());
+            ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+            
+            sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.getInt("outlet_id")));
+            //sectionrequest.setSection_id(requestBodyJson.getString("section_id"));
+            
+            response = ResponseUtil.getResponseWithAuth(baseUri, sectionrequest, httpsmethod, accessToken);
+            
+            LogUtils.info("Response Status Code: " + response.getStatusCode());
+            LogUtils.info("Response Body: " + response.asString());
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+            ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+            
+            int expectedStatusCode = Integer.parseInt(statusCode);
+            
+            // Check for server errors
+            if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+                ExtentReport.getTest().log(Status.FAIL, "Expected Status Code: " + expectedStatusCode + ", Actual Status Code: " + response.getStatusCode());
+            }
+            // Validate status code
+            else if (response.getStatusCode() != expectedStatusCode) {
+                LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Expected Status Code: " + expectedStatusCode + ", Actual Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Expected Response: " + expectedResponseBody);
+                ExtentReport.getTest().log(Status.FAIL, "Actual Response: " + response.asString());
+            }
+            else {
+                LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.PASS, "Status code validation passed");
+                ExtentReport.getTest().log(Status.PASS, "Expected Status Code: " + expectedStatusCode + ", Actual Status Code: " + response.getStatusCode());
+                
+                // Validate response body
+                actualResponseBody = new JSONObject(response.asString());
+                
+                if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                	expectedJsonBody = new JSONObject(expectedResponseBody);
+                    
+                    // Validate response message
+                    if (expectedJsonBody.has("detail") && actualResponseBody.has("detail")) {
+                        String expectedDetail = expectedJsonBody.getString("detail");
+                        String actualDetail = actualResponseBody.getString("detail");
+                        
+                        if (expectedDetail.equals(actualDetail)) {
+                            LogUtils.info("Error message validation passed: " + actualDetail);
+                            ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                        } else {
+                            LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                            ExtentReport.getTest().log(Status.FAIL, "Expected Detail: " + expectedDetail + ", Actual Detail: " + actualDetail);
+                        }
+                    }
+                    
+                    ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedJsonBody.toString(2));
+                    ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + actualResponseBody.toString(2));
+                    
+                    // Complete response validation
+                    validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                }
+                
+                LogUtils.success(logger, "Section view negative test completed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Section view negative test completed successfully", ExtentColor.GREEN));
+            }
+        }
+    } catch (Exception e) {
+        String errorMsg = "Error in section view negative test: " + e.getMessage();
+        LogUtils.exception(logger, errorMsg, e);
+        ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+        if (response != null) {
+            ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+            ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+        }
+        throw new customException(errorMsg);
+    }
+}
+
+
+
 
 //@AfterClass
 private void tearDown()

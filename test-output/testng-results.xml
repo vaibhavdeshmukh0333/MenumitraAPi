@@ -1,30 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="2" total="3" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="7275" started-at="2025-05-05T06:43:43Z" finished-at="2025-05-05T06:43:50Z">
+  <suite name="Default suite" duration-ms="16622" started-at="2025-05-06T14:06:42Z" finished-at="2025-05-06T14:06:58Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="7275" started-at="2025-05-05T06:43:43Z" finished-at="2025-05-05T06:43:50Z">
-      <class name="com.menumitratCommonAPITestScript.DeleteTemplatesTestScript">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="10" started-at="2025-05-05T12:13:43Z" finished-at="2025-05-05T12:13:43Z">
+    <test name="Default test" duration-ms="16622" started-at="2025-05-06T14:06:42Z" finished-at="2025-05-06T14:06:58Z">
+      <class name="com.menumitratCommonAPITestScript.AddMenusToOrder">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.AddMenusToOrder@7d9d1a19]" name="setUp" is-config="true" duration-ms="16" started-at="2025-05-06T19:36:42Z" finished-at="2025-05-06T19:36:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="deleteTemplatesSetUp()[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="deleteTemplatesSetUp" is-config="true" duration-ms="6007" started-at="2025-05-05T12:13:43Z" finished-at="2025-05-05T12:13:49Z">
+        <test-method status="PASS" signature="addMenusToOrderSetUp()[pri:0, instance:com.menumitratCommonAPITestScript.AddMenusToOrder@7d9d1a19]" name="addMenusToOrderSetUp" is-config="true" duration-ms="8040" started-at="2025-05-06T19:36:42Z" finished-at="2025-05-06T19:36:50Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- deleteTemplatesSetUp -->
-        <test-method status="PASS" signature="deleteTemplatesTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.DeleteTemplatesTestScript@7d9d1a19]" name="deleteTemplatesTest" duration-ms="1080" started-at="2025-05-05T12:13:49Z" data-provider="getDeleteTemplatesData" finished-at="2025-05-05T12:13:50Z">
+        </test-method> <!-- addMenusToOrderSetUp -->
+        <test-method status="FAIL" signature="addMenusToOrderNegativeTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.AddMenusToOrder@7d9d1a19]" name="addMenusToOrderNegativeTest" duration-ms="2034" started-at="2025-05-06T19:36:50Z" data-provider="getAddMenusToOrderNegativeData" finished-at="2025-05-06T19:36:52Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[deletetemplates]]>
+                <![CDATA[addmenustoorder]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[deletetemplates_001]]>
+                <![CDATA[addmenustoorder_002]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[negative]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Verify Add Menus to Order when menu_id is missing]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[post]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[{ "order_id": "5", "outlet_id": "1", "order_items": [ { "quantity": "10", "portion_name": "Full", "comment": "add spice" } ] }]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[{"error": "Menu ID is required"}]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[400]]>
+              </value>
+            </param>
+          </params>
+          <exception class="com.menumitra.utilityclass.customException">
+            <message>
+              <![CDATA[Error in add menus to order negative test: Error validating response: Error processing success response: Actual response does not match expected response]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.menumitra.utilityclass.customException: Error in add menus to order negative test: Error validating response: Error processing success response: Actual response does not match expected response
+	at com.menumitratCommonAPITestScript.AddMenusToOrder.addMenusToOrderNegativeTest(AddMenusToOrder.java:446)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.menumitra.utilityclass.customException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addMenusToOrderNegativeTest -->
+        <test-method status="FAIL" signature="addMenusToOrderNegativeTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.AddMenusToOrder@7d9d1a19]" name="addMenusToOrderNegativeTest" duration-ms="1134" started-at="2025-05-06T19:36:52Z" data-provider="getAddMenusToOrderNegativeData" finished-at="2025-05-06T19:36:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[addmenustoorder]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[addmenustoorder_003]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[negative]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Verify Add Menus to Order with invalid order_id]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[post]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[{ "order_id": "999", "outlet_id": "1","order_items":[
+        {
+            "menu_id":"13",
+            "quantity":"10",
+            "portion_name": "Full",
+            "comment":"add spice"
+
+        }
+    ] }]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[{"error": "Invalid Order ID"}]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[400]]>
+              </value>
+            </param>
+          </params>
+          <exception class="com.menumitra.utilityclass.customException">
+            <message>
+              <![CDATA[Error in add menus to order negative test: Error validating response: Error processing success response: Actual response does not match expected response]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.menumitra.utilityclass.customException: Error in add menus to order negative test: Error validating response: Error processing success response: Actual response does not match expected response
+	at com.menumitratCommonAPITestScript.AddMenusToOrder.addMenusToOrderNegativeTest(AddMenusToOrder.java:446)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.menumitra.utilityclass.customException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addMenusToOrderNegativeTest -->
+        <test-method status="PASS" signature="verifyAddMenusToOrder(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.AddMenusToOrder@7d9d1a19]" name="verifyAddMenusToOrder" duration-ms="5119" started-at="2025-05-06T19:36:53Z" data-provider="getAddMenusToOrderData" finished-at="2025-05-06T19:36:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[addmenustoorder]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[addmenustoorder_001]]>
               </value>
             </param>
             <param index="2">
@@ -34,7 +202,7 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[Verify Delete Templates]]>
+                <![CDATA[verify Add Menus to order]]>
               </value>
             </param>
             <param index="4">
@@ -45,12 +213,69 @@
             <param index="5">
               <value>
                 <![CDATA[{
-    "template_id":"3"
+    "order_id": "5",
+    "outlet_id":"1",
+    "order_items":[
+        {
+            "menu_id":"13",
+            "quantity":"10",
+            "portion_name": "Full",
+            "comment":"add spice"
+
+        }
+    ]
+ 
 }]]>
               </value>
             </param>
             <param index="6">
-              <value is-null="true"/>
+              <value>
+                <![CDATA[{
+    "order_details": {
+        "order_id": 5,
+        "order_number": "5",
+        "table_number": [
+            "77"
+        ],
+        "order_status": "cooking",
+        "menu_count": 2,
+        "total_bill_amount": 6300.0,
+        "total_bill_with_discount": 6300.0,
+        "service_charges_percent": 1.0,
+        "service_charges_amount": 63.0,
+        "gst_percent": 1.0,
+        "gst_amount": 63.0,
+        "discount_percent": 0.0,
+        "discount_amount": 0.0,
+        "grand_total": 6426.0,
+        "datetime": "03-May-2025 04:15:00 PM"
+    },
+    "menu_details": [
+        {
+            "menu_id": 13,
+            "menu_name": "Jeera Rice",
+            "price": 180.0,
+            "quantity": 25,
+            "offer": 0,
+            "comment": "Extra spicy please",
+            "menu_sub_total": 4500.0,
+            "portion_name": "Full",
+            "unit": "500g"
+        },
+        {
+            "menu_id": 13,
+            "menu_name": "Jeera Rice",
+            "price": 180.0,
+            "quantity": 10,
+            "offer": 0,
+            "comment": "add spice",
+            "menu_sub_total": 1800.0,
+            "portion_name": "Full",
+            "unit": "500g"
+        }
+    ]
+}]]>
+              </value>
             </param>
             <param index="7">
               <value>
@@ -60,8 +285,8 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- deleteTemplatesTest -->
-      </class> <!-- com.menumitratCommonAPITestScript.DeleteTemplatesTestScript -->
+        </test-method> <!-- verifyAddMenusToOrder -->
+      </class> <!-- com.menumitratCommonAPITestScript.AddMenusToOrder -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

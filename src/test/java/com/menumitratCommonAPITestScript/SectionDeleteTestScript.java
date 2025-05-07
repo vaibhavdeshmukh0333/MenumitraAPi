@@ -179,7 +179,7 @@ public class SectionDeleteTestScript extends APIBase
                 
                 sectionrequest.setSection_id(requestBodyJson.getString("section_id"));
                 sectionrequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
-                sectionrequest.setUser_id(userId);
+                sectionrequest.setUser_id(String.valueOf(userId));
                 
                 LogUtils.info("Section delete payload prepared");
                 ExtentReport.getTest().log(Status.INFO, "Section delete payload prepared");

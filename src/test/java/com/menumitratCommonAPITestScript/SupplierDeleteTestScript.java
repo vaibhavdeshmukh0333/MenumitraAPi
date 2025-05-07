@@ -210,7 +210,7 @@ public class SupplierDeleteTestScript extends APIBase
             // Validate response body
             actualJsonBody = new JSONObject(response.asString());
             if(expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
-                expectedJsonBody = new JSONObject(expectedResponseBody);
+            	expectedJsonBody = new JSONObject(expectedResponseBody);
                 
                 // Using validateResponseBody utility for detailed validation
                 validateResponseBody.handleResponseBody(response, expectedJsonBody);
@@ -237,4 +237,206 @@ public class SupplierDeleteTestScript extends APIBase
             throw new customException(errorMsg);
         }
     }
+    
+    
+    @DataProvider(name = "getSupplierDeleteNegativeData")
+    public Object[][] getSupplierDeleteNegativeData() throws customException {
+        try {
+            LogUtils.info("Reading supplier delete negative test scenario data");
+            ExtentReport.getTest().log(Status.INFO, "Reading supplier delete negative test scenario data");
+            
+            Object[][] readExcelData = DataDriven.readExcelData(excelSheetPathForGetApis, "CommonAPITestScenario");
+            if (readExcelData == null) {
+                String errorMsg = "Error fetching data from Excel sheet - Data is null";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            List<Object[]> filteredData = new ArrayList<>();
+            
+            for (int i = 0; i < readExcelData.length; i++) {
+                Object[] row = readExcelData[i];
+                if (row != null && row.length >= 3 &&
+                        "supplierdelete".equalsIgnoreCase(Objects.toString(row[0], "")) &&
+                        "negative".equalsIgnoreCase(Objects.toString(row[2], ""))) {
+                    
+                    filteredData.add(row);
+                }
+            }
+            
+            if (filteredData.isEmpty()) {
+                String errorMsg = "No valid supplier delete negative test data found after filtering";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            Object[][] result = new Object[filteredData.size()][];
+            for (int i = 0; i < filteredData.size(); i++) {
+                result[i] = filteredData.get(i);
+            }
+            
+            return result;
+        } catch (Exception e) {
+            LogUtils.failure(logger, "Error in getting supplier delete negative test data: " + e.getMessage());
+            ExtentReport.getTest().log(Status.FAIL, "Error in getting supplier delete negative test data: " + e.getMessage());
+            throw new customException("Error in getting supplier delete negative test data: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Counts the number of sentences in a given text.
+     * @param text The text to count sentences in
+     * @return The number of sentences
+     */
+    private int countSentences(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        
+        // Split by common sentence ending punctuations
+        String[] sentences = text.split("[.!?]+");
+        
+        // Count non-empty sentences
+        int count = 0;
+        for (String sentence : sentences) {
+            if (sentence.trim().length() > 0) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+    
+    @Test(dataProvider = "getSupplierDeleteNegativeData")
+    public void supplierDeleteNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting supplier delete negative test case: " + testCaseid);
+            ExtentReport.createTest("Supplier Delete Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            // Verify API name and test type
+            if (!apiName.equalsIgnoreCase("supplierdelete")) {
+                String errorMsg = "API name mismatch. Expected: supplierdelete, Actual: " + apiName;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            if (!testType.equalsIgnoreCase("negative")) {
+                String errorMsg = "Test type mismatch. Expected: negative, Actual: " + testType;
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            if (apiName.equalsIgnoreCase("supplierdelete") && testType.equalsIgnoreCase("negative")) {
+                requestBodyJson = new JSONObject(requestBody);
+                
+                LogUtils.info("Request Body: " + requestBodyJson.toString());
+                ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+                
+                // Set payload for supplier delete request
+                if (requestBodyJson.has("supplier_id")) {
+                    supplierDeleteRequest.setSupplier_id(requestBodyJson.getString("supplier_id"));
+                }
+                if (requestBodyJson.has("outlet_id")) {
+                    supplierDeleteRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+                }
+                if (requestBodyJson.has("user_id")) {
+                    supplierDeleteRequest.setUser_id(requestBodyJson.getString("user_id"));
+                }
+                response = ResponseUtil.getResponseWithAuth(baseURI, supplierDeleteRequest, httpsmethod, accessToken);
+                
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Body: " + response.asString());
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+                
+                int expectedStatusCode = Integer.parseInt(statusCode);
+                
+                // Log expected vs actual status code
+                ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
+                ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+                
+                // Check for server errors
+                if (response.getStatusCode() == 500 || response.getStatusCode() == 502) {
+                    LogUtils.failure(logger, "Server error detected with status code: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + response.getStatusCode(), ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+                }
+                // Validate status code
+                else if (response.getStatusCode() != expectedStatusCode) {
+                    LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                    ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedStatusCode + ", Actual: " + response.getStatusCode());
+                }
+                else {
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                    
+                    // Validate response body
+                    actualJsonBody = new JSONObject(response.asString());
+                    
+                    // Log expected vs actual response body
+                    ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedResponseBody);
+                    ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + actualJsonBody.toString());
+                    
+                    if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                    	expectedJsonBody = new JSONObject(expectedResponseBody);
+                        
+                        // Validate response message
+                        if (expectedJsonBody.has("detail") && actualJsonBody.has("detail")) {
+                            String expectedDetail = expectedJsonBody.getString("detail");
+                            String actualDetail = actualJsonBody.getString("detail");
+                            
+                            // Validate the number of sentences in the detail message
+                            int sentenceCount = countSentences(actualDetail);
+                            
+                            if (sentenceCount > 6) {
+                                String errorMsg = "Response message contains more than 6 sentences: " + sentenceCount;
+                                LogUtils.failure(logger, errorMsg);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                                ExtentReport.getTest().log(Status.FAIL, "Response message: " + actualDetail);
+                            } else {
+                                LogUtils.info("Response message contains " + sentenceCount + " sentences, which is acceptable (≤ 6)");
+                                ExtentReport.getTest().log(Status.PASS, "Response message contains " + sentenceCount + " sentences, which is acceptable (≤ 6)");
+                            }
+                            
+                            if (expectedDetail.equals(actualDetail)) {
+                                LogUtils.info("Error message validation passed: " + actualDetail);
+                                ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                            } else {
+                                LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                                ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            }
+                        }
+                        
+                        // Complete response validation
+                        validateResponseBody.handleResponseBody(response, expectedJsonBody);
+                    }
+                    
+                    LogUtils.success(logger, "Supplier delete negative test completed successfully");
+                    ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Supplier delete negative test completed successfully", ExtentColor.GREEN));
+                }
+                
+                // Always log the full response
+                ExtentReport.getTest().log(Status.INFO, "Full Response:");
+                ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+            }
+        } catch (Exception e) {
+            String errorMsg = "Error in supplier delete negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+    
 }

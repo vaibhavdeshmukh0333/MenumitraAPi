@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -293,6 +294,161 @@ public class InventoryUpdateTestScript extends APIBase
             throw new customException(errorMsg);
         }
     }
+    
+    
+   
+    
+    /**
+     * Count the number of sentences in a given text
+     * @param text Text to analyze
+     * @return Number of sentences
+     */
+    private int countSentences(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        
+        // Pattern to match sentence endings (period, exclamation mark, question mark followed by space or end of string)
+        Pattern sentencePattern = Pattern.compile("[.!?](?:\\s|$)");
+        String[] sentences = sentencePattern.split(text);
+        
+        // Return count of non-empty sentences
+        return (int) Arrays.stream(sentences)
+                .filter(s -> s != null && !s.trim().isEmpty())
+                .count();
+    }
+    
+    @Test(dataProvider = "getInventoryUpdateNegativeData")
+    public void inventoryUpdateNegativeTest(String apiName, String testCaseid, String testType, String description,
+            String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
+        try {
+            LogUtils.info("Starting inventory update negative test case: " + testCaseid);
+            ExtentReport.createTest("Inventory Update Negative Test - " + testCaseid + ": " + description);
+            ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
+            
+            // Verify API name and test type
+            if (!apiName.equalsIgnoreCase("inventoryupdate")) {
+                String errorMsg = "Invalid API name: " + apiName + ". Expected 'inventoryupdate'";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            if (!testType.equalsIgnoreCase("negative")) {
+                String errorMsg = "Invalid test type: " + testType + ". Expected 'negative'";
+                LogUtils.failure(logger, errorMsg);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                throw new customException(errorMsg);
+            }
+            
+            requestBodyJson = new JSONObject(requestBody);
+            
+            LogUtils.info("Request Body: " + requestBodyJson.toString());
+            ExtentReport.getTest().log(Status.INFO, "Request Body: " + requestBodyJson.toString());
+            
+            // Set payload for inventory update request - adjust these fields as needed for your API
+            inventoryUpdateRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
+            inventoryUpdateRequest.setUser_id(String.valueOf(user_id));
+            inventoryUpdateRequest.setName(requestBodyJson.getString("name"));
+            inventoryUpdateRequest.setSupplier_id(requestBodyJson.getString("supplier_id"));
+            inventoryUpdateRequest.setCategory_id(requestBodyJson.getString("category_id"));
+            inventoryUpdateRequest.setDescription(requestBodyJson.getString("description"));
+            inventoryUpdateRequest.setUnit_price(requestBodyJson.getString("unit_price"));
+            inventoryUpdateRequest.setQuantity(requestBodyJson.getString("quantity"));
+            inventoryUpdateRequest.setUnit_of_measure(requestBodyJson.getString("unit_of_measure"));
+            inventoryUpdateRequest.setReorder_level(requestBodyJson.getString("reorder_level"));
+            inventoryUpdateRequest.setBrand_name(requestBodyJson.getString("brand_name"));
+            inventoryUpdateRequest.setTax_rate(requestBodyJson.getString("tax_rate"));
+            inventoryUpdateRequest.setIn_or_out(requestBodyJson.getString("in_or_out"));
+            inventoryUpdateRequest.setIn_date(requestBodyJson.getString("in_date"));
+            inventoryUpdateRequest.setExpiration_date(requestBodyJson.getString("expiration_date"));
+            inventoryUpdateRequest.setInventory_id(requestBodyJson.getString("inventory_id"));
+            
+            // Add other fields as needed for inventory update
+            
+            response = ResponseUtil.getResponseWithAuth(baseURI, inventoryUpdateRequest, httpsmethod, accessToken);
+            
+            int actualStatusCode = response.getStatusCode();
+            int expectedStatusCode = Integer.parseInt(statusCode);
+            
+            LogUtils.info("Response Status Code - Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode);
+            LogUtils.info("Response Body: " + response.asString());
+            ExtentReport.getTest().log(Status.INFO, "Response Status Code - Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode);
+            ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asString());
+            
+            // Check for server errors
+            if (actualStatusCode == 500 || actualStatusCode == 502) {
+                LogUtils.failure(logger, "Server error detected with status code: " + actualStatusCode);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Server error detected: " + actualStatusCode, ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Response Body: " + response.asPrettyString());
+            }
+            // Validate status code
+            else if (actualStatusCode != expectedStatusCode) {
+                LogUtils.failure(logger, "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode);
+                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Status code mismatch", ExtentColor.RED));
+                ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode);
+            }
+            else {
+                LogUtils.success(logger, "Status code validation passed: " + actualStatusCode);
+                ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + actualStatusCode);
+                
+                // Validate response body
+                actualResponseBody = new JSONObject(response.asString());
+                
+                if (expectedResponseBody != null && !expectedResponseBody.isEmpty()) {
+                	expectedResponse = new JSONObject(expectedResponseBody);
+                    
+                    // Validate response message
+                    if (expectedResponse.has("detail") && actualResponseBody.has("detail")) {
+                        String expectedDetail = expectedResponse.getString("detail");
+                        String actualDetail = expectedResponse.getString("detail");
+                        
+                        // Validate sentence count in response message
+                        int sentenceCount = countSentences(actualDetail);
+                        if (sentenceCount > 6) {
+                            String errorMsg = "Error message contains more than 6 sentences. Actual count: " + sentenceCount;
+                            LogUtils.failure(logger, errorMsg);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                        } else {
+                            LogUtils.info("Error message sentence count validation passed: " + sentenceCount + " sentences");
+                            ExtentReport.getTest().log(Status.PASS, "Error message sentence count validation passed: " + sentenceCount + " sentences");
+                        }
+                        
+                        if (expectedDetail.equals(actualDetail)) {
+                            LogUtils.info("Error message validation passed: " + actualDetail);
+                            ExtentReport.getTest().log(Status.PASS, "Error message validation passed: " + actualDetail);
+                        } else {
+                            LogUtils.failure(logger, "Error message mismatch - Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel("Error message mismatch", ExtentColor.RED));
+                            ExtentReport.getTest().log(Status.FAIL, "Expected: " + expectedDetail + ", Actual: " + actualDetail);
+                        }
+                    }
+                    
+                    // Complete response validation
+                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                }
+                
+                LogUtils.success(logger, "Inventory update negative test completed successfully");
+                ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Inventory update negative test completed successfully", ExtentColor.GREEN));
+            }
+            
+            // Always log the full response
+            ExtentReport.getTest().log(Status.INFO, "Full Response:");
+            ExtentReport.getTest().log(Status.INFO, response.asPrettyString());
+        } catch (Exception e) {
+            String errorMsg = "Error in inventory update negative test: " + e.getMessage();
+            LogUtils.exception(logger, errorMsg, e);
+            ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+            if (response != null) {
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.FAIL, "Failed Response Body: " + response.asString());
+            }
+            throw new customException(errorMsg);
+        }
+    }
+    
+    
+    
     
     //@AfterClass
     private void tearDown() {
