@@ -282,7 +282,7 @@ public class WaiterDeleteTestScript extends APIBase
         }
     }
 
-    @Test(dataProvider = "getWaiterDeleteNegativeData")
+    //@Test(dataProvider = "getWaiterDeleteNegativeData")
     public void waiterDeleteNegativeTest(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {

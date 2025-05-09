@@ -158,6 +158,7 @@ public class UpdateMenuQuantity extends APIBase
             for (int i = 0; i < readExcelData.length; i++) {
                 Object[] row = readExcelData[i];
                 if (row != null && row.length >= 3 &&
+                        "updatemenuquantity".equalsIgnoreCase(Objects.toString(row[0], "")) &&
                         "positive".equalsIgnoreCase(Objects.toString(row[2], ""))) {
 
                     filteredData.add(row);

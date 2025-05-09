@@ -98,7 +98,7 @@ public class ResponseUtil
 		                            	    .contentType(ContentType.JSON)
 		                            	    .body(requestBody)
 		                            	    .when()
-		                            	    .post(url)
+		                            	    .delete(url)
 		                            	    .then()
 		                            	    .log().all()
 		                            	    .extract()
@@ -206,10 +206,17 @@ public class ResponseUtil
                                     
                                     LogUtils.info("start delete data..");
                                     response =RestAssured.given()
-                                    .header("Authorization","Bearer ",jwttoken)
+                                    .contentType(ContentType.JSON)
+                                    .header("Authorization", "Bearer " + jwttoken)
                                     .body(requestBody)
                                     .when()
-                                    .delete(url);
+                                    .delete(url)
+                                    .then()
+                                    .log()
+                                    .all()
+                                    .extract()
+                                    .response();
+                                    
                                     LogUtils.info("Delete Data Successfully");
                                     return response;
                                     

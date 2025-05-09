@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>3/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed May 07 19:43:51 IST 2025</td>
+<td>Started on:</td><td>Fri May 09 13:42:30 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>21 seconds (21230 ms)</td>
+<tr><td>Total time:</td><td>4 seconds (4552 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,29 +75,44 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.sectionUpdateTestScript.sectionUpdateNegativeTest()'><b>sectionUpdateNegativeTest</b><br>Test class: com.menumitratCommonAPITestScript.sectionUpdateTestScript<br>Parameters: sectionupdate, sectionupdate_002, negative, Empty section_name value, patch, { "user_id": 2, "section_id": 17, "outlet_id": 1, "section_name": "" }, {
-    "detail": "Please provide section_name"
+<td title='com.menumitratCommonAPITestScript.UnlinkTables.unlinkTablesNegativeTest()'><b>unlinkTablesNegativeTest</b><br>Test class: com.menumitratCommonAPITestScript.UnlinkTables<br>Parameters: unlinktables, unlinktables_002, negative, Verify Unlink Table using valid invalid Outlet id(special character), post, {
+    "outlet_id":"@",
+   
+    "primary_table_id":"100",
+   
+    "user_id": "2"
+}, {
+    "detail": "outlet_id must be a number"
 }, 400</td>
 <td></td>
-<td>1</td>
-<td>com.menumitratCommonAPITestScript.sectionUpdateTestScript@7d9d1a19</td></tr>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.UnlinkTables@402f32ff</td></tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.sectionUpdateTestScript.verifySectionCreateUsingInvalidData()'><b>verifySectionCreateUsingInvalidData</b><br>Test class: com.menumitratCommonAPITestScript.sectionUpdateTestScript<br>Parameters: sectionupdate, sectionupdate_002, negative, Empty section_name value, patch, { "user_id": 2, "section_id": 17, "outlet_id": 1, "section_name": "" }, {
-    "detail": "Please provide section_name"
-}, 400</td>
+<td title='com.menumitratCommonAPITestScript.UnlinkTables.unlinkTablesNegativeTest()'><b>unlinkTablesNegativeTest</b><br>Test class: com.menumitratCommonAPITestScript.UnlinkTables<br>Parameters: unlinktables, unlinktables_003, negative, Verify Unlink Table using Invalid Primary_Table_id, post, {
+    "outlet_id":"1",
+   
+    "primary_table_id":"100",
+   
+    "user_id": "2"
+}, {
+    "detail": "No joined tables found"
+}, 404</td>
 <td></td>
-<td>3</td>
-<td>com.menumitratCommonAPITestScript.sectionUpdateTestScript@7d9d1a19</td></tr>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.UnlinkTables@402f32ff</td></tr>
 <tr>
-<td title='com.menumitratCommonAPITestScript.sectionUpdateTestScript.verifySectionUpdateUsingValidInputData()'><b>verifySectionUpdateUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.sectionUpdateTestScript<br>Parameters: sectionupdate, sectionupdate_001, positive, Valid section update, patch, {  
-    "user_id":2,
-    "section_id":17,
-    "outlet_id": 1,
-    "section_name": "Top"
-}, {"detail":"Outlet Section updated successfully"}, 200</td>
+<td title='com.menumitratCommonAPITestScript.UnlinkTables.unlinkTablesUsingValidInputData()'><b>unlinkTablesUsingValidInputData</b><br>Test class: com.menumitratCommonAPITestScript.UnlinkTables<br>Parameters: unlinktables, unlinktables_001, positive, Verify Unlink Table using valid data, post, {
+    "outlet_id": "1",
+   
+    "primary_table_id": "83",
+   
+    "user_id": "2"
+}, {
+    "detail": "Tables unlinked successfully"
+}, 200</td>
 <td></td>
-<td>1</td>
-<td>com.menumitratCommonAPITestScript.sectionUpdateTestScript@7d9d1a19</td></tr>
+<td>0</td>
+<td>com.menumitratCommonAPITestScript.UnlinkTables@402f32ff</td></tr>
 </table><p>
 </body>
 </html>

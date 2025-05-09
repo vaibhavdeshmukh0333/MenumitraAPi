@@ -216,7 +216,7 @@ public class StaffListViewTestScript extends APIBase
         }
     }
     
-    //@Test(dataProvider = "getStaffListViewData")
+    @Test(dataProvider = "getStaffListViewData")
     public void staffListViewTest(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode) throws customException {
         try {

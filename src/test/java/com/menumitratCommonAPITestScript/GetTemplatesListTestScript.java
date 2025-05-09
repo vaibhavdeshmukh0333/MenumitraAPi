@@ -205,6 +205,7 @@ public class GetTemplatesListTestScript extends APIBase
                         .log().all()
                         .extract()
                         .response();
+                
                 LogUtils.info("Received response with status code: " + response.getStatusCode());
                 LogUtils.info("Response Body: " + response.asString());
                 ExtentReport.getTest().log(Status.INFO, "Received response with status code: " + response.getStatusCode());

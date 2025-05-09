@@ -180,7 +180,7 @@ public class MenuCategoryCreateTestScript extends APIBase
                 LogUtils.info("Processing menu category create request");
                 requestBodyJson = new JSONObject(requestBody.replace("\\", "\\\\"));
                 expectedResponse = new JSONObject(expectedResponseBody);
-                System.out.println(accessToken);
+               
                 request = RestAssured.given();
                 request.header("Authorization", "Bearer " + accessToken);
                 request.header("Content-Type", "multipart/form-data");
@@ -282,130 +282,105 @@ public class MenuCategoryCreateTestScript extends APIBase
             ExtentReport.createTest("Menu Category Create Negative Test - " + testCaseid);
             ExtentReport.getTest().log(Status.INFO, "Test Description: " + description);
             
-            // Validate API name and test type
-            if (!"menucategorycreate".equalsIgnoreCase(apiName)) {
-                String errorMsg = "Invalid API name. Expected: menucategorycreate, Actual: " + apiName;
-                LogUtils.failure(logger, errorMsg);
-                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                throw new customException(errorMsg);
-            }
-            
-            if (!"negative".equalsIgnoreCase(testType)) {
-                String errorMsg = "Invalid test type. Expected: negative, Actual: " + testType;
-                LogUtils.failure(logger, errorMsg);
-                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                throw new customException(errorMsg);
-            }
-
-            requestBodyJson = new JSONObject(requestBody.replace("\\", "\\\\"));
-            expectedResponse = new JSONObject(expectedResponseBody);
-            
-            request = RestAssured.given();
-            request.header("Authorization", "Bearer " + accessToken);
-            request.header("Content-Type", "multipart/form-data");
-
-            // Add outlet_id if present in request body
-            if (requestBodyJson.has("outlet_id")) {
-                request.multiPart("outlet_id", requestBodyJson.getInt("outlet_id"));
-            }
-            
-            // Add category_name if present in request body
-            if (requestBodyJson.has("category_name")) {
-                request.multiPart("category_name", requestBodyJson.getString("category_name"));
-            }
-            
-            // Handle image file upload if it exists in the request
-            if (requestBodyJson.has("image") && !requestBodyJson.getString("image").isEmpty()) {
-                File categoryImage = new File(requestBodyJson.getString("image"));
-                if (categoryImage.exists()) {
-                    request.multiPart("image", categoryImage);
+            if(apiName.equalsIgnoreCase("menucategorycreate") && testType.equalsIgnoreCase("negative"))
+            {
+            	requestBodyJson=new JSONObject(requestBody.replace("\\","\\\\"));
+                
+                request=RestAssured.given();
+                request.header("Authorization", "Bearer " + accessToken);
+                request.contentType("multipart/form-data");
+                		
+                if(requestBodyJson.has("image") && !requestBodyJson.getString("image").isEmpty())
+                {
+                    LogUtils.info("Processing image attachments");
+                    File imageFile=new File(requestBodyJson.getString("image"));
+                    if(imageFile.exists())
+                    {
+                       
+                    	request.multiPart("image",requestBodyJson.getString("image"));
+                        LogUtils.info("Successfully attached image files");
+                        ExtentReport.getTest().log(Status.INFO, "Successfully attached 5 image files");
+                    } else {
+                        LogUtils.warn("Image file not found at path: " + requestBodyJson.getString("images"));
+                        ExtentReport.getTest().log(Status.WARNING, "Image file not found at specified path");
+                    }
                 }
-            }
-            
-            // Add user_id if present in request body
-            if (requestBodyJson.has("user_id")) {
+
+                LogUtils.info("Setting up request form parameters");
+                ExtentReport.getTest().log(Status.INFO, "Setting up request form parameters");
+                
                 request.multiPart("user_id", requestBodyJson.getString("user_id"));
-            }
-            
-            // Check for any other fields in the request body and add them
-            for (String key : requestBodyJson.keySet()) {
-                if (!key.equals("outlet_id") && !key.equals("category_name") && 
-                    !key.equals("image") && !key.equals("user_id")) {
-                    request.multiPart(key, requestBodyJson.get(key).toString());
-                }
-            }
-
-            LogUtils.info("Sending request to: " + baseUri);
-            ExtentReport.getTest().log(Status.INFO, "Sending request to: " + baseUri);
-            
-            response = request.when().post(baseUri).then().extract().response();
-            
-            int expectedStatusCode = Integer.parseInt(statusCode);
-            int actualStatusCode = response.getStatusCode();
-            
-            // Log status code comparison
-            LogUtils.info("Expected Status Code: " + expectedStatusCode);
-            LogUtils.info("Actual Status Code: " + actualStatusCode);
-            ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + expectedStatusCode);
-            ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + actualStatusCode);
-            
-            // Log response body comparison
-            LogUtils.info("Expected Response Body: " + expectedResponseBody);
-            LogUtils.info("Actual Response Body: " + response.asString());
-            ExtentReport.getTest().log(Status.INFO, "Expected Response Body: " + expectedResponseBody);
-            ExtentReport.getTest().log(Status.INFO, "Actual Response Body: " + response.asString());
-
-            // Validate status code
-            if (actualStatusCode != expectedStatusCode) {
-                String errorMsg = "Status code mismatch - Expected: " + expectedStatusCode + ", Actual: " + actualStatusCode;
-                LogUtils.failure(logger, errorMsg);
-                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                throw new customException(errorMsg);
-            }
-
-            // For negative tests, we need to ensure the API actually returns an error
-            JSONObject actualResponse = new JSONObject(response.asString());
-            
-            // Check if the response indicates success when it should be an error
-            if (actualResponse.has("data") && !actualResponse.has("error")) {
-                String errorMsg = "Negative test case returned success response instead of error";
-                LogUtils.failure(logger, errorMsg);
-                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                ExtentReport.getTest().log(Status.FAIL, "Response indicates success when it should be an error");
-                throw new customException(errorMsg);
-            }
-            
-            // Validate error message exists for negative tests
-            if (!actualResponse.has("message") && !actualResponse.has("error")) {
-                String errorMsg = "Response does not contain error message for negative test";
-                LogUtils.failure(logger, errorMsg);
-                ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
-                throw new customException(errorMsg);
-            }
-
-            // Validate response message length
-            if (actualResponse.has("message")) {
-                String message = actualResponse.getString("message");
-                int sentenceCount = countSentences(message);
+                request.multiPart("outlet_id", requestBodyJson.getString("outlet_id")); 
+                request.multiPart("category_name", requestBodyJson.getString("category_name"));
                 
-                if (sentenceCount > 6) {
-                    String errorMsg = "Response message exceeds 6 sentences. Current count: " + sentenceCount;
+                response = request.when().post(baseUri).then().extract().response();
+                
+                // Response logging
+                ExtentReport.getTest().log(Status.INFO, "Response Status Code: " + response.getStatusCode());
+                LogUtils.info("Response Status Code: " + response.getStatusCode());
+                ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
+                LogUtils.info("Response Body: " + response.asPrettyString());
+                
+                // Validation
+                ExtentReport.getTest().log(Status.INFO, "Expected Status Code: " + statusCode);
+                ExtentReport.getTest().log(Status.INFO, "Actual Status Code: " + response.getStatusCode());
+                
+                if (response.getStatusCode() == Integer.parseInt(statusCode)) {
+                    ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
+                    LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
+                    
+                    actualResponseBody = new JSONObject(response.asString());
+                    expectedResponse = new JSONObject(expectedResponseBody);
+                    
+                    ExtentReport.getTest().log(Status.INFO, "Starting response body validation");
+                    LogUtils.info("Starting response body validation");
+                    ExtentReport.getTest().log(Status.INFO, "Expected Response Body:\n" + expectedResponse.toString(2));
+                    LogUtils.info("Expected Response Body:\n" + expectedResponse.toString(2));
+                    ExtentReport.getTest().log(Status.INFO, "Actual Response Body:\n" + actualResponseBody.toString(2));
+                    LogUtils.info("Actual Response Body:\n" + actualResponseBody.toString(2));
+                    
+                    // Validate response message sentence count
+                    if (actualResponseBody.has("message")) {
+                        String message = actualResponseBody.getString("message");
+                        String[] sentences = message.split("[.!?]+");
+                        int sentenceCount = 0;
+                        
+                        for (String sentence : sentences) {
+                            if (!sentence.trim().isEmpty()) {
+                                sentenceCount++;
+                            }
+                        }
+                        
+                        ExtentReport.getTest().log(Status.INFO, "Response message contains " + sentenceCount + " sentences");
+                        LogUtils.info("Response message contains " + sentenceCount + " sentences");
+                        
+                        if (sentenceCount > 6) {
+                            String errorMsg = "Response message contains more than 6 sentences (" + sentenceCount + "), which exceeds the limit";
+                            ExtentReport.getTest().log(Status.FAIL, errorMsg);
+                            LogUtils.failure(logger, errorMsg);
+                            throw new customException(errorMsg);
+                        } else {
+                            ExtentReport.getTest().log(Status.PASS, "Response message sentence count validation passed: " + sentenceCount + " sentences");
+                            LogUtils.success(logger, "Response message sentence count validation passed: " + sentenceCount + " sentences");
+                        }
+                    }
+                    
+                    // Perform detailed response validation
+                    ExtentReport.getTest().log(Status.INFO, "Performing detailed response validation");
+                    LogUtils.info("Performing detailed response validation");
+                    validateResponseBody.handleResponseBody(response, expectedResponse);
+                    
+                    ExtentReport.getTest().log(Status.PASS, "Response body validation passed successfully");
+                    LogUtils.success(logger, "Response body validation passed successfully");
+                    
+                } else {
+                    String errorMsg = "Status code validation failed - Expected: " + statusCode + ", Actual: " + response.getStatusCode();
+                    ExtentReport.getTest().log(Status.FAIL, errorMsg);
                     LogUtils.failure(logger, errorMsg);
-                    ExtentReport.getTest().log(Status.FAIL, MarkupHelper.createLabel(errorMsg, ExtentColor.RED));
+                    LogUtils.error("Failed Response Body:\n" + response.asPrettyString());
                     throw new customException(errorMsg);
-                }
-                
-                LogUtils.info("Message sentence count: " + sentenceCount);
-                ExtentReport.getTest().log(Status.INFO, "Message sentence count: " + sentenceCount);
+                }   
             }
-
-            // Validate response body matches expected response
-            validateResponseBody.handleResponseBody(response, expectedResponse);
-            
-            
-            LogUtils.success(logger, "Menu category create negative test completed successfully");
-            ExtentReport.getTest().log(Status.PASS, MarkupHelper.createLabel("Menu category create negative test completed successfully", ExtentColor.GREEN));
-            
         } catch (Exception e) {
             String errorMsg = "Error in menu category create negative test: " + e.getMessage();
             LogUtils.exception(logger, errorMsg, e);

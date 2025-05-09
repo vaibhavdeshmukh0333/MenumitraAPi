@@ -193,7 +193,7 @@ public class UpdateTemplatesTestScript extends APIBase
                 LogUtils.info("Sending PUT request to endpoint: " + baseUri);
                 ExtentReport.getTest().log(Status.INFO, "Sending PUT request to update template");
                 
-                response = request.when().post(baseUri).then().extract().response();
+                response = request.when().patch(baseUri).then().extract().response();
 
                 LogUtils.info("Received response with status code: " + response.getStatusCode());
                 ExtentReport.getTest().log(Status.INFO, "Received response with status code: " + response.getStatusCode());

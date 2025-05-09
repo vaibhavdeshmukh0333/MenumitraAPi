@@ -243,7 +243,7 @@ public class MenuUpdate extends APIBase {
             
             // Send the request
             LogUtils.info("Sending POST request to " + baseURI);
-            response = request.post(baseURI);
+            response = request.put(baseURI);
             
             // Log response details
             int actualStatusCode = response.getStatusCode();
@@ -449,7 +449,7 @@ public class MenuUpdate extends APIBase {
                 
                 // Send the request
                 LogUtils.info("Sending POST request to " + baseURI);
-                response = request.post(baseURI);
+                response = request.put(baseURI);
                 
 
                 LogUtils.info("Response Status Code: " + response.getStatusCode());

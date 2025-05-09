@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.menumitra.apiRequest.TableDeleteRequest;
 import com.menumitra.apiRequest.tableCreateRequest;
 import com.menumitra.superclass.APIBase;
 import com.menumitra.utilityclass.ActionsMethods;
@@ -35,7 +36,7 @@ import io.restassured.response.Response;
 @Listeners(Listener.class)
 public class TableDeleteTestScript extends APIBase
 {
-    private tableCreateRequest tableDeleteRequest;
+    private TableDeleteRequest tableDeleteRequest;
     private Response response;
     private JSONObject requestBodyJson;
     private JSONObject actualResponseBody;
@@ -163,7 +164,7 @@ public class TableDeleteTestScript extends APIBase
                 throw new customException(errorMsg);
             }
 
-            tableDeleteRequest=new tableCreateRequest();
+            tableDeleteRequest=new TableDeleteRequest();
             LogUtils.success(logger, "Table delete test script Setup completed successfully");
 
         } catch (Exception e) {
@@ -195,7 +196,7 @@ public class TableDeleteTestScript extends APIBase
             
             ExtentReport.getTest().log(Status.INFO, "Setting outlet_id in request");
             LogUtils.info("Setting outlet_id in request");
-            tableDeleteRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
+            tableDeleteRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
             
             ExtentReport.getTest().log(Status.INFO, "Setting user_id in request: " + user_id);
             LogUtils.info("Setting user_id in request: " + user_id);
@@ -220,8 +221,9 @@ public class TableDeleteTestScript extends APIBase
             LogUtils.info("Response Status Code: " + response.getStatusCode());
             ExtentReport.getTest().log(Status.INFO, "Response Body: " + response.asPrettyString());
             LogUtils.info("Response Body: " + response.asPrettyString());
-
+            System.out.println(response.getStatusCode());
             // Validation
+            
             if(response.getStatusCode() == Integer.parseInt(statusCode)) {
                 ExtentReport.getTest().log(Status.PASS, "Status code validation passed: " + response.getStatusCode());
                 LogUtils.success(logger, "Status code validation passed: " + response.getStatusCode());
@@ -345,7 +347,7 @@ public class TableDeleteTestScript extends APIBase
                 ExtentReport.getTest().log(Status.INFO, "Setting outlet_id in request");
                 LogUtils.info("Setting outlet_id in request");
                 if (requestBodyJson.has("outlet_id")) {
-                    tableDeleteRequest.setOutlet_id(requestBodyJson.getInt("outlet_id"));
+                    tableDeleteRequest.setOutlet_id(requestBodyJson.getString("outlet_id"));
                 } 
                 
                 ExtentReport.getTest().log(Status.INFO, "Setting user_id in request: " + user_id);

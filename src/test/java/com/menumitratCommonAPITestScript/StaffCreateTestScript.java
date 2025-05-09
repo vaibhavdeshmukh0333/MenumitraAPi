@@ -215,7 +215,7 @@ public class StaffCreateTestScript extends APIBase {
     /**
      * Test method to create staff member
      */
-   // @Test(dataProvider = "getStaffCreateData")
+    @Test(dataProvider = "getStaffCreateData")
     private void createStaff(String apiName, String testCaseid, String testType, String description,
             String httpsmethod, String requestBody, String expectedResponseBody, String statusCode)
             throws customException {

@@ -230,6 +230,7 @@ public class loginTestScript extends APIBase
                     String responseBody = response.getBody().asString();
                     if (responseBody != null && !responseBody.trim().isEmpty()) {
                         expectedResponse = new JSONObject(expectedResponseBody);
+                        //
                         validateResponseBody.handleResponseBody(response, expectedResponse);
                         
                         LogUtils.success(logger, "Login API validation successful");
@@ -261,7 +262,7 @@ public class loginTestScript extends APIBase
     /**
      * Test method for negative scenarios
      */
-    //@Test(dataProvider = "getNegativeInputData", priority = 2)
+    @Test(dataProvider = "getNegativeInputData", priority = 2)
     private void verifyLoginUsingInvalidInputData(String apiName, String testCaseId, 
         String testType, String description, String httpsMethod, 
         String requestBody, String expectedResponseBody, String statusCode) throws customException {

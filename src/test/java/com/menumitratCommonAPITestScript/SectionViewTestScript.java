@@ -241,54 +241,6 @@ private void verifySectionViewUsingValidInputData(String apiName, String testCas
     }
 }
 
-/**
- * Test method for negative scenarios
- */
-//@Test(dataProvider = "getSectionViewNegativeInputData", priority = 2)
-private void verifySectionViewUsingInvalidData(String apiName, String testCaseId,
-        String testType, String description, String httpsMethod,
-        String requestBody, String expectedResponseBody, String statusCode) throws customException {
-
-    try {
-        LogUtils.info("=====Starting section view API negative test=====");
-        ExtentReport.createTest("Verify section view using Invalid Input data: " + description);
-        ExtentReport.getTest().log(Status.INFO, "====Verify section view using Invalid Input data====");
-        ExtentReport.getTest().log(Status.INFO, "Constructed section view Base URI: " + baseUri);
-
-        if (apiName.contains("sectionview") && testType.contains("negative")) {
-            // Parse request and expected response
-            requestBodyJson = new JSONObject(requestBody);
-            expectedJsonBody = new JSONObject(expectedResponseBody);
-
-            sectionrequest.setOutlet_id(String.valueOf(requestBodyJson.getInt("outlet_id")));
-            sectionrequest.setUser_id(String.valueOf(userId));
-            LogUtils.info("Section view payload prepared");
-            ExtentReport.getTest().log(Status.INFO, "Section view payload prepared");
-
-            // Make API call
-            response = ResponseUtil.getResponseWithAuth(baseUri, sectionrequest, httpsMethod, accessToken);
-            LogUtils.info("Section view API response received");
-            ExtentReport.getTest().log(Status.INFO, "Section view API response: " + response.getBody().asString());
-
-            if(response.getStatusCode()==200)
-            {
-            	validateResponseBody.handleResponseBody(response, expectedJsonBody);
-                LogUtils.success(logger, "Successfully validated section view API negative test case: " + testCaseId);
-                ExtentReport.getTest().log(Status.PASS, "Successfully validated section view API negative test case: " + testCaseId);
-            }
-            else
-            {
-            	LogUtils.failure(logger, "Invalid status code for section view API negative test case: " + response.getStatusCode());
-                ExtentReport.getTest().log(Status.FAIL, "Invalid status code for section view API negative test case: " + response.getStatusCode());
-                throw new customException("In section view API using negative input test case expected status code 200 but got " + response.getStatusCode());
-            }
-        }
-    } catch (Exception e) {
-        LogUtils.exception(logger, "Error in negative test case " + testCaseId + ": " + e.getMessage(), e);
-        ExtentReport.getTest().log(Status.FAIL, "Error in negative test case " + testCaseId + ": " + e.getMessage());
-        throw new customException("Error in negative test case " + testCaseId + ": " + e.getMessage());
-    }
-}
 
 
 @DataProvider(name = "getSectionViewNegativeData")
