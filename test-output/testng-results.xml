@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="3" passed="1">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5064" started-at="2025-05-09T10:18:47Z" finished-at="2025-05-09T10:18:52Z">
+  <suite name="Default suite" duration-ms="4560" started-at="2025-05-09T13:39:07Z" finished-at="2025-05-09T13:39:12Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5064" started-at="2025-05-09T10:18:47Z" finished-at="2025-05-09T10:18:52Z">
-      <class name="com.menumitratCommonAPITestScript.HotelDataTestScript">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.HotelDataTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="24" started-at="2025-05-09T15:48:47Z" finished-at="2025-05-09T15:48:47Z">
+    <test name="Default test" duration-ms="4560" started-at="2025-05-09T13:39:07Z" finished-at="2025-05-09T13:39:12Z">
+      <class name="com.menumitratCommonAPITestScript.ManagerUpdateTestScript">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.menumitratCommonAPITestScript.ManagerUpdateTestScript@7d9d1a19]" name="setUp" is-config="true" duration-ms="29" started-at="2025-05-09T19:09:07Z" finished-at="2025-05-09T19:09:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.HotelDataTestScript@7d9d1a19]" name="setup" is-config="true" duration-ms="3885" started-at="2025-05-09T15:48:47Z" finished-at="2025-05-09T15:48:51Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.menumitratCommonAPITestScript.ManagerUpdateTestScript@7d9d1a19]" name="setup" is-config="true" duration-ms="3477" started-at="2025-05-09T19:09:08Z" finished-at="2025-05-09T19:09:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="getHotelData(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.HotelDataTestScript@7d9d1a19]" name="getHotelData" duration-ms="256" started-at="2025-05-09T15:48:51Z" data-provider="getHotelDataTestData" finished-at="2025-05-09T15:48:51Z">
+        <test-method status="PASS" signature="updateManagerPositive(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ManagerUpdateTestScript@7d9d1a19]" name="updateManagerPositive" duration-ms="190" started-at="2025-05-09T19:09:12Z" data-provider="getManagerUpdateData" finished-at="2025-05-09T19:09:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[gethoteldata]]>
+                <![CDATA[managerupdate]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[gethoteldata_001]]>
+                <![CDATA[managerupdate_001]]>
               </value>
             </param>
             <param index="2">
@@ -34,32 +34,31 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[Verify Get Outlet Data using valid input]]>
+                <![CDATA[Verify Manager Update]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[post]]>
+                <![CDATA[patch]]>
               </value>
             </param>
             <param index="5">
               <value>
                 <![CDATA[{
-    "user_id":"2",
-    "outlet_id":"1"
+    "outlet_id": "1",
+    "user_id": "30",          
+    "name": "Manager one",        
+    "mobile": "9888888899",    
+    "address": "123 Example Street, City",  
+    "aadhar_number": "123456789012",
+    "update_user_id": "2"
 }]]>
               </value>
             </param>
             <param index="6">
               <value>
                 <![CDATA[{
-    "data": {
-        "today_paid_orders": 0,
-        "active_orders": 0,
-        "today_total_revenue": 0,
-        "total_occupied_table_count": 0,
-        "total_available_tables": 15
-    }
+    "message": "Manager updated successfully"
 }]]>
               </value>
             </param>
@@ -71,45 +70,49 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getHotelData -->
-        <test-method status="FAIL" signature="hotelDataNegativeTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.HotelDataTestScript@7d9d1a19]" name="hotelDataNegativeTest" duration-ms="165" started-at="2025-05-09T15:48:52Z" data-provider="getHotelDataNegativeTestData" finished-at="2025-05-09T15:48:52Z">
+        </test-method> <!-- updateManagerPositive -->
+        <test-method status="PASS" signature="updateManagerPositive(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ManagerUpdateTestScript@7d9d1a19]" name="updateManagerPositive" duration-ms="166" started-at="2025-05-09T19:09:12Z" data-provider="getManagerUpdateData" finished-at="2025-05-09T19:09:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[gethoteldata]]>
+                <![CDATA[managerupdate]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[gethoteldata_002]]>
+                <![CDATA[managerupdate_002]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[negative]]>
+                <![CDATA[positive]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[Verify Get Outlet Data using Invalid input]]>
+                <![CDATA[Verify Manger update using empty name]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[post]]>
+                <![CDATA[patch]]>
               </value>
             </param>
             <param index="5">
               <value>
                 <![CDATA[{
-    "user_id":"@#",
-    "outlet_id":"1"
+    "outlet_id": "1",
+    "user_id":"2",          
+    "name": "",        
+    "mobile": "9888888822",    
+    "address": "123 Example Street, City",  
+    "aadhar_number": "123456789012"    ,    "update_user_id": "2"     
 }]]>
               </value>
             </param>
             <param index="6">
               <value>
-                <![CDATA[{"detail":"User ID must be a number."}]]>
+                <![CDATA[{ "detail": "name is required." }]]>
               </value>
             </param>
             <param index="7">
@@ -118,81 +121,51 @@
               </value>
             </param>
           </params>
-          <exception class="com.menumitra.utilityclass.customException">
-            <message>
-              <![CDATA[Error in hotel data negative test: Status code validation failed - Expected: 400, Actual: 404]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[com.menumitra.utilityclass.customException: Error in hotel data negative test: Status code validation failed - Expected: 400, Actual: 404
-	at com.menumitratCommonAPITestScript.HotelDataTestScript.hotelDataNegativeTest(HotelDataTestScript.java:368)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-]]>
-            </full-stacktrace>
-          </exception> <!-- com.menumitra.utilityclass.customException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- hotelDataNegativeTest -->
-        <test-method status="FAIL" signature="hotelDataNegativeTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.HotelDataTestScript@7d9d1a19]" name="hotelDataNegativeTest" duration-ms="157" started-at="2025-05-09T15:48:52Z" data-provider="getHotelDataNegativeTestData" finished-at="2025-05-09T15:48:52Z">
+        </test-method> <!-- updateManagerPositive -->
+        <test-method status="PASS" signature="updateManagerPositive(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.menumitratCommonAPITestScript.ManagerUpdateTestScript@7d9d1a19]" name="updateManagerPositive" duration-ms="150" started-at="2025-05-09T19:09:12Z" data-provider="getManagerUpdateData" finished-at="2025-05-09T19:09:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[gethoteldata]]>
+                <![CDATA[managerupdate]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[gethoteldata_003]]>
+                <![CDATA[managerupdate_002]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[negative]]>
+                <![CDATA[positive]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[Verify Get Outlet Data using Invalid input (outlet_id)]]>
+                <![CDATA[Verify Manger update using empty user id]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[post]]>
+                <![CDATA[patch]]>
               </value>
             </param>
             <param index="5">
               <value>
                 <![CDATA[{
-    "user_id":"2",
-    "outlet_id":"@#"
+    "outlet_id": "1",
+    "user_id":"",          
+    "name": "manger",        
+    "mobile": "9888888822",    
+    "address": "123 Example Street, City",  
+    "aadhar_number": "123456789012"   ,    "update_user_id": "2"      
 }]]>
               </value>
             </param>
             <param index="6">
               <value>
-                <![CDATA[{"detail":"User ID must be a number."}]]>
+                <![CDATA[ {"detail":"user_id is required."}]]>
               </value>
             </param>
             <param index="7">
@@ -201,44 +174,10 @@
               </value>
             </param>
           </params>
-          <exception class="com.menumitra.utilityclass.customException">
-            <message>
-              <![CDATA[Error in hotel data negative test: Status code validation failed - Expected: 400, Actual: 404]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[com.menumitra.utilityclass.customException: Error in hotel data negative test: Status code validation failed - Expected: 400, Actual: 404
-	at com.menumitratCommonAPITestScript.HotelDataTestScript.hotelDataNegativeTest(HotelDataTestScript.java:368)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-]]>
-            </full-stacktrace>
-          </exception> <!-- com.menumitra.utilityclass.customException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- hotelDataNegativeTest -->
-      </class> <!-- com.menumitratCommonAPITestScript.HotelDataTestScript -->
+        </test-method> <!-- updateManagerPositive -->
+      </class> <!-- com.menumitratCommonAPITestScript.ManagerUpdateTestScript -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

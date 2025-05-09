@@ -207,8 +207,8 @@ public class WaiterUpdateTestScript extends APIBase
                 waiterUpdateRequest.setMobile(requestBodyJson.getString("mobile"));
                 waiterUpdateRequest.setAddress(requestBodyJson.optString("address", ""));
                 waiterUpdateRequest.setAadhar_number(requestBodyJson.getString("aadhar_number"));
-                waiterUpdateRequest.setDob(requestBodyJson.optString("dob", ""));
-                waiterUpdateRequest.setEmail(requestBodyJson.optString("email", ""));
+                waiterUpdateRequest.setDob(requestBodyJson.optString("dob"));
+                waiterUpdateRequest.setEmail(requestBodyJson.optString("email"));
                 
                 LogUtils.info("Constructed waiter update request"); 
                 LogUtils.info("Request Body: " + requestBodyJson.toString());
